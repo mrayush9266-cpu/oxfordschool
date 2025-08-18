@@ -1,9 +1,72 @@
 
-body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-header { background: #004aad; color: white; text-align: center; padding: 30px; }
-nav { background: #222; padding: 12px; text-align: center; }
-nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-nav a:hover { color: #ffcc00; }
-section { padding: 40px; max-width: 900px; margin: auto; background: white; margin-top: 20px; border-radius: 10px; }
-h2 { color: #004aad; }
-footer { background: #004aad; color: white; text-align: center; padding: 15px; margin-top: 20px; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+header {
+  background: linear-gradient(135deg, #004aad, #ff8c00);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+nav {
+  background: #004aad;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav h2 {
+  margin: 0;
+}
+.menu {
+  display: none;
+  flex-direction: column;
+  background: #004aad;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  display: block;
+}
+.menu a:hover {
+  background: #ff8c00;
+}
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+  .menu {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: none;
+  }
+  .menu a {
+    margin: 0 10px;
+  }
+}
+footer {
+  background: #004aad;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}

@@ -3,28 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oxford Public School</title>
+  <title>Staff - Oxford Public School</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("menu");
+      if (menu.style.display === "flex") {
+        menu.style.display = "none";
+      } else {
+        menu.style.display = "flex";
+      }
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Oxford Public School</h1>
-    <p>Shaping the Future with Education</p>
+    <h1>OXFORD PUBLIC SCHOOL</h1>
   </header>
-  
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="admission.html">Admission</a>
-  <a href="facilities.html">Facilities</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="staff.html">Our Staff</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
-  <section><h2>Our Staff</h2><p>Meet our highly qualified and dedicated teachers.</p></section>
+  <nav>
+    <h2>Menu</h2>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="admission.html">Admission</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="staff.html">Staff</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+  <main style="padding:20px;">
+    <h2>Our Staff</h2><p>We have highly qualified and dedicated teachers who guide students in academics and extracurriculars.</p>
+  </main>
   <footer>
-    <p>&copy; 2025 Oxford Public School. All Rights Reserved.</p>
+    <p>© 2025 Oxford Public School | All Rights Reserved</p>
   </footer>
 </body>
 </html>
