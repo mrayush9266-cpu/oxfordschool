@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery • Oxford Public School</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery • Oxford Public School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Inline CSS in case you want it standalone */
+    main { max-width:1000px; margin:22px auto; padding:0 16px; }
+    h2 { color:#0f47b8; text-align:center; margin-top:20px; }
+    h3 { font-weight:bold; text-align:center; margin-top:30px; margin-bottom:10px; }
+    .gallery-section { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:10px; }
+    .gallery-section img { width:200px; border-radius:10px; }
+  </style>
 </head>
 <body>
-<header><h1>Oxford Public School</h1></header>
+
+<header>
+  <h1>Oxford Public School</h1>
+</header>
 
 <nav>
   <div class="brand">Oxford Public School</div>
@@ -24,11 +35,44 @@
 </nav>
 
 <main>
-<section class="card">
-<h2>Gallery</h2>
-<p>will be updated shortly.</p>
-</section>
+  <h2>Gallery</h2>
+
+  <!-- Science Exhibition -->
+  <section>
+    <h3 style="color:#1e90ff;">Science Exhibition</h3>
+    <div class="gallery-section">
+      <img src="images/science1.jpg" alt="Science Exhibition 1">
+      <img src="images/science2.jpg" alt="Science Exhibition 2">
+      <img src="images/science3.jpg" alt="Science Exhibition 3">
+    </div>
+  </section>
+
+  <!-- Independence Day -->
+  <section>
+    <h3 style="color:#ff4500;">Independence Day</h3>
+    <div class="gallery-section">
+      <img src="images/independence1.jpg" alt="Independence Day 1">
+      <img src="images/independence2.jpg" alt="Independence Day 2">
+      <img src="images/independence3.jpg" alt="Independence Day 3">
+    </div>
+  </section>
+
+  <!-- Annual Function -->
+  <section>
+    <h3 style="color:#32cd32;">Annual Function</h3>
+    <div class="gallery-section">
+      <img src="images/function1.jpg" alt="Annual Function 1">
+      <img src="images/function2.jpg" alt="Annual Function 2">
+      <img src="images/function3.jpg" alt="Annual Function 3">
+    </div>
+  </section>
+
 </main>
-<footer>© 2025 Oxford Public School</footer>
+
+<footer>
+  © 2025 Oxford Public School
+</footer>
+
 </body>
 </html>
+
