@@ -3,41 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index - Oxford Public School</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
-    function toggleMenu() {
-      var menu = document.getElementById("menu");
-      if (menu.style.display === "flex") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "flex";
-      }
+  <title>Oxford Public School - Maintenance</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #004aad, #ff9800);
+      color: white;
+      text-align: center;
     }
-  </script>
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    h2 {
+      font-size: 2em;
+      margin: 5px 0 20px 0;
+    }
+    p {
+      font-size: 1.3em;
+      margin-bottom: 30px;
+    }
+    .loader {
+      border: 8px solid rgba(255,255,255,0.3);
+      border-top: 8px solid white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1.5s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>OXFORD PUBLIC SCHOOL</h1>
-  </header>
-  <nav>
-    <h2>Menu</h2>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="admission.html">Admission</a>
-      <a href="facilities.html">Facilities</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="staff.html">Staff</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-  <main style="padding:20px;">
-    <h2>Welcome to Oxford Public School</h2><p>We provide quality education with modern facilities and experienced staff.</p>
-  </main>
-  <footer>
-    <p>© 2025 Oxford Public School | All Rights Reserved</p>
-  </footer>
+  <h1>🚧 OXFORD PUBLIC SCHOOL 🚧</h1>
+  <h2>Website Under Maintenance</h2>
+  <div class="loader"></div>
+  <p>We are improving our website to serve you better.<br>
+     Please check back soon!</p>
 </body>
 </html>
