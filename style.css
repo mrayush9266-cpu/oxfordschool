@@ -6,13 +6,12 @@ header h1 { margin: 0; font-size: 2.2rem; letter-spacing: .5px; }
 nav { background: #0f47b8; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; position: sticky; top: 0; z-index: 10; }
 .brand { font-weight: 700; }
 .menu-toggle { font-size: 26px; cursor: pointer; display: block; }
-nav ul { list-style: none; margin: 0; padding: 0; display: none; flex-direction: column; width: 100%; background: #0f47b8; }
-nav ul.show { display: flex; }
-nav a { color: #fff; text-decoration: none; padding: 10px 14px; display: block; }
-nav a:hover { background: rgba(255,255,255,.12); }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; position: fixed; bottom: -400px; left: 0; width: 100%; background: #0f47b8; transition: bottom 0.3s ease-in-out; z-index: 99; }
+nav ul.show { bottom: 50px; } /* slide up */
+nav a { color: #fff; text-decoration: none; padding: 14px; display: block; text-align: center; }
 @media(min-width: 800px){
   .menu-toggle { display: none; }
-  nav ul { display: flex !important; flex-direction: row; width: auto; background: transparent; }
+  nav ul { position: static; flex-direction: row; width: auto; bottom: auto; transition: none; }
   nav a { padding: 10px 12px; border-radius: 10px; }
 }
 main { max-width: 1000px; margin: 22px auto; padding: 0 16px; }
@@ -35,4 +34,3 @@ footer { text-align: center; color: #5b6b8b; padding: 26px; }
 .bg10 { background: #20B2AA; }
 .bg11 { background: #FF6347; }
 .bg12 { background: #7FFF00; }
-bg-card { color: #fff; padding: 18px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 1rem; }
