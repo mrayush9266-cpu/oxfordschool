@@ -1,43 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery - Oxford Public School</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
-    function toggleMenu() {
-      var menu = document.getElementById("menu");
-      if (menu.style.display === "flex") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "flex";
-      }
-    }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery • Oxford Public School</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>OXFORD PUBLIC SCHOOL</h1>
-  </header>
-  <nav>
-    <h2>Menu</h2>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="admission.html">Admission</a>
-      <a href="facilities.html">Facilities</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="staff.html">Staff</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
-  <main style="padding:20px;">
-    <h2>Gallery</h2><p>Our school gallery showcases student activities, events, and achievements.</p>
-  </main>
-  <footer>
-    <p>© 2025 Oxford Public School | All Rights Reserved</p>
-  </footer>
+<header><h1>Oxford Public School</h1></header>
+
+<nav>
+  <div class="brand">Oxford Public School</div>
+  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="general_notice.html">General Notice</a></li>
+    <li><a href="study.html">Study Material</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<section class="card">
+<h2>Gallery</h2>
+<p>School event photos will appear here.</p>
+</section>
+</main>
+<footer>© 2025 Oxford Public School</footer>
 </body>
 </html>
