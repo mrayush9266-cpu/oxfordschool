@@ -4,33 +4,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>General Notice • Oxford Public School</title>
-<link rel="stylesheet" href="style.css">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+
+  /* Header */
+  header {
+    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  }
+  .logo { height:60px; }
+  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
+  .title span { font-size:14px; font-weight:500; }
+
+  /* Navigation */
+  nav { background:#222; text-align:center; position:relative; }
+  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+
+  @media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul.show { display:flex; }
+  }
+
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+
+  /* Notice cards */
+  .notice-card { background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:20px; margin-bottom:16px; transition:transform 0.2s; }
+  .notice-card:hover { transform:translateY(-5px); }
+  .notice-card strong { color:#0f47b8; }
+
+  /* Footer */
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+</style>
 </head>
 <body>
-<header><h1>Oxford Public School</h1></header>
 
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <div class="title">
+      <h1>Oxford Public School</h1>
+      <span>Rania Aurovindo Nagar, Kolkata 700154</span>
+    </div>
+  </div>
+  <div class="menu-toggle">☰</div>
+</header>
+
+<!-- Navigation -->
 <nav>
-  <div class="brand">Oxford Public School</div>
-  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="admission.html">Admission</a></li>
     <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="general_notice.html">General Notice</a></li>
+    <li><a href="general_notice.html" class="active">General Notice</a></li>
     <li><a href="study.html">Study Material</a></li>
+    <li><a href="staff.html">Staff</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
+<!-- Main Content -->
 <main>
-<section class="card">
-<h2>General Notice</h2>
-<div class="notice"><strong>Holiday:</strong> 25th August closed.</div>
-<div class="notice"><strong>Exam Schedule:</strong> Mid-terms from 10th September.</div>
-<div class="notice"><strong>PTM:</strong> 15th September.</div>
-</section>
+  <h2>General Notices</h2>
+  <div class="notice-card">
+    <p><strong>Holiday:</strong> 25th August closed.</p>
+  </div>
+  <div class="notice-card">
+    <p><strong>Exam Schedule:</strong> Mid-terms from 10th September.</p>
+  </div>
+  <div class="notice-card">
+    <p><strong>PTM:</strong> 15th September.</p>
+  </div>
+  <div class="notice-card">
+    <p><strong>Annual Sports Meet:</strong> 25th October 2025.</p>
+  </div>
 </main>
-<footer>© 2025 Oxford Public School</footer>
+
+<!-- Footer -->
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+</footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+</script>
+
 </body>
 </html>
