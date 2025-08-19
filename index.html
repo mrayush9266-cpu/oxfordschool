@@ -4,63 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home • Oxford Public School</title>
-<link rel="stylesheet" href="style.css">
 <style>
-  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
-  
+  /* General Styles */
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: #f7f8fc;
+    color: #333;
+  }
+  a { text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
   /* Header */
-  header { background: #0f47b8; color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-  header .logo { height: 60px; width: auto; }
-  header .title { display: flex; flex-direction: column; }
-  header h1 { margin:0; font-family: 'Georgia', serif; font-size: 28px; font-weight: 900; text-decoration: underline; }
-  header span { font-size: 14px; font-weight: 500; }
+  header {
+    background: #0f47b8;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .logo { height: 60px; }
+  .title h1 {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    font-weight: 900;
+    text-decoration: underline;
+  }
+  .title span { font-size: 14px; font-weight: 500; }
 
   /* Navigation */
-  nav { background:#222; text-align:center; padding:0; position:relative; }
-  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
-  nav ul li { margin:0; }
-  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-  nav ul li a:hover, nav ul li a.active { background:#444; }
+  nav {
+    background: #222;
+    text-align: center;
+    position: relative;
+  }
+  .menu-toggle { display: none; font-size: 28px; color: #fff; padding: 10px 16px; cursor: pointer; }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  nav ul li { margin: 0; }
+  nav ul li a {
+    color: #fff;
+    padding: 12px 18px;
+    display: block;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  nav ul li a:hover, nav ul li a.active { background: #444; }
 
+  /* Smooth mobile menu */
   @media(max-width:768px) {
-    nav ul { display:none; flex-direction:column; width:100%; }
-    nav ul.show { display:flex; }
-    nav .menu-toggle { display:block; }
-    header { justify-content: space-between; }
+    nav ul {
+      max-height: 0;
+      overflow: hidden;
+      flex-direction: column;
+      width: 100%;
+      transition: max-height 0.5s ease;
+    }
+    nav ul.show {
+      max-height: 500px; /* Adjust depending on menu items */
+    }
+    .menu-toggle { display: block; }
   }
 
   /* Popup Banner */
-  #popupBanner { position: fixed; top: -100%; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: top 0.8s ease; }
-  #popupBanner .popup-content { position: relative; width: 90%; max-width: 900px; text-align: center; }
-  #popupBanner img { width:100%; border-radius:12px; }
-  #popupBanner .btn { margin-top: 15px; padding: 12px 24px; background: linear-gradient(135deg, #0f47b8, #1e90ff); color: #fff; font-size: 16px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
-  #popupBanner .close-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 10px 15px; font-size: 18px; cursor: pointer; border-radius: 50%; }
+  #popupBanner {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: top 0.8s ease;
+  }
+  #popupBanner .popup-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+  }
+  #popupBanner img { border-radius:12px; }
+  #popupBanner .btn {
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #0f47b8, #1e90ff);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #popupBanner .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  section { margin-bottom:24px; }
-
+  /* Main Content */
+  main { max-width: 1000px; margin: 26px auto; padding: 0 16px; }
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
   h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; color:#0f47b8; }
 
-  /* Boxes for sections */
-  .box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
-  .icon { font-size:28px; flex-shrink:0; }
-  .content { flex:1; }
+  /* Cards / Boxes */
+  .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
+  .card:hover { transform: translateY(-5px); }
+  .card p { line-height:1.6; margin-bottom:12px; }
 
-  .icon.date { color:#1e90ff; }
-  .icon.documents { color:#ff4500; }
-  .icon.fee { color:#32cd32; }
-  .icon.steps { color:#ff69b4; }
+  /* Buttons */
+  .btn-general {
+    display:inline-block;
+    background:#0f47b8;
+    color:#fff;
+    padding:10px 22px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:600;
+    transition: background 0.3s;
+  }
+  .btn-general:hover { background:#083e9e; }
 
-  ul { padding-left:20px; }
-  li { margin-bottom:6px; }
-  p { line-height:1.6; }
+  /* Footer */
+  footer {
+    background:#0f47b8;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:36px;
+    font-size:14px;
+  }
 
-  .btn { display:inline-block; background:#0f47b8; color:#fff; padding:10px 22px; border-radius:6px; text-decoration:none; margin-top:12px; font-weight:600; transition: background 0.3s; }
-  .btn:hover { background:#083e9e; }
+  /* Grid for Explore & Events */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .section-card {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .section-card:hover {
+    transform: translateY(-5px);
+    background: #e6f0ff;
+  }
+  .section-card h3 {
+    color: #0f47b8;
+    margin-bottom: 10px;
+    font-weight: 900;
+  }
+  .section-card p { font-size: 14px; color: #333; }
 
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin-top:36px; }
+  /* Event cards */
+  .event-card h3 { color: #0f47b8; margin-bottom: 6px; font-weight: 900; }
+  .event-card p { font-size: 14px; margin-bottom: 8px; }
 </style>
 </head>
 <body>
@@ -70,11 +193,11 @@
   <div class="popup-content">
     <img src="images/banner2.jpg" alt="Admission Open">
     <button class="btn" onclick="location.href='admission.html'">Go to Admission Page</button>
-    <button class="close-btn" onclick="document.getElementById('popupBanner').style.top='-100%'">✖</button>
+    <button class="close-btn" onclick="closePopup()">✖</button>
   </div>
 </div>
 
-<!-- Header with Logo, Name & Address -->
+<!-- Header -->
 <header>
   <div style="display:flex; align-items:center; gap:12px;">
     <img src="images/logo.png" alt="Oxford Logo" class="logo">
@@ -83,7 +206,7 @@
       <span>Rania Aurovindo Nagar, Kolkata 700154</span>
     </div>
   </div>
-  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
+  <div class="menu-toggle">☰</div>
 </header>
 
 <!-- Navigation -->
@@ -101,36 +224,85 @@
 
 <!-- Main Content -->
 <main>
-<section class="card">
-<h2>Welcome</h2>
-<p>
-Oxford Public School is a premier educational institution committed to nurturing young minds and shaping future leaders. Our school provides a holistic learning environment that balances academic excellence with co-curricular and extracurricular activities.<br><br>
+  <!-- Welcome Section -->
+  <section class="card">
+    <h2>Welcome</h2>
+    <p>Oxford Public School is a premier educational institution committed to nurturing young minds and shaping future leaders. Our school provides a holistic learning environment that balances academic excellence with co-curricular and extracurricular activities.</p>
+    <p><strong>Quality Education:</strong> Experienced teachers and modern teaching methods help students achieve their best.</p>
+    <p><strong>Overall Development:</strong> Emphasis on sports, arts, and life skills to promote balanced growth.</p>
+    <p><strong>Safe and Supportive Environment:</strong> A caring atmosphere where every child is encouraged to explore, learn, and succeed.</p>
+    <p><strong>Values and Discipline:</strong> We instill strong moral values, discipline, and a spirit of curiosity in our students.</p>
+    <p>Our goal is to empower every child with knowledge, confidence, and creativity, preparing them for a bright and successful future.</p>
+  </section>
 
-<strong>Quality Education:</strong> Experienced teachers and modern teaching methods help students achieve their best.<br><br>
+  <!-- Explore Grid -->
+  <section>
+    <h2>Explore</h2>
+    <div class="grid">
+      <a href="admission.html" class="card section-card">
+        <h3>Admission</h3>
+        <p>Enroll your child in a safe and supportive learning environment for holistic development.</p>
+      </a>
+      <a href="general_notice.html" class="card section-card">
+        <h3>Notices</h3>
+        <p>Stay updated with the latest school announcements, events, and circulars.</p>
+      </a>
+      <a href="gallery.html" class="card section-card">
+        <h3>Gallery</h3>
+        <p>Take a look at our vibrant school life through photos of events and activities.</p>
+      </a>
+      <a href="study.html" class="card section-card">
+        <h3>Study Material</h3>
+        <p>Access study resources and materials to support your child’s academic growth.</p>
+      </a>
+    </div>
+  </section>
 
-<strong>Overall Development:</strong> Emphasis on sports, arts, and life skills to promote balanced growth.<br><br>
-
-<strong>Safe and Supportive Environment:</strong> A caring atmosphere where every child is encouraged to explore, learn, and succeed.<br><br>
-
-<strong>Values and Discipline:</strong> We instill strong moral values, discipline, and a spirit of curiosity in our students.<br><br>
-
-Our goal is to empower every child with knowledge, confidence, and creativity, preparing them for a bright and successful future.
-</p>
-</section>
+  <!-- Latest News & Events Section -->
+  <section>
+    <h2>Latest News & Events</h2>
+    <div class="grid">
+      <div class="card event-card">
+        <h3>Independence Day Celebration</h3>
+        <p><strong>Date:</strong> 15th August 2025</p>
+        <p>Students and teachers participated in a vibrant celebration with cultural programs, speeches, and flag hoisting.</p>
+      </div>
+      <div class="card event-card">
+        <h3>Science Exhibition 2025</h3>
+        <p><strong>Date:</strong> 10th September 2025</p>
+        <p>Our young scientists showcased creative projects and experiments, demonstrating innovation and curiosity.</p>
+      </div>
+      <div class="card event-card">
+        <h3>Annual Sports Meet</h3>
+        <p><strong>Date:</strong> 25th October 2025</p>
+        <p>Students competed in various sports events, promoting teamwork, discipline, and physical fitness.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>© 2025 Oxford Public School</footer>
+<!-- Footer -->
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+</footer>
 
 <script>
-  // Show popup with slide animation
-  window.onload = function () {
-    document.getElementById('popupBanner').style.top = "0";
-  };
-  
-  // Hamburger toggle
-  document.querySelector('.menu-toggle').addEventListener('click', function(){
-    document.getElementById('menu').classList.toggle('show');
+  // Hamburger toggle with smooth slide
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
   });
+
+  // Popup controls
+  function closePopup() {
+    document.getElementById('popupBanner').style.top = "-100%";
+  }
+  window.onload = () => {
+    const popup = document.getElementById('popupBanner');
+    popup.style.top = "0";
+    setTimeout(closePopup, 8000); // auto-hide after 8 sec
+  };
 </script>
 
 </body>
