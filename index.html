@@ -7,6 +7,37 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Popup Banner -->
+<div id="popupBanner" style="
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: top 0.8s ease;
+">
+  <div style="position: relative; width: 90%; max-width: 900px;">
+    <img src="images/banner.jpg" alt="Admission Open" style="width:100%; border-radius:12px;">
+    <button onclick="document.getElementById('popupBanner').style.display='none'"
+      style="
+        position: absolute;
+        top: 10px; right: 10px;
+        background: red; color: white;
+        border: none; padding: 10px 15px;
+        font-size: 18px; cursor: pointer;
+        border-radius: 50%;
+      ">
+      ✖
+    </button>
+  </div>
+</div>
+
 <header><h1>Oxford Public School</h1></header>
 
 <nav>
@@ -26,21 +57,36 @@
 <main>
 <section class="card">
 <h2>Welcome</h2>
-<p>Oxford Public School is a premier educational institution committed to nurturing young minds and shaping future leaders. Our school provides a holistic learning environment that balances academic excellence with co-curricular and extracurricular activities.<br><br>
+<p>
+Oxford Public School is a premier educational institution committed to nurturing young minds and shaping future leaders. Our school provides a holistic learning environment that balances academic excellence with co-curricular and extracurricular activities.<br><br>
 
-We focus on:<br><br>
+<strong>Quality Education:</strong> Experienced teachers and modern teaching methods help students achieve their best.<br><br>
 
-<strong>Quality Education: Experienced teachers and modern teaching methods help students achieve their best.<br><br>
+<strong>Overall Development:</strong> Emphasis on sports, arts, and life skills to promote balanced growth.<br><br>
 
-<strong>Overall Development: Emphasis on sports, arts, and life skills to promote balanced growth.<br><br>
+<strong>Safe and Supportive Environment:</strong> A caring atmosphere where every child is encouraged to explore, learn, and succeed.<br><br>
 
-<strong>Safe and Supportive Environment: A caring atmosphere where every child is encouraged to explore, learn, and succeed.<br><br>
+<strong>Values and Discipline:</strong> We instill strong moral values, discipline, and a spirit of curiosity in our students.<br><br>
 
-<strong>Values and Discipline: We instill strong moral values, discipline, and a spirit of curiosity in our students.<br><br>
-
-Our goal is to empower every child with knowledge, confidence, and creativity, preparing them for a bright and successful future.</p>
+Our goal is to empower every child with knowledge, confidence, and creativity, preparing them for a bright and successful future.
+</p>
 </section>
 </main>
+
 <footer>© 2025 Oxford Public School</footer>
+
+<script>
+  // Show popup with slide animation on every load
+  window.onload = function () {
+    const popup = document.getElementById('popupBanner');
+    popup.style.top = "0";  // slides down into view
+
+    // Auto close after 5 seconds
+    setTimeout(() => {
+      popup.style.top = "-100%"; // slide up out
+    }, 5000);
+  };
+</script>
+
 </body>
 </html>
