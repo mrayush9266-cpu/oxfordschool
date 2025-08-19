@@ -1,187 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery • Oxford Public School</title>
 <style>
-  body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; }
-  header { background:#0f47b8; color:#fff; text-align:center; padding:16px 10px; font-size:28px; font-weight:700; letter-spacing:.5px; }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+
+  /* Header */
+  header {
+    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  }
+  .logo { height:60px; }
+  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
+  .title span { font-size:14px; font-weight:500; }
 
   /* Navigation */
-  nav { background:#222; position:relative; text-align:center; }
-  nav .menu-toggle {
-    display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer;
-  }
-  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav { background:#222; text-align:center; position:relative; }
+  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
   nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-  nav ul li a:hover { background:#444; }
+  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+
   @media(max-width:768px){
-    nav .menu-toggle { display:block; }
+    .menu-toggle { display:block; }
     nav ul { display:none; flex-direction:column; width:100%; }
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1100px; margin:26px auto; padding:0 16px; }
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
 
-  /* Section headings stylish fonts */
-  #science-h3 { 
-    font-family: 'Georgia', serif; 
-    color:#1e90ff; 
-    font-size:30px; 
-    font-weight:900; 
-    text-decoration:underline; 
-    letter-spacing:1px;
-  }
-  #independence-h3 { 
-    font-family: 'Courier New', Courier, monospace; 
-    color:#ff4500; 
-    font-size:30px; 
-    font-weight:900; 
-    text-decoration:underline; 
-    letter-spacing:1px;
-  }
-  #jayanti-h3 { 
-    font-family: 'Lucida Handwriting', cursive; 
-    color:#32cd32; 
-    font-size:30px; 
-    font-weight:900; 
-    text-decoration:underline; 
-    letter-spacing:1px;
-  }
+  /* Gallery grid */
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; }
+  .card { background:#fff; border-radius:12px; padding:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden; transition: transform 0.3s; }
+  .card:hover { transform:translateY(-5px); }
+  .card img { width:100%; display:block; border-radius:8px; }
 
-  /* Slideshow */
-  .slideshow-container { position: relative; max-width:900px; margin:0 auto 14px; border-radius:14px; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.22); background:#fff; }
-  .mySlides { display:none; }
-  .mySlides img { width:100%; display:block; border-radius:14px; border:4px solid #fff; box-sizing:border-box; animation:zoomFade 1.1s ease; transition: transform .6s ease; }
-  .mySlides img:hover { transform: scale(1.035); }
-
-  /* Section-specific outlines */
-  #science .mySlides img { outline:2px solid #1e90ff; }
-  #independence .mySlides img { outline:2px solid #ff4500; }
-  #jayanti .mySlides img { outline:2px solid #32cd32; }
-
-  @keyframes zoomFade { 0% {opacity:.2; transform: scale(1.06);} 100% {opacity:1; transform: scale(1);} }
-
-  /* Arrows */
-  .prev, .next {
-    cursor:pointer; position:absolute; top:50%; transform: translateY(-50%);
-    padding:12px; color:#fff; font-weight:800; font-size:22px; border-radius:50%;
-    user-select:none; background: rgba(0,0,0,.45); transition: background .3s, opacity .3s;
-    opacity:0; visibility:hidden;
-  }
-  .prev { left:12px; } .next { right:12px; }
-  .slideshow-container:hover .prev, .slideshow-container:hover .next { opacity:1; visibility:visible; }
-  .prev:hover, .next:hover { background: rgba(0,0,0,.75); }
-
-  /* Dots */
-  .dots { text-align:center; margin:8px 0 26px; }
-  .dot { height:13px; width:13px; margin:0 4px; background:#bbb; border-radius:50%; display:inline-block; cursor:pointer; transition: background .35s; }
-  #science-dots .dot.active      { background:#1e90ff; }
-  #independence-dots .dot.active { background:#ff4500; }
-  #jayanti-dots .dot.active      { background:#32cd32; }
-
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin-top:36px; }
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
 </style>
 </head>
 <body>
 
-<header>Oxford Public School</header>
-
-<nav>
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <div class="title">
+      <h1>Oxford Public School</h1>
+      <span>Rania Aurovindo Nagar, Kolkata 700154</span>
+    </div>
+  </div>
   <div class="menu-toggle">☰</div>
+</header>
+
+<!-- Navigation -->
+<nav>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="admission.html">Admission</a></li>
     <li><a href="gallery.html" class="active">Gallery</a></li>
-    <li><a href="general_notice.html">Notice</a></li>
+    <li><a href="general_notice.html">General Notice</a></li>
     <li><a href="study.html">Study Material</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
+<!-- Main Content -->
 <main>
-  <!-- Science Exhibition -->
   <section>
-    <h3 id="science-h3">Science Exhibition</h3>
-    <div class="slideshow-container" id="science">
-      <div class="mySlides"><img src="images/science1.jpg" alt="Science Exhibition 1"></div>
-      <div class="mySlides"><img src="images/science2.jpg" alt="Science Exhibition 2"></div>
-      <div class="mySlides"><img src="images/science3.jpg" alt="Science Exhibition 3"></div>
-      <span class="prev" data-gal="science">&#10094;</span>
-      <span class="next" data-gal="science">&#10095;</span>
+    <h2>School Gallery</h2>
+    <div class="grid">
+      <div class="card"><img src="images/gallery1.jpg" alt="Event 1"></div>
+      <div class="card"><img src="images/gallery2.jpg" alt="Event 2"></div>
+      <div class="card"><img src="images/gallery3.jpg" alt="Event 3"></div>
+      <div class="card"><img src="images/gallery4.jpg" alt="Event 4"></div>
+      <div class="card"><img src="images/gallery5.jpg" alt="Event 5"></div>
+      <div class="card"><img src="images/gallery6.jpg" alt="Event 6"></div>
+      <div class="card"><img src="images/gallery7.jpg" alt="Event 7"></div>
+      <div class="card"><img src="images/gallery8.jpg" alt="Event 8"></div>
     </div>
-    <div class="dots" id="science-dots"></div>
-  </section>
-
-  <!-- Independence Day -->
-  <section>
-    <h3 id="independence-h3">Independence Day</h3>
-    <div class="slideshow-container" id="independence">
-      <div class="mySlides"><img src="images/independence1.jpg" alt="Independence Day 1"></div>
-      <div class="mySlides"><img src="images/independence2.jpg" alt="Independence Day 2"></div>
-      <div class="mySlides"><img src="images/independence3.jpg" alt="Independence Day 3"></div>
-      <span class="prev" data-gal="independence">&#10094;</span>
-      <span class="next" data-gal="independence">&#10095;</span>
-    </div>
-    <div class="dots" id="independence-dots"></div>
-  </section>
-
-  <!-- Rabindra Jayanti -->
-  <section>
-    <h3 id="jayanti-h3">Rabindra Jayanti</h3>
-    <div class="slideshow-container" id="jayanti">
-      <div class="mySlides"><img src="images/jayanti1.jpg" alt="Rabindra Jayanti 1"></div>
-      <div class="mySlides"><img src="images/jayanti2.jpg" alt="Rabindra Jayanti 2"></div>
-      <div class="mySlides"><img src="images/jayanti3.jpg" alt="Rabindra Jayanti 3"></div>
-      <span class="prev" data-gal="jayanti">&#10094;</span>
-      <span class="next" data-gal="jayanti">&#10095;</span>
-    </div>
-    <div class="dots" id="jayanti-dots"></div>
   </section>
 </main>
 
-<footer>© 2025 Oxford Public School</footer>
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+</footer>
 
 <script>
-  // Hamburger menu toggle
-  document.querySelector('.menu-toggle').addEventListener('click', function(){
-    document.getElementById('menu').classList.toggle('show');
-  });
-
-  // Gallery slideshow logic
-  const galleries = {};
-  function setupGallery(id){
-    const container = document.getElementById(id);
-    const slides = container.querySelectorAll('.mySlides');
-    const dotsWrap = document.getElementById(id + '-dots');
-    dotsWrap.innerHTML = '';
-    slides.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      dot.addEventListener('click', () => showSlide(id, i));
-      dotsWrap.appendChild(dot);
-    });
-    galleries[id] = { index:0, slides, dots: dotsWrap.querySelectorAll('.dot'), timer:null };
-    container.querySelector('.prev').addEventListener('click', () => navSlide(id,-1));
-    container.querySelector('.next').addEventListener('click', () => navSlide(id,1));
-    container.addEventListener('mouseenter', () => stopAuto(id));
-    container.addEventListener('mouseleave', () => startAuto(id));
-    showSlide(id,0); startAuto(id);
-  }
-  function showSlide(id,n){
-    const g=galleries[id]; if(!g) return;
-    g.index=(n+g.slides.length)%g.slides.length;
-    g.slides.forEach(s=>s.style.display='none');
-    g.dots.forEach(d=>d.classList.remove('active'));
-    g.slides[g.index].style.display='block';
-    g.dots[g.index].classList.add('active');
-  }
-  function navSlide(id,step){ showSlide(id,galleries[id].index+step); }
-  function startAuto(id){ stopAuto(id); galleries[id].timer=setInterval(()=>navSlide(id,1),4000); }
-  function stopAuto(id){ if(galleries[id] && galleries[id].timer){ clearInterval(galleries[id].timer); galleries[id].timer=null; } }
-  window.addEventListener('DOMContentLoaded',()=>['science','independence','jayanti'].forEach(setupGallery));
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 </script>
 
 </body>
