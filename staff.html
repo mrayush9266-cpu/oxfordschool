@@ -1,43 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staff - Oxford Public School</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
-    function toggleMenu() {
-      var menu = document.getElementById("menu");
-      if (menu.style.display === "flex") {
-        menu.style.display = "none";
-      } else {
-        menu.style.display = "flex";
-      }
-    }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff • Oxford Public School</title>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+
+  /* Header */
+  header {
+    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  }
+  .logo { height:60px; }
+  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
+  .title span { font-size:14px; font-weight:500; }
+
+  /* Navigation */
+  nav { background:#222; text-align:center; position:relative; }
+  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+
+  @media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul.show { display:flex; }
+  }
+
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  h3 { color:#0f47b8; margin-top:12px; margin-bottom:6px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; }
+
+  /* Staff Cards Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s; }
+  .card:hover { transform:translateY(-5px); }
+  .card img { border-radius:50%; width:120px; height:120px; object-fit:cover; margin-bottom:12px; }
+  .card p { line-height:1.5; margin-bottom:6px; }
+
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>OXFORD PUBLIC SCHOOL</h1>
-  </header>
-  <nav>
-    <h2>Menu</h2>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="admission.html">Admission</a>
-      <a href="facilities.html">Facilities</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="staff.html">Staff</a>
-      <a href="contact.html">Contact</a>
+
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <div class="title">
+      <h1>Oxford Public School</h1>
+      <span>Rania Aurovindo Nagar, Kolkata 700154</span>
     </div>
-  </nav>
-  <main style="padding:20px;">
-    <h2>Our Staff</h2><p>We have highly qualified and dedicated teachers who guide students in academics and extracurriculars.</p>
-  </main>
-  <footer>
-    <p>© 2025 Oxford Public School | All Rights Reserved</p>
-  </footer>
+  </div>
+  <div class="menu-toggle">☰</div>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="general_notice.html">General Notice</a></li>
+    <li><a href="study.html">Study Material</a></li>
+    <li><a href="staff.html" class="active">Staff</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Main Content -->
+<main>
+  <h2>Our Staff</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/staff1.jpg" alt="Principal">
+      <h3>Mrs. Priya Sharma</h3>
+      <p>Principal</p>
+      <p>Guiding academic and administrative excellence.</p>
+    </div>
+    <div class="card">
+      <img src="images/staff2.jpg" alt="Vice Principal">
+      <h3>Mr. Arjun Das</h3>
+      <p>Vice Principal</p>
+      <p>Overseeing curriculum and student development.</p>
+    </div>
+    <div class="card">
+      <img src="images/staff3.jpg" alt="Math Teacher">
+      <h3>Ms. Rina Sen</h3>
+      <p>Math Teacher</p>
+      <p>Encourages logical thinking and problem solving.</p>
+    </div>
+    <div class="card">
+      <img src="images/staff4.jpg" alt="English Teacher">
+      <h3>Mr. Rohit Kumar</h3>
+      <p>English Teacher</p>
+      <p>Fosters creativity and communication skills.</p>
+    </div>
+    <!-- Add more staff as needed -->
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+</footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+</script>
+
 </body>
 </html>
+
