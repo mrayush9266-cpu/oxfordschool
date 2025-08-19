@@ -4,63 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About • Oxford Public School</title>
-<link rel="stylesheet" href="style.css">
 <style>
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-    text-decoration: underline;
-    margin-bottom: 10px;
-    font-family: Georgia, serif;
-    color: #2c3e50;
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+
+  /* Header */
+  header {
+    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
   }
-  .card {
-    margin: 20px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease-in-out;
+  .logo { height:60px; }
+  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
+  .title span { font-size:14px; font-weight:500; }
+
+  /* Navigation */
+  nav { background:#222; text-align:center; position:relative; }
+  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+
+  @media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul.show { display:flex; }
   }
-  .card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Stagger effect */
-  .card:nth-child(1) {
-    transition-delay: 0.2s;
-  }
-  .card:nth-child(2) {
-    transition-delay: 0.5s;
-  }
-  .card:nth-child(3) {
-    transition-delay: 0.8s;
-  }
-  p {
-    font-size: 16px;
-    line-height: 1.6;
-    font-family: Arial, sans-serif;
-  }
-  .card img {
-    width: 100%;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 15px;
-  }
+
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  h3 { color:#0f47b8; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; }
+
+  /* Cards / Sections */
+  .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:18px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
+  .card:hover { transform:translateY(-5px); }
+  .card p { line-height:1.6; margin-bottom:12px; }
+
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
 </style>
 </head>
 <body>
-<header><h1>Oxford Public School</h1></header>
 
+<!-- Header -->
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <div class="title">
+      <h1>Oxford Public School</h1>
+      <span>Rania Aurovindo Nagar, Kolkata 700154</span>
+    </div>
+  </div>
+  <div class="menu-toggle">☰</div>
+</header>
+
+<!-- Navigation -->
 <nav>
-  <div class="brand">Oxford Public School</div>
-  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="about.html" class="active">About</a></li>
     <li><a href="admission.html">Admission</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="general_notice.html">General Notice</a></li>
@@ -69,64 +68,40 @@
   </ul>
 </nav>
 
+<!-- Main Content -->
 <main>
+  <section class="card">
+    <h2>About Our School</h2>
+    <p>Oxford Public School is committed to providing a high-quality education in a nurturing and inclusive environment. We strive to develop every child’s potential academically, socially, and emotionally.</p>
+  </section>
 
-<section class="card">
-  <h2>Principal’s Desk</h2>
-  <p>
-    At Oxford Public School, we believe that education is not just about academics but about shaping
-    responsible citizens with strong values. Our mission is to inspire students to dream big, work hard,
-    and achieve excellence in every field of life. I warmly welcome all parents and students to be a part of
-    our learning journey.
-  </p>
-  <img src="images/principal.jpg" alt="Principal">
-</section>
+  <section class="card">
+    <h3>Our Vision</h3>
+    <p>To create a learning community where students are encouraged to excel in academics, sports, arts, and values, becoming responsible and confident global citizens.</p>
+  </section>
 
-<section class="card">
-  <h2>Vision & Mission</h2>
-  <p>
-    <strong>Vision:</strong> To create a nurturing environment where students develop knowledge, confidence, and integrity,
-    preparing them for a successful future.<br><br>
-    <strong>Mission:</strong> To provide quality education, promote creativity, and instill lifelong values through
-    innovative teaching methods and holistic development.
-  </p>
-  <img src="images/vision.jpg" alt="Vision and Mission">
-</section>
+  <section class="card">
+    <h3>Our Mission</h3>
+    <p>To provide holistic education with emphasis on knowledge, creativity, discipline, and ethical values. We aim to inspire lifelong learning and innovation in every student.</p>
+  </section>
 
-<section class="card">
-  <h2>Facilities</h2>
-  <p>
-    • Spacious classrooms with modern teaching aids<br>
-    • Well-equipped Science and Computer laboratories<br>
-    • Library with a wide range of books and digital resources<br>
-    • Playgrounds and sports facilities<br>
-    • Art, music, and cultural activity programs<br>
-    • Safe and secure campus with CCTV surveillance
-  </p>
-  <img src="images/facilities.jpg" alt="Facilities">
-</section>
-
+  <section class="card">
+    <h3>Achievements</h3>
+    <p>Our students have consistently excelled in academics, arts, and sports. We regularly host inter-school competitions, science exhibitions, and cultural events, earning recognition and accolades at local and national levels.</p>
+  </section>
 </main>
 
-<footer>© 2025 Oxford Public School</footer>
+<!-- Footer -->
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+</footer>
 
 <script>
-  // Fade-in animation on scroll with stagger
-  const cards = document.querySelectorAll('.card');
-  
-  function checkVisibility() {
-    const triggerBottom = window.innerHeight * 0.85;
-    cards.forEach(card => {
-      const boxTop = card.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        card.classList.add('visible');
-      }
-    });
-  }
-  
-  window.addEventListener('scroll', checkVisibility);
-  window.addEventListener('load', checkVisibility);
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 </script>
 
 </body>
 </html>
+
