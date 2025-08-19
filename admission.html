@@ -8,18 +8,27 @@
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
   header { background:#0f47b8; color:#fff; text-align:center; padding:18px 10px; font-size:28px; font-weight:700; letter-spacing:.5px; }
 
-  /* Navbar */
-  nav { background:#222; position:relative; text-align:center; }
-  nav .brand { color:#fff; font-weight:700; padding:12px 16px; display:block; font-size:20px; }
-  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
+  /* Navigation */
+  nav { background:#222; text-align:center; padding:0; position:relative; }
+  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    overflow:hidden;
+    max-height: none; /* desktop default */
+    transition: max-height 0.5s ease-out;
+  }
   nav ul li { margin:0; }
   nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
   nav ul li a:hover, nav ul li a.active { background:#444; }
-  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:12px 16px; cursor:pointer; }
 
-  @media(max-width:768px){
-    nav ul { display:none; flex-direction:column; width:100%; }
-    nav ul.show { display:flex; }
+  @media(max-width:768px) {
+    nav ul { flex-direction: column; width:100%; max-height:0; }
+    nav ul.show { max-height: 500px; } /* enough to show all items */
     nav .menu-toggle { display:block; }
   }
 
@@ -35,21 +44,6 @@
     border-radius: 12px;
     margin: 26px 16px;
   }
-  .hero-banner .btn {
-    display:inline-block;
-    margin-top:15px;
-    padding:12px 24px;
-    background: linear-gradient(135deg, #0f47b8, #1e90ff);
-    color:#fff;
-    font-size:16px;
-    font-weight:bold;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    text-decoration:none;
-    transition:0.3s;
-  }
-  .hero-banner .btn:hover { background: #083e9e; }
 
   main { max-width:1000px; margin:26px auto; padding:0 16px; }
   section { margin-bottom:24px; }
@@ -81,6 +75,7 @@
 <header>Oxford Public School</header>
 
 <nav>
+  <div class="brand">Oxford Public School</div>
   <div class="menu-toggle">☰</div>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
@@ -158,11 +153,17 @@
 <footer>© 2025 Oxford Public School</footer>
 
 <script>
-  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', function() {
-    menu.classList.toggle('show');
+
+  menuToggle.addEventListener('click', () => {
+    if(menu.classList.contains('show')){
+      menu.style.maxHeight = '0';
+      menu.classList.remove('show');
+    } else {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+      menu.classList.add('show');
+    }
   });
 </script>
 
