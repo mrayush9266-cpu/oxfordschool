@@ -26,12 +26,25 @@
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
   h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif; color:#0f47b8; }
 
+  /* Hero Banner */
+  .admission-banner {
+    background: url('images/admission-banner.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    border-radius: 12px;
+    margin-bottom: 30px;
+    transition: transform 1.2s ease;
+  }
+  .admission-banner:hover { transform: scale(1.03); }
+
   /* Boxes for different sections */
   .box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
   .icon { font-size:28px; flex-shrink:0; }
   .content { flex:1; }
-
-  /* Colors for icons */
   .icon.date { color:#1e90ff; }
   .icon.documents { color:#ff4500; }
   .icon.fee { color:#32cd32; }
@@ -41,10 +54,15 @@
   li { margin-bottom:6px; }
   p { line-height:1.6; }
 
-  .btn { display:inline-block; background:#0f47b8; color:#fff; padding:10px 22px; border-radius:6px; text-decoration:none; margin-top:12px; font-weight:600; transition: background 0.3s; }
-  .btn:hover { background:#083e9e; }
+  .btn { display:inline-block; background:#0f47b8; color:#fff; padding:10px 22px; border-radius:6px; text-decoration:none; margin-top:12px; font-weight:600; transition: background 0.3s, transform 0.3s; }
+  .btn:hover { background:#083e9e; transform: translateY(-3px); }
 
   footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin-top:36px; }
+
+  /* Fade-in Scroll Animation */
+  .fade-in { opacity:0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity:1; transform: translateY(0); }
+
 </style>
 </head>
 <body>
@@ -67,10 +85,15 @@
 
 <main>
 
+<!-- Hero Banner -->
+<div class="admission-banner fade-in">
+  Admissions Open for 2025-26
+</div>
+
 <section>
   <h2>Admission Process</h2>
 
-  <div class="box">
+  <div class="box fade-in">
     <div class="icon date">📅</div>
     <div class="content">
       <h3>Important Dates</h3>
@@ -83,7 +106,7 @@
     </div>
   </div>
 
-  <div class="box">
+  <div class="box fade-in">
     <div class="icon documents">📄</div>
     <div class="content">
       <h3>Documents Required</h3>
@@ -96,7 +119,7 @@
     </div>
   </div>
 
-  <div class="box">
+  <div class="box fade-in">
     <div class="icon fee">💰</div>
     <div class="content">
       <h3>Admission Fees</h3>
@@ -105,7 +128,7 @@
     </div>
   </div>
 
-  <div class="box">
+  <div class="box fade-in">
     <div class="icon steps">✅</div>
     <div class="content">
       <h3>Admission Steps</h3>
@@ -129,6 +152,19 @@
   document.querySelector('.menu-toggle').addEventListener('click', function(){
     document.getElementById('menu').classList.toggle('show');
   });
+
+  // Fade-in on scroll
+  const fadeElements = document.querySelectorAll('.box, .admission-banner');
+  function checkVisibility() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 50) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('load', checkVisibility);
 </script>
 
 </body>
