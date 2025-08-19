@@ -8,13 +8,16 @@
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
   header { background:#0f47b8; color:#fff; text-align:center; padding:18px 10px; font-size:28px; font-weight:700; letter-spacing:.5px; }
 
-  nav { background:#222; text-align:center; padding:0; position:relative; }
-  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  /* Navbar */
+  nav { background:#222; position:relative; text-align:center; }
+  nav .brand { color:#fff; font-weight:700; padding:12px 16px; display:block; font-size:20px; }
   nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
   nav ul li { margin:0; }
   nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
   nav ul li a:hover, nav ul li a.active { background:#444; }
-  @media(max-width:768px) {
+  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:12px 16px; cursor:pointer; }
+
+  @media(max-width:768px){
     nav ul { display:none; flex-direction:column; width:100%; }
     nav ul.show { display:flex; }
     nav .menu-toggle { display:block; }
@@ -32,6 +35,21 @@
     border-radius: 12px;
     margin: 26px 16px;
   }
+  .hero-banner .btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 24px;
+    background: linear-gradient(135deg, #0f47b8, #1e90ff);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+  }
+  .hero-banner .btn:hover { background: #083e9e; }
 
   main { max-width:1000px; margin:26px auto; padding:0 16px; }
   section { margin-bottom:24px; }
@@ -39,7 +57,6 @@
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
   h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; color:#0f47b8; }
 
-  /* Boxes for different sections */
   .box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
   .icon { font-size:28px; flex-shrink:0; }
   .content { flex:1; }
@@ -65,7 +82,7 @@
 
 <nav>
   <div class="brand">Oxford Public School</div>
-  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
+  <div class="menu-toggle">☰</div>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -85,7 +102,6 @@
 </div>
 
 <main>
-
 <section>
   <h2>Admission Details</h2>
 
@@ -138,15 +154,16 @@
   </div>
 
 </section>
-
 </main>
 
 <footer>© 2025 Oxford Public School</footer>
 
 <script>
   // Mobile menu toggle
-  document.querySelector('.menu-toggle').addEventListener('click', function(){
-    document.getElementById('menu').classList.toggle('show');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', function() {
+    menu.classList.toggle('show');
   });
 </script>
 
