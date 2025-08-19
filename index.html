@@ -6,151 +6,88 @@
 <title>Home • Oxford Public School</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Header */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background:#0f47b8;
-  color:#fff;
-  padding: 15px 20px;
-  gap: 20px;
-  border-radius: 8px;
-}
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
+  
+  /* Header */
+  header { background: #0f47b8; color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  header .logo { height: 60px; width: auto; }
+  header .title { display: flex; flex-direction: column; }
+  header h1 { margin:0; font-family: 'Georgia', serif; font-size: 28px; font-weight: 900; text-decoration: underline; }
+  header span { font-size: 14px; font-weight: 500; }
 
-.site-header .logo {
-  width: 70px;
-  height: auto;
-  border-radius: 50%;
-  border: 2px solid #fff;
-}
+  /* Navigation */
+  nav { background:#222; text-align:center; padding:0; position:relative; }
+  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav ul li { margin:0; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a:hover, nav ul li a.active { background:#444; }
 
-.header-text h1 {
-  font-family: 'Georgia', serif;
-  font-size: 28px;
-  font-weight: 900;
-  text-decoration: underline;
-  margin: 0;
-}
+  @media(max-width:768px) {
+    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul.show { display:flex; }
+    nav .menu-toggle { display:block; }
+    header { justify-content: space-between; }
+  }
 
-.header-text p {
-  font-size: 14px;
-  margin: 4px 0 0;
-  font-weight: 500;
-  font-style: italic;
-}
+  /* Popup Banner */
+  #popupBanner { position: fixed; top: -100%; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: top 0.8s ease; }
+  #popupBanner .popup-content { position: relative; width: 90%; max-width: 900px; text-align: center; }
+  #popupBanner img { width:100%; border-radius:12px; }
+  #popupBanner .btn { margin-top: 15px; padding: 12px 24px; background: linear-gradient(135deg, #0f47b8, #1e90ff); color: #fff; font-size: 16px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+  #popupBanner .close-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 10px 15px; font-size: 18px; cursor: pointer; border-radius: 50%; }
 
-/* Navigation (hamburger menu) */
-nav { background:#222; text-align:center; padding:0; position:relative; }
-nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
-nav ul li { margin:0; }
-nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-nav ul li a:hover, nav ul li a.active { background:#444; }
-@media(max-width:768px) {
-  nav ul { display:none; flex-direction:column; width:100%; }
-  nav ul.show { display:flex; }
-  nav .menu-toggle { display:block; }
-}
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  section { margin-bottom:24px; }
 
-/* Popup Banner */
-#popupBanner {
-  position: fixed;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: top 0.8s ease;
-}
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; color:#0f47b8; }
 
-/* Popup content */
-#popupBanner img { width:100%; border-radius:12px; }
-#popupBanner button { cursor:pointer; transition: all 0.3s ease; }
+  /* Boxes for sections */
+  .box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
+  .icon { font-size:28px; flex-shrink:0; }
+  .content { flex:1; }
 
-/* Hero Banner */
-.hero-banner {
-  background: url('images/admission-banner.jpg') center/cover no-repeat;
-  color: #fff;
-  text-align: center;
-  padding: 80px 20px;
-  font-size: 32px;
-  font-weight: bold;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-  border-radius: 12px;
-  margin: 26px 16px;
-}
+  .icon.date { color:#1e90ff; }
+  .icon.documents { color:#ff4500; }
+  .icon.fee { color:#32cd32; }
+  .icon.steps { color:#ff69b4; }
 
-/* Main content */
-main { max-width:1000px; margin:26px auto; padding:0 16px; }
-section { margin-bottom:24px; }
-h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
-h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; color:#0f47b8; }
+  ul { padding-left:20px; }
+  li { margin-bottom:6px; }
+  p { line-height:1.6; }
 
-/* Boxes */
-.box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
-.icon { font-size:28px; flex-shrink:0; }
-.content { flex:1; }
-.icon.date { color:#1e90ff; }
-.icon.documents { color:#ff4500; }
-.icon.fee { color:#32cd32; }
-.icon.steps { color:#ff69b4; }
+  .btn { display:inline-block; background:#0f47b8; color:#fff; padding:10px 22px; border-radius:6px; text-decoration:none; margin-top:12px; font-weight:600; transition: background 0.3s; }
+  .btn:hover { background:#083e9e; }
 
-ul { padding-left:20px; }
-li { margin-bottom:6px; }
-p { line-height:1.6; }
-
-.btn { display:inline-block; background:#0f47b8; color:#fff; padding:10px 22px; border-radius:6px; text-decoration:none; margin-top:12px; font-weight:600; transition: background 0.3s; }
-.btn:hover { background:#083e9e; }
-
-footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin-top:36px; }
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin-top:36px; }
 </style>
 </head>
 <body>
 
 <!-- Popup Banner -->
 <div id="popupBanner">
-  <div style="position: relative; width: 90%; max-width: 900px; text-align: center;">
+  <div class="popup-content">
     <img src="images/banner2.jpg" alt="Admission Open">
-    <button onclick="location.href='admission.html'" style="
-      margin-top: 15px;
-      padding: 12px 24px;
-      background: linear-gradient(135deg, #0f47b8, #1e90ff);
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-    ">
-      Go to Admission Page
-    </button>
-    <button onclick="document.getElementById('popupBanner').style.top='-100%'" style="
-      position: absolute;
-      top: 10px; right: 10px;
-      background: red; color: white;
-      border: none; padding: 10px 15px;
-      font-size: 18px; border-radius: 50%;
-    ">✖</button>
+    <button class="btn" onclick="location.href='admission.html'">Go to Admission Page</button>
+    <button class="close-btn" onclick="document.getElementById('popupBanner').style.top='-100%'">✖</button>
   </div>
 </div>
 
-<!-- Header -->
-<header class="site-header">
-  <img src="images/logo.jpg" alt="School Logo" class="logo">
-  <div class="header-text">
-    <h1>Oxford Public School</h1>
-    <p>Rania Aurovindo Nagar, Kolkata 700154</p>
+<!-- Header with Logo, Name & Address -->
+<header>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <div class="title">
+      <h1>Oxford Public School</h1>
+      <span>Rania Aurovindo Nagar, Kolkata 700154</span>
+    </div>
   </div>
+  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
 </header>
 
 <!-- Navigation -->
 <nav>
-  <div class="brand">Oxford Public School</div>
-  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
   <ul id="menu">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -162,13 +99,7 @@ footer { background:#0f47b8; color:#fff; text-align:center; padding:12px; margin
   </ul>
 </nav>
 
-<!-- Hero Banner -->
-<div class="hero-banner">
-  Admissions Open for 2025-26
-  <br>
-  <a href="admission_form.html" class="btn">Apply Online</a>
-</div>
-
+<!-- Main Content -->
 <main>
 <section class="card">
 <h2>Welcome</h2>
@@ -191,12 +122,11 @@ Our goal is to empower every child with knowledge, confidence, and creativity, p
 <footer>© 2025 Oxford Public School</footer>
 
 <script>
-  // Show popup banner on load
+  // Show popup with slide animation
   window.onload = function () {
-    const popup = document.getElementById('popupBanner');
-    popup.style.top = "0";
+    document.getElementById('popupBanner').style.top = "0";
   };
-
+  
   // Hamburger toggle
   document.querySelector('.menu-toggle').addEventListener('click', function(){
     document.getElementById('menu').classList.toggle('show');
