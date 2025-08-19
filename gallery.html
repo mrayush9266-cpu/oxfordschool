@@ -6,12 +6,64 @@
   <title>Gallery • Oxford Public School</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Inline CSS in case you want it standalone */
     main { max-width:1000px; margin:22px auto; padding:0 16px; }
-    h2 { color:#0f47b8; text-align:center; margin-top:20px; }
-    h3 { font-weight:bold; text-align:center; margin-top:30px; margin-bottom:10px; }
-    .gallery-section { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:10px; }
-    .gallery-section img { width:200px; border-radius:10px; }
+    h2 { color:#0f47b8; text-align:center; margin-top:20px; font-size:2rem; text-decoration:underline; }
+
+    h3 {
+      font-weight:bold;
+      text-align:center;
+      margin-top:40px;
+      margin-bottom:15px;
+      font-size:1.6rem;
+      text-decoration: underline;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .mySlides img {
+      width: 100%;
+      border-radius: 14px;
+      animation: zoomFade 1.2s ease;
+      border: 4px solid #fff;
+      box-sizing: border-box;
+    }
+
+    /* Section-specific outlines */
+    #science .mySlides img { outline: 2px solid #1e90ff; }
+    #independence .mySlides img { outline: 2px solid #ff4500; }
+    #jayanti .mySlides img { outline: 2px solid #32cd32; }
+
+    @keyframes zoomFade {
+      from {opacity: 0.4; transform: scale(1.05);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    /* Dots */
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .dots span {
+      height: 12px;
+      width: 12px;
+      margin: 0 3px;
+      display: inline-block;
+      border-radius: 50%;
+      background-color: #bbb;
+      cursor: pointer;
+    }
+    .dots span.active {
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
@@ -38,40 +90,42 @@
   <h2>Gallery</h2>
 
   <!-- Science Exhibition -->
-  <section>
+  <section id="science">
     <h3 style="color:#1e90ff;">Science Exhibition</h3>
-    <div class="gallery-section">
-      <img src="images/science1.jpg" alt="Science Exhibition 1">
-      <img src="images/science2.jpg" alt="Science Exhibition 2">
-      <img src="images/science3.jpg" alt="Science Exhibition 3">
+    <div class="slideshow-container">
+      <div class="mySlides"><img src="images/science1.jpg" alt="Science Exhibition 1"></div>
+      <div class="mySlides"><img src="images/science2.jpg" alt="Science Exhibition 2"></div>
+      <div class="mySlides"><img src="images/science3.jpg" alt="Science Exhibition 3"></div>
+    </div>
+    <div class="dots">
+      <span onclick="currentSlide(1, 'science')"></span>
+      <span onclick="currentSlide(2, 'science')"></span>
+      <span onclick="currentSlide(3, 'science')"></span>
     </div>
   </section>
 
   <!-- Independence Day -->
-  <section>
+  <section id="independence">
     <h3 style="color:#ff4500;">Independence Day</h3>
-    <div class="gallery-section">
-      <img src="images/independence1.jpg" alt="Independence Day 1">
-      <img src="images/independence2.jpg" alt="Independence Day 2">
-      <img src="images/independence3.jpg" alt="Independence Day 3">
+    <div class="slideshow-container">
+      <div class="mySlides"><img src="images/independence1.jpg" alt="Independence Day 1"></div>
+      <div class="mySlides"><img src="images/independence2.jpg" alt="Independence Day 2"></div>
+      <div class="mySlides"><img src="images/independence3.jpg" alt="Independence Day 3"></div>
+    </div>
+    <div class="dots">
+      <span onclick="currentSlide(1, 'independence')"></span>
+      <span onclick="currentSlide(2, 'independence')"></span>
+      <span onclick="currentSlide(3, 'independence')"></span>
     </div>
   </section>
 
   <!-- Rabindra Jayanti -->
-  <section>
+  <section id="jayanti">
     <h3 style="color:#32cd32;">Rabindra Jayanti</h3>
-    <div class="gallery-section">
-      <img src="images/jayanti1.jpg" alt="Rabindra Jayanti 1">
-      <img src="images/jayanti2.jpg" alt="Rabindra Jayanti 2">
-      <img src="images/jayanti3.jpg" alt="Rabindra Jayanti 3">
+    <div class="slideshow-container">
+      <div class="mySlides"><img src="images/jayanti1.jpg" alt="Rabindra Jayanti 1"></div>
+      <div class="mySlides"><img src="images/jayanti2.jpg" alt="Rabindra Jayanti 2"></div>
+      <div class="mySlides"><img src="images/jayanti3.jpg" alt="Rabindra Jayanti 3"></div>
     </div>
-  </section>
+    <div class="dots">
 
-</main>
-
-<footer>
-  © 2025 Oxford Public School
-</footer>
-
-</body>
-</html>
