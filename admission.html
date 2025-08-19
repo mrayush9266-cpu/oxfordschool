@@ -8,17 +8,27 @@
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
   header { background:#0f47b8; color:#fff; text-align:center; padding:18px 10px; font-size:28px; font-weight:700; letter-spacing:.5px; }
 
-  nav { background:#222; text-align:center; padding:0; position:relative; }
-  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
-  nav ul li { margin:0; }
-  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-  nav ul li a:hover, nav ul li a.active { background:#444; }
-  @media(max-width:768px) {
-    nav ul { display:none; flex-direction:column; width:100%; }
-    nav ul.show { display:flex; }
-    nav .menu-toggle { display:block; }
-  }
+ <nav>
+  <div class="brand">Oxford Public School</div>
+  <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="general_notice.html">General Notice</a></li>
+    <li><a href="study.html">Study Material</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<script>
+  // Mobile menu toggle
+  document.querySelector('.menu-toggle').addEventListener('click', function(){
+    document.getElementById('menu').classList.toggle('show');
+  });
+</script>
+
 
   /* Hero Banner */
   .hero-banner {
