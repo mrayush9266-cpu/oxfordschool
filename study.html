@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Study Material • Oxford Public School</title>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
   body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
 
   /* Header */
@@ -31,20 +31,13 @@
 
   main { max-width:1000px; margin:26px auto; padding:0 16px; }
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
-  h3 { color:#0f47b8; margin-top:12px; margin-bottom:6px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; }
 
-  /* Study Cards Grid */
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; margin-top:16px; }
-  .card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 4px 12px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s; }
+  /* Grid & Cards */
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:16px; }
+  .card { background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); padding:20px; text-align:center; transition:transform 0.2s; }
   .card:hover { transform:translateY(-5px); }
-  .card h3 { margin-bottom:12px; }
-  .btn { display:inline-block; background:#0f47b8; color:#fff; padding:8px 16px; border-radius:8px; text-decoration:none; font-weight:600; transition: background 0.3s; }
-  .btn:hover { background:#083e9e; }
 
-  /* Footer */
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
-
-  /* Optional colored card backgrounds */
+  /* Class Colors */
   .bg1 { background:#FFB6C1; }
   .bg2 { background:#87CEFA; }
   .bg3 { background:#90EE90; }
@@ -57,6 +50,23 @@
   .bg10 { background:#20B2AA; }
   .bg11 { background:#FF6347; }
   .bg12 { background:#7FFF00; }
+
+  /* Download Button */
+  .btn {
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 18px;
+    background:#0f47b8;
+    color:#fff;
+    border-radius:6px;
+    font-weight:600;
+    text-decoration:none;
+    transition:background 0.3s;
+  }
+  .btn:hover { background:#083e9e; }
+
+  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+
 </style>
 </head>
 <body>
@@ -87,28 +97,27 @@
   </ul>
 </nav>
 
-<!-- Main Content -->
 <main>
   <h2>Study Material</h2>
-  <p style="text-align:center; margin-bottom:16px;">Select your class to download study materials:</p>
+  <p style="text-align:center; margin-bottom:20px;">Select your class to download materials:</p>
+
   <div class="grid">
-    <div class="card bg11"><h3>Nursery</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg5"><h3>LKG</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg10"><h3>UKG</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg8"><h3>Class 1</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg2"><h3>Class 2</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg2"><h3>Class 3</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg1"><h3>Class 4</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg3"><h3>Class 5</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg3"><h3>Class 6</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg4"><h3>Class 7</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg3"><h3>Class 8</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg7"><h3>Class 9</h3><a class="btn" href="#">Download</a></div>
-    <div class="card bg4"><h3>Class 10</h3><a class="btn" href="#">Download</a></div>
+    <div class="card bg11"><h3>Nursery</h3><a class="btn" href="materials/nursery.pdf" download>Download 📄</a></div>
+    <div class="card bg5"><h3>LKG</h3><a class="btn" href="materials/lkg.pdf" download>Download 📄</a></div>
+    <div class="card bg10"><h3>UKG</h3><a class="btn" href="materials/ukg.pdf" download>Download 📄</a></div>
+    <div class="card bg8"><h3>Class 1</h3><a class="btn" href="materials/class1.pdf" download>Download 📄</a></div>
+    <div class="card bg2"><h3>Class 2</h3><a class="btn" href="materials/class2.pdf" download>Download 📄</a></div>
+    <div class="card bg2"><h3>Class 3</h3><a class="btn" href="materials/class3.pdf" download>Download 📄</a></div>
+    <div class="card bg1"><h3>Class 4</h3><a class="btn" href="materials/class4.pdf" download>Download 📄</a></div>
+    <div class="card bg3"><h3>Class 5</h3><a class="btn" href="materials/class5.pdf" download>Download 📄</a></div>
+    <div class="card bg3"><h3>Class 6</h3><a class="btn" href="materials/class6.pdf" download>Download 📄</a></div>
+    <div class="card bg4"><h3>Class 7</h3><a class="btn" href="materials/class7.pdf" download>Download 📄</a></div>
+    <div class="card bg3"><h3>Class 8</h3><a class="btn" href="materials/class8.pdf" download>Download 📄</a></div>
+    <div class="card bg7"><h3>Class 9</h3><a class="btn" href="materials/class9.pdf" download>Download 📄</a></div>
+    <div class="card bg4"><h3>Class 10</h3><a class="btn" href="materials/class10.pdf" download>Download 📄</a></div>
   </div>
 </main>
 
-<!-- Footer -->
 <footer>
   © 2025 Oxford Public School | All Rights Reserved
 </footer>
@@ -116,7 +125,7 @@
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 </script>
 
 </body>
