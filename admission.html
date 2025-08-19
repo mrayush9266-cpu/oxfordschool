@@ -8,81 +8,20 @@
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; margin:0; background:#f7f8fc; color:#333; }
   header { background:#0f47b8; color:#fff; text-align:center; padding:18px 10px; font-size:28px; font-weight:700; letter-spacing:.5px; }
 
-  /* Hamburger Menu */
-  .hamburger-container {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
-    cursor: pointer;
-  }
-  .hamburger-icon {
-    width: 35px;
-    height: 3px;
-    background-color: #0f47b8;
-    border-radius: 3px;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  .hamburger-icon::before,
-  .hamburger-icon::after {
-    content: '';
-    position: absolute;
-    width: 35px;
-    height: 3px;
-    background-color: #0f47b8;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-  .hamburger-icon::before { top: -10px; }
-  .hamburger-icon::after { top: 10px; }
+  /* Navbar */
+  nav { background:#222; position:relative; text-align:center; }
+  nav .brand { color:#fff; font-weight:700; padding:12px 16px; display:block; font-size:20px; }
+  nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav ul li { margin:0; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a:hover, nav ul li a.active { background:#444; }
+  nav .menu-toggle { display:none; font-size:28px; color:#fff; padding:12px 16px; cursor:pointer; }
 
-  .hamburger-container.active .hamburger-icon {
-    transform: rotate(45deg);
+  @media(max-width:768px){
+    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul.show { display:flex; }
+    nav .menu-toggle { display:block; }
   }
-  .hamburger-container.active .hamburger-icon::before {
-    transform: rotate(90deg);
-    top: 0;
-  }
-  .hamburger-container.active .hamburger-icon::after {
-    transform: rotate(90deg);
-    top: 0;
-  }
-
-  /* Navigation Menu */
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #0f47b8;
-    transition: left 0.3s ease;
-    z-index: 1000;
-  }
-  .nav-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 80px;
-    text-align: center;
-  }
-  .nav-menu ul li {
-    margin: 20px 0;
-  }
-  .nav-menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-    padding: 10px;
-    transition: background-color 0.3s;
-  }
-  .nav-menu ul li a:hover,
-  .nav-menu ul li a.active { background-color: #1e90ff; }
-
-  .nav-menu.active { left: 0; }
 
   /* Hero Banner */
   .hero-banner {
@@ -96,7 +35,21 @@
     border-radius: 12px;
     margin: 26px 16px;
   }
-  .hero-banner .btn { margin-top: 20px; }
+  .hero-banner .btn {
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 24px;
+    background: linear-gradient(135deg, #0f47b8, #1e90ff);
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+  }
+  .hero-banner .btn:hover { background: #083e9e; }
 
   main { max-width:1000px; margin:26px auto; padding:0 16px; }
   section { margin-bottom:24px; }
@@ -104,10 +57,10 @@
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
   h3 { font-size:26px; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; color:#0f47b8; }
 
-  /* Boxes for sections */
   .box { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:flex-start; gap:16px; }
   .icon { font-size:28px; flex-shrink:0; }
   .content { flex:1; }
+
   .icon.date { color:#1e90ff; }
   .icon.documents { color:#ff4500; }
   .icon.fee { color:#32cd32; }
@@ -127,14 +80,9 @@
 
 <header>Oxford Public School</header>
 
-<!-- Hamburger -->
-<div class="hamburger-container">
-  <div class="hamburger-icon"></div>
-</div>
-
-<!-- Navigation Menu -->
-<nav class="nav-menu">
-  <ul>
+<nav>
+  <div class="menu-toggle">☰</div>
+  <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="admission.html" class="active">Admission</a></li>
@@ -210,13 +158,12 @@
 <footer>© 2025 Oxford Public School</footer>
 
 <script>
-const hamburger = document.querySelector('.hamburger-container');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', function() {
+    menu.classList.toggle('show');
+  });
 </script>
 
 </body>
