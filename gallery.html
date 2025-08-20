@@ -29,14 +29,40 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  main { max-width:1100px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin:30px 0 16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
 
   /* Gallery grid */
-  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; }
-  .card { background:#fff; border-radius:12px; padding:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); overflow:hidden; transition: transform 0.3s; }
-  .card:hover { transform:translateY(-5px); }
-  .card img { width:100%; display:block; border-radius:8px; }
+  .grid { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); 
+    gap:20px; 
+  }
+
+  .card { 
+    background:#fff; 
+    border-radius:12px; 
+    overflow:hidden; 
+    box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+  }
+
+  .card img { 
+    width:100%; 
+    display:block; 
+    border-radius:8px; 
+    filter: grayscale(100%); 
+    transition: all 0.4s ease; 
+  }
+
+  .card:hover { 
+    transform: scale(1.03); 
+    box-shadow:0 8px 20px rgba(0,0,0,0.2); 
+  }
+
+  .card:hover img { 
+    filter: grayscale(0%); 
+  }
 
   footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
 </style>
@@ -71,19 +97,52 @@
 
 <!-- Main Content -->
 <main>
+
   <section>
-    <h2>School Gallery</h2>
+    <h2>Science Exhibition 2025</h2>
     <div class="grid">
-      <div class="card"><img src="images/gallery1.jpg" alt="Event 1"></div>
-      <div class="card"><img src="images/gallery2.jpg" alt="Event 2"></div>
-      <div class="card"><img src="images/gallery3.jpg" alt="Event 3"></div>
-      <div class="card"><img src="images/gallery4.jpg" alt="Event 4"></div>
-      <div class="card"><img src="images/gallery5.jpg" alt="Event 5"></div>
-      <div class="card"><img src="images/gallery6.jpg" alt="Event 6"></div>
-      <div class="card"><img src="images/gallery7.jpg" alt="Event 7"></div>
-      <div class="card"><img src="images/gallery8.jpg" alt="Event 8"></div>
+      <div class="card"><img src="images/science1.jpg" alt="Science Exhibition 1"></div>
+      <div class="card"><img src="images/science2.jpg" alt="Science Exhibition 2"></div>
+      <div class="card"><img src="images/science3.jpg" alt="Science Exhibition 3"></div>
     </div>
   </section>
+
+  <section>
+    <h2>Annual Tour 2025</h2>
+    <div class="grid">
+      <div class="card"><img src="images/tour1.jpg" alt="Annual Tour 1"></div>
+      <div class="card"><img src="images/tour2.jpg" alt="Annual Tour 2"></div>
+      <div class="card"><img src="images/tour3.jpg" alt="Annual Tour 3"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Independence Day 2025</h2>
+    <div class="grid">
+      <div class="card"><img src="images/independence1.jpg" alt="Independence Day 1"></div>
+      <div class="card"><img src="images/independence2.jpg" alt="Independence Day 2"></div>
+      <div class="card"><img src="images/independence3.jpg" alt="Independence Day 3"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Saraswati Puja 2025</h2>
+    <div class="grid">
+      <div class="card"><img src="images/puja1.jpg" alt="Saraswati Puja 1"></div>
+      <div class="card"><img src="images/puja2.jpg" alt="Saraswati Puja 2"></div>
+      <div class="card"><img src="images/puja3.jpg" alt="Saraswati Puja 3"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Food Carnival 2025</h2>
+    <div class="grid">
+      <div class="card"><img src="images/food1.jpg" alt="Food Carnival 1"></div>
+      <div class="card"><img src="images/food2.jpg" alt="Food Carnival 2"></div>
+      <div class="card"><img src="images/food3.jpg" alt="Food Carnival 3"></div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
