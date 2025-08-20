@@ -106,9 +106,8 @@
   <h2>General Notices</h2>
   <div class="notice-grid" id="noticeGrid">
     <div class="notice-card exam" data-date="2025-09-15">
-      <span class="new-badge">NEW</span>
       <span class="icon">📘</span>
-      <p>2nd Unit Test on <strong>15th September</strong>. Follow the notice board for further exam routine.</p>
+      <p>2nd Unit Test <strong>15th September</strong>. Follow the notice section for further update.</p>
     </div>
     <div class="notice-card holiday" data-date="2025-08-25">
       <span class="icon">🌿</span>
@@ -141,6 +140,15 @@
   cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
   grid.innerHTML = "";
   cards.forEach(card => grid.appendChild(card));
+
+  // Add NEW badge to the most recent notice only
+  if (cards.length > 0) {
+    const latestNotice = cards[0];
+    const badge = document.createElement("span");
+    badge.className = "new-badge";
+    badge.textContent = "NEW";
+    latestNotice.appendChild(badge);
+  }
 </script>
 
 </body>
