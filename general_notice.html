@@ -8,7 +8,6 @@
   * { box-sizing:border-box; margin:0; padding:0; }
   body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
 
-  /* Header */
   header {
     background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
   }
@@ -16,7 +15,6 @@
   .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
   .title span { font-size:14px; font-weight:500; }
 
-  /* Navigation */
   nav { background:#222; text-align:center; position:relative; }
   .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
   nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
@@ -29,53 +27,57 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  main { max-width:1100px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:20px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
 
-  /* Notice Timeline */
-  .timeline { position:relative; margin:40px 0; }
-  .timeline::before {
-    content:''; position:absolute; left:50%; top:0; bottom:0; width:4px; background:#0f47b8; transform:translateX(-50%);
+  .notice-grid { 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); 
+    gap:20px; 
   }
-  .timeline-item {
-    position:relative; width:50%; padding:20px; box-sizing:border-box;
-  }
-  .timeline-item:nth-child(odd) { left:0; text-align:right; }
-  .timeline-item:nth-child(even) { left:50%; }
-  .timeline-item::before {
-    content:''; position:absolute; top:20px; width:20px; height:20px; border-radius:50%; background:#0f47b8; border:3px solid #fff; box-shadow:0 0 0 3px #0f47b8;
-  }
-  .timeline-item:nth-child(odd)::before { right:-10px; }
-  .timeline-item:nth-child(even)::before { left:-10px; }
 
   .notice-card {
-    background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    padding:20px; display:inline-block; max-width:85%; transition:transform 0.5s, opacity 0.5s;
-    opacity:0; transform:translateX(100px);
+    border-radius:12px; 
+    box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+    padding:20px; 
+    display:flex; 
+    align-items:center; 
+    gap:12px;
+    color:#fff; 
+    font-weight:600;
+    position:relative;
+    transition:transform 0.2s;
   }
-  .timeline-item:nth-child(odd) .notice-card { transform:translateX(-100px); }
-  .notice-card strong { color:#0f47b8; }
+  .notice-card:hover { transform:translateY(-5px); }
 
-  /* Scroll animation effect */
-  .timeline-item.show .notice-card {
-    opacity:1;
-    transform:translateX(0);
+  .notice-card span.icon { font-size:28px; }
+
+  .exam { background:#e74c3c; }
+  .holiday { background:#27ae60; }
+  .event { background:#2980b9; }
+  .meeting { background:#f39c12; }
+
+  .new-badge {
+    position:absolute;
+    top:10px; right:10px;
+    background:#ffeb3b; 
+    color:#222; 
+    font-size:12px; 
+    font-weight:bold;
+    padding:2px 8px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    animation: blink 1.2s infinite;
   }
-
-  /* Staggered delay for each notice */
-  .timeline-item.show:nth-child(1) .notice-card { transition-delay:0.1s; }
-  .timeline-item.show:nth-child(2) .notice-card { transition-delay:0.3s; }
-  .timeline-item.show:nth-child(3) .notice-card { transition-delay:0.5s; }
-  .timeline-item.show:nth-child(4) .notice-card { transition-delay:0.7s; }
-  .timeline-item.show:nth-child(5) .notice-card { transition-delay:0.9s; }
-
-  /* Footer */
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+  @keyframes blink {
+    0% { opacity:1; }
+    50% { opacity:0.3; }
+    100% { opacity:1; }
+  }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div style="display:flex; align-items:center; gap:12px;">
     <img src="images/logo.png" alt="Oxford Logo" class="logo">
@@ -87,7 +89,6 @@
   <div class="menu-toggle">☰</div>
 </header>
 
-<!-- Navigation -->
 <nav>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
@@ -101,61 +102,46 @@
   </ul>
 </nav>
 
-<!-- Main Content -->
 <main>
   <h2>General Notices</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="notice-card">
-        <p><strong>Notice:</strong> 2nd Unit Test on 15th September. Follow the notice board for further examination routine.</p>
-      </div>
+  <div class="notice-grid" id="noticeGrid">
+    <div class="notice-card exam" data-date="2025-09-15">
+      <span class="new-badge">NEW</span>
+      <span class="icon">📘</span>
+      <p>2nd Unit Test on <strong>15th September</strong>. Follow the notice board for further exam routine.</p>
     </div>
-    <div class="timeline-item">
-      <div class="notice-card">
-        <p><strong>Holiday:</strong> 25th August closed.</p>
-      </div>
+    <div class="notice-card holiday" data-date="2025-08-25">
+      <span class="icon">🌿</span>
+      <p><strong>25th August:</strong> School will remain closed.</p>
     </div>
-    <div class="timeline-item">
-      <div class="notice-card">
-        <p><strong>Exam Schedule:</strong> Mid-terms from 10th September.</p>
-      </div>
+    <div class="notice-card meeting" data-date="2025-09-15">
+      <span class="icon">👨‍👩‍👧</span>
+      <p><strong>15th September:</strong> Parent Teacher Meeting.</p>
     </div>
-    <div class="timeline-item">
-      <div class="notice-card">
-        <p><strong>PTM:</strong> 15th September.</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="notice-card">
-        <p><strong>Annual Sports Meet:</strong> 25th October 2025.</p>
-      </div>
+    <div class="notice-card event" data-date="2025-10-25">
+      <span class="icon">🏆</span>
+      <p><strong>Annual Sports Meet:</strong> 25th October 2025.</p>
     </div>
   </div>
 </main>
 
-<!-- Footer -->
-<footer>
+<footer style="background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px;">
   © 2025 Oxford Public School | All Rights Reserved
 </footer>
 
 <script>
+  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 
-  // Scroll animation
-  const items = document.querySelectorAll('.timeline-item');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.2 });
-
-  items.forEach(item => { observer.observe(item); });
+  // Sort notices by date (latest first)
+  const grid = document.getElementById('noticeGrid');
+  const cards = Array.from(grid.children);
+  cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
+  grid.innerHTML = "";
+  cards.forEach(card => grid.appendChild(card));
 </script>
 
 </body>
 </html>
-
