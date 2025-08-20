@@ -52,10 +52,7 @@
 
   .notice-card span.icon { font-size:28px; }
 
-  .exam { background:#e74c3c; }
-  .holiday { background:#27ae60; }
-  .event { background:#2980b9; }
-  .meeting { background:#f39c12; }
+  .teachers-day { background:#8e44ad; }
 
   .new-badge {
     position:absolute;
@@ -80,7 +77,7 @@
     margin-top:10px;
     padding:6px 12px;
     background:#fff;
-    color:#0f47b8;
+    color:#8e44ad;
     font-size:14px;
     font-weight:600;
     border-radius:6px;
@@ -122,35 +119,18 @@
 <main>
   <h2>General Notices</h2>
   <div class="notice-grid" id="noticeGrid">
-    
-    <div class="notice-card exam" data-date="2025-08-20">
-      <span class="icon">📘</span>
-      <p>2nd Unit Test <strong>15th September</strong>. Follow the notice section for further update.</p>
-      <a href="pdfs/unit_test_schedule.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
-    </div>
 
-    <div class="notice-card holiday" data-date="2025-08-15">
-      <span class="icon">🌿</span>
-      <p><strong>Independence Day</strong> School will remain closed.</p>
-      <a href="pdfs/independence_day.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
-    </div>
-
-    <div class="notice-card meeting" data-date="2025-08-10">
-      <span class="icon">👨‍👩‍👧</span>
-      <p><strong>Rakshabandhan:</strong> 11th August 2025.</p>
-      <a href="pdfs/rakshabandhan.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
-    </div>
-
-    <div class="notice-card event" data-date="2025-07-08">
-      <span class="icon">🏆</span>
-      <p><strong>Rath Yatra:</strong> 10th July 2025.</p>
-      <a href="pdfs/rath_yatra.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
+    <!-- Teachers' Day Notice -->
+    <div class="notice-card teachers-day" data-date="2025-09-05">
+      <span class="icon">🎉</span>
+      <p><strong>Teachers' Day</strong> Celebration on <strong>5th September 2025</strong>. Join us to honor our teachers!</p>
+      <a href="pdfs/teachers_day.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
     </div>
 
   </div>
 </main>
 
-<footer style="background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px;">
+<footer style="background:#8e44ad; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px;">
   © 2025 Oxford Public School | All Rights Reserved
 </footer>
 
@@ -160,21 +140,19 @@
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 
-  // Sort notices by date (latest first)
+  // Add NEW badge only if notice date is today or in the future
+  const today = new Date();
   const grid = document.getElementById('noticeGrid');
   const cards = Array.from(grid.children);
-  cards.sort((a, b) => new Date(b.dataset.date) - new Date(a.dataset.date));
-  grid.innerHTML = "";
-  cards.forEach(card => grid.appendChild(card));
-
-  // Add NEW badge to the most recent notice only
-  if (cards.length > 0) {
-    const latestNotice = cards[0];
-    const badge = document.createElement("span");
-    badge.className = "new-badge";
-    badge.textContent = "NEW";
-    latestNotice.appendChild(badge);
-  }
+  cards.forEach(card => {
+    const noticeDate = new Date(card.dataset.date);
+    if (noticeDate >= today) {
+      const badge = document.createElement("span");
+      badge.className = "new-badge";
+      badge.textContent = "NEW";
+      card.appendChild(badge);
+    }
+  });
 </script>
 
 </body>
