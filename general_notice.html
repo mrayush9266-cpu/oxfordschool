@@ -3,22 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>General Notice • Oxford Public School</title>
+<title>Notice • Oxford Public School</title>
 <style>
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+  /* ===== Base Styles ===== */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f3f4f8; color: #24324a; overflow-x:hidden; }
 
+  /* ===== Header ===== */
   header {
-    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    background: #1a1f36;
+    color: #fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 12px 20px;
+    flex-wrap:wrap;
   }
   .logo { height:60px; }
   .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
-  .title span { font-size:14px; font-weight:500; }
+  .title span { font-size:14px; font-weight:500; display:block; margin-top:4px; }
 
-  nav { background:#222; text-align:center; position:relative; }
-  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
+  /* ===== Navigation ===== */
+  nav { background: #0f47b8; text-align:center; position:sticky; top:0; z-index:10; }
+  .menu-toggle { font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; display:none; }
   nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
-  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; transition:0.3s; }
   nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
 
   @media(max-width:768px){
@@ -27,82 +36,69 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1100px; margin:26px auto; padding:0 16px; }
+  main { max-width:900px; margin:26px auto; padding:0 16px; }
+
   h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:20px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
 
-  .notice-grid { 
-    display:grid; 
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); 
-    gap:20px; 
+  /* ===== Single Notice ===== */
+  .notice-tag {
+    display:inline-block;
+    background:#ff6f61;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:6px;
+    font-weight:700;
+    margin-bottom:12px;
+    font-family:'Palatino Linotype','Book Antiqua',Palatino,serif;
   }
 
   .notice-card {
-    border-radius:12px; 
-    box-shadow:0 4px 12px rgba(0,0,0,0.1); 
-    padding:20px; 
-    display:flex; 
-    gap:12px;
-    color:#fff; 
-    font-weight:600;
-    position:relative;
-    transition:transform 0.2s;
-    flex-direction: column;
-  }
-  .notice-card:hover { transform:translateY(-5px); }
-
-  .notice-card span.icon { font-size:28px; }
-
-  .teachers-day { background:#8e44ad; }
-
-  .new-badge {
-    position:absolute;
-    top:10px; right:10px;
-    background:#ffeb3b; 
-    color:#222; 
-    font-size:12px; 
-    font-weight:bold;
-    padding:2px 8px;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.2);
-    animation: blink 1.2s infinite;
-  }
-  @keyframes blink {
-    0% { opacity:1; }
-    50% { opacity:0.3; }
-    100% { opacity:1; }
+    background: #e0e4f1;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+    text-align:center;
+    animation: fadeInUp 1s ease-in-out forwards;
   }
 
-  .pdf-btn {
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 12px;
-    background:#fff;
-    color:#8e44ad;
-    font-size:14px;
-    font-weight:600;
-    border-radius:6px;
-    text-decoration:none;
-    transition:background 0.2s, transform 0.2s;
+  .notice-card h3 { color:#1a1f36; margin-bottom:10px; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; font-weight:700; text-decoration:underline; }
+  .notice-card p { color:#333; line-height:1.5; margin-bottom:12px; }
+
+  .pdf-viewer {
+    width: 100%;
+    height: 450px;
+    border: 2px solid #0f47b8;
+    border-radius:10px;
+    margin-top:16px;
   }
-  .pdf-btn:hover {
-    background:#e0e0e0;
-    transform:translateY(-2px);
+
+  /* ===== Animations ===== */
+  @keyframes fadeInUp {
+    from { opacity:0; transform: translateY(30px); }
+    to { opacity:1; transform: translateY(0); }
   }
+
+  /* ===== Footer ===== */
+  footer { background:#1a1f36; color:#fff; text-align:center; padding:24px; margin-top:36px; font-size:14px; position:relative; }
+  footer span { font-family:'Cursive', sans-serif; font-size:12px; color:#ffd700; display:block; margin-top:6px; }
+
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
   <div style="display:flex; align-items:center; gap:12px;">
     <img src="images/logo.png" alt="Oxford Logo" class="logo">
     <div class="title">
       <h1>Oxford Public School</h1>
-      <span>Rania Aurobindo Nagar, Kolkata 700154</span>
+      <span>Co-Education English Medium<br>Rania Aurobindo Nagar, Kolkata 700154</span>
     </div>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
 
+<!-- Navigation -->
 <nav>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
@@ -117,44 +113,30 @@
 </nav>
 
 <main>
-  <h2>General Notices</h2>
-  <div class="notice-grid" id="noticeGrid">
+  <h2>General Notice</h2>
 
-    <!-- Teachers' Day Notice -->
-    <div class="notice-card teachers-day" data-date="2025-09-05">
-      <span class="icon">🎉</span>
-      <p><strong>Teachers' Day</strong> Celebration on <strong>5th September 2025</strong>. Join us to honor our teachers!</p>
-      <a href="pdfs/teachers_day.pdf" target="_blank" class="pdf-btn">📂 View PDF</a>
-    </div>
+  <div class="notice-card">
+    <span class="notice-tag">Latest</span>
+    <h3>Teacher's Day Celebration 2025</h3>
+    <p>Join us for the Teacher's Day event on 5th September 2025, celebrating our dedicated educators with cultural programs and activities.</p>
 
+    <!-- PDF Viewer -->
+    <iframe src="materials/teachers_day_notice.pdf" class="pdf-viewer"></iframe>
   </div>
+
 </main>
 
-<footer style="background:#8e44ad; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px;">
+<!-- Footer -->
+<footer>
   © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
 </footer>
 
 <script>
-  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-
-  // Add NEW badge only if notice date is today or in the future
-  const today = new Date();
-  const grid = document.getElementById('noticeGrid');
-  const cards = Array.from(grid.children);
-  cards.forEach(card => {
-    const noticeDate = new Date(card.dataset.date);
-    if (noticeDate >= today) {
-      const badge = document.createElement("span");
-      badge.className = "new-badge";
-      badge.textContent = "NEW";
-      card.appendChild(badge);
-    }
-  });
+  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 </script>
 
 </body>
 </html>
-
