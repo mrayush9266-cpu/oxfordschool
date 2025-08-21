@@ -12,13 +12,20 @@
     body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; line-height:1.6; }
 
     /* Navbar */
-    header { background:#0d47a1; color:white; padding:15px 20px; position:sticky; top:0; z-index:1000; }
+    header { 
+      background: linear-gradient(90deg, #0f47b8, #083e9e); 
+      color:white; 
+      padding:15px 20px; 
+      position:sticky; 
+      top:0; 
+      z-index:1000; 
+    }
     header .logo { display:flex; align-items:center; }
     header .logo img { height:40px; margin-right:10px; }
     nav { display:flex; justify-content:space-between; align-items:center; position:relative; }
     nav ul { list-style:none; display:flex; gap:20px; }
     nav ul li a { color:white; text-decoration:none; font-weight:500; transition:0.3s; padding:5px 10px; border-radius:6px; }
-    nav ul li a:hover, nav ul li a.active { background:#0f47b8; }
+    nav ul li a:hover, nav ul li a.active { background:#0f47b8; border-radius:6px; }
 
     /* Hamburger styles */
     .hamburger { 
@@ -28,7 +35,7 @@
       color:white;
       transition: transform 0.3s ease;
     }
-    .hamburger.active { transform: rotate(90deg); } /* little animation */
+    .hamburger.active { transform: rotate(90deg); }
 
     @media (max-width: 768px) {
       nav ul {
@@ -36,20 +43,14 @@
         top: 65px;
         left: 0;
         width: 100%;
-        background:#0d47a1;
+        background: linear-gradient(90deg, #0f47b8, #083e9e);
         flex-direction: column;
         align-items: center;
-        display: none; /* hidden by default */
+        display: none;
       }
-      nav ul.show {
-        display: flex; /* visible when toggled */
-      }
-      nav ul li {
-        margin: 15px 0;
-      }
-      .hamburger {
-        display: block;
-      }
+      nav ul.show { display:flex; }
+      nav ul li { margin: 15px 0; }
+      .hamburger { display:block; }
     }
 
     /* Hero */
@@ -59,7 +60,7 @@
     /* Sections */
     section { padding:60px 20px; border-top:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6; opacity:0; transform:translateY(40px); transition:opacity 1s ease, transform 1s ease; }
     section.show { opacity:1; transform:translateY(0); }
-    section h2 { text-align:center; margin-bottom:20px; font-size:2em; color:#0d47a1; }
+    section h2 { text-align:center; margin-bottom:20px; font-size:2em; color:#0f47b8; }
     section p { max-width:800px; margin:0 auto 20px; text-align:center; }
 
     /* Read More */
@@ -78,11 +79,11 @@
     /* Connect With Us */
     #connect { background:#f0f0f0; text-align:center; }
     #connect .social-icons { margin-top:15px; display:flex; justify-content:center; gap:25px; font-size:1.8em; }
-    #connect .social-icons a { color:#0d47a1; transition:0.3s; }
+    #connect .social-icons a { color:#0f47b8; transition:0.3s; }
     #connect .social-icons a:hover { transform:scale(1.2); }
 
     /* Footer */
-    footer { background:#0d47a1; color:white; text-align:center; padding:15px 10px; margin-top:0; }
+    footer { background: linear-gradient(90deg, #083e9e, #0f47b8); color:white; text-align:center; padding:15px 10px; margin-top:0; }
   </style>
 </head>
 <body>
@@ -164,7 +165,7 @@
       <div class="card">
         <h3>General Notice</h3>
         <p>Stay updated with the latest announcements.</p>
-        <a href="notice.html" class="btn">Go</a>
+        <a href="general_notice.html" class="btn">Go</a>
       </div>
       <div class="card">
         <h3>Study Material</h3>
