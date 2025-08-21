@@ -5,30 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admission • Oxford Public School</title>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f4f5f7; color: #333; }
 
+  /* Header */
   header {
-    background: linear-gradient(90deg, #0f47b8, #083e9e);
-    color:#fff; padding:12px 20px;
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    background: linear-gradient(135deg, #3a5fcd, #8ab6f3);
+    color: #fff; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
   }
-  .logo { height:60px; }
-  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
-  .title span { font-size:14px; font-weight:500; }
+  .logo { height: 60px; }
+  .title h1 { font-family: 'Georgia', serif; font-size: 28px; font-weight: 900; text-decoration: underline; margin-bottom: 4px; }
+  .title span { font-size: 14px; font-weight: 500; display: block; }
 
-  nav { background:#222; text-align:center; position:relative; }
-  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
-  nav ul li a {
-    color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600;
-    position: relative;
-  }
-  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
-  nav ul li a::after {
-    content:""; position:absolute; left:0; bottom:6px; width:0; height:2px; background:#fbc02d; transition:0.3s;
-  }
-  nav ul li a:hover::after { width:100%; }
+  /* Navigation */
+  nav { background: #2c3e91; position: sticky; top: 0; z-index: 1000; }
+  .menu-toggle { display: none; font-size: 28px; color: #fff; padding: 10px 16px; cursor: pointer; }
+  nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0; }
+  nav ul li a { color: #fff; text-decoration: none; padding: 12px 18px; display: block; font-weight: 600; }
+  nav ul li a:hover, nav ul li a.active { background: #1b2b6d; border-radius: 6px; }
 
   @media(max-width:768px){
     .menu-toggle { display:block; }
@@ -36,98 +30,43 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  main { max-width: 1000px; margin: 26px auto; padding: 0 16px; }
 
-  .card {
-    background:#fff; border-radius:12px; padding:20px; margin-bottom:16px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover {
-    transform:translateY(-5px);
-    box-shadow:0 8px 20px rgba(15,71,184,0.3);
-  }
+  h2 { font-size: 32px; margin-bottom: 12px; color: #2c3e91; font-family: 'Palatino Linotype','Book Antiqua',Palatino,serif; text-decoration: underline; }
 
-  .btn-general, .submit-btn {
-    display:inline-block; background: linear-gradient(90deg, #0f47b8, #083e9e);
-    color:#fff; padding:12px 24px; border:none;
-    font-size:16px; font-weight:600;
-    border-radius:30px; cursor:pointer;
-    text-decoration:none; transition: all 0.3s ease;
-  }
-  .btn-general:hover, .submit-btn:hover {
-    background: linear-gradient(90deg, #083e9e, #0f47b8);
-    transform: scale(1.05);
-  }
+  section { margin-bottom: 40px; padding: 20px; border-radius: 16px; background: #e4e9f2; animation: fadeIn 1s ease; }
+  section img { max-width: 100%; border-radius: 12px; margin-bottom: 12px; transition: transform 0.3s; }
+  section img:hover { transform: scale(1.03); }
+  section p { line-height: 1.6; margin-bottom: 8px; }
 
-  form { display:flex; flex-direction:column; gap:14px; margin-top:16px; }
-  input, select, textarea {
-    padding:10px; border-radius:6px; border:1px solid #ccc; width:100%; font-size:14px;
-    transition: all 0.3s;
-  }
-  input:focus, select:focus, textarea:focus {
-    border:1px solid #0f47b8;
-    outline:none;
-    box-shadow:0 0 8px rgba(15,71,184,0.3);
-  }
-  label { font-weight:600; margin-bottom:4px; display:block; }
+  .btn { display: inline-block; padding: 10px 16px; background: #2c3e91; color: #fff; border-radius: 8px; text-decoration: none; margin-top: 6px; transition: background 0.3s; }
+  .btn:hover { background: #1b2b6d; }
 
-  input.invalid, select.invalid, textarea.invalid {
-    animation: shake 0.5s;
-    border: 1px solid red;
-  }
-  @keyframes shake {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-5px); }
-    40% { transform: translateX(5px); }
-    60% { transform: translateX(-5px); }
-    80% { transform: translateX(5px); }
-    100% { transform: translateX(0); }
-  }
+  @keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
 
-  /* Success Popup */
-  #successPopup {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #28a745;
-    color: #fff;
-    padding: 16px 24px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    display: none;
-    font-weight: 600;
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  #successPopup.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
+  footer { background: linear-gradient(135deg, #2c3e91, #8ab6f3); color: #fff; text-align: center; padding: 30px; margin-top: 40px; font-size: 14px; }
+  footer span { font-family: 'Cursive', sans-serif; font-size: 12px; display: block; margin-top: 6px; }
 
-  footer {
-    background: linear-gradient(90deg, #083e9e, #0f47b8);
-    color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px;
-  }
+  form { display: grid; gap: 16px; margin-top: 12px; }
+  input, select, button { padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+  button { background: #3a5fcd; color: #fff; border: none; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+  button:hover { background: #1b2b6d; }
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo" class="logo">
-    <div class="title">
-      <h1>Oxford Public School</h1>
-      <span>Rania Aurobindo Nagar, Kolkata 700154</span>
-    </div>
+  <img src="images/logo.png" alt="Oxford Logo" class="logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education | English Medium</span>
+    <span>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
 
+<!-- Navigation -->
 <nav>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
@@ -142,136 +81,66 @@
 </nav>
 
 <main>
-  <section class="card">
-    <h2>Admission 2025-26</h2>
-    <p>We welcome parents to enroll their children for the new academic session. Oxford Public School provides a safe and nurturing environment for holistic development.</p>
+  <section>
+    <h2>Admission Information</h2>
+    <img src="images/admission.jpg" alt="Admission">
+    <p>Admissions are open for all classes. We welcome students who aspire for excellence and holistic development.</p>
+    <p>Our admission process is simple and transparent, ensuring equal opportunity for every student.</p>
+    <a class="btn" href="admission.html#form">Apply Now</a>
   </section>
 
-  <section class="card">
-    <h2>Admission Guidelines</h2>
-    <ul>
-      <li>Admission is open for Nursery to Class 10.</li>
-      <li>Documents required: Birth Certificate, Previous School Records (if any), Passport-size photographs.</li>
-      <li>Forms can be submitted online or at the school office.</li>
-      <li>Age criteria: Nursery (3-4 yrs), LKG (4-5 yrs), UKG (5-6 yrs).</li>
-    </ul>
+  <section>
+    <h2>Admission Procedure</h2>
+    <img src="images/procedure.jpg" alt="Procedure">
+    <p>Step 1: Fill out the admission form online or at the school.</p>
+    <p>Step 2: Submit required documents including birth certificate and previous school records.</p>
+    <p>Step 3: Attend an interaction session or assessment as per class requirement.</p>
+    <a class="btn" href="admission.html#form">Start Admission</a>
   </section>
 
-  <section class="card">
+  <section>
+    <h2>Important Dates</h2>
+    <img src="images/dates.jpg" alt="Dates">
+    <p>Admissions open: September 1st</p>
+    <p>Last date of submission: October 31st</p>
+    <p>Orientation for new students: November 5th</p>
+  </section>
+
+  <section id="form">
     <h2>Admission Form</h2>
-    <form id="admissionForm" action="https://formspree.io/f/xpwlgyzy" method="POST">
-      <label for="studentName">Student Name</label>
-      <input type="text" id="studentName" name="studentName" required>
-
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required>
-
-      <label for="class">Class to Enroll</label>
-      <select id="class" name="class" required>
+    <form action="https://formspree.io/f/xpwlgyzy" method="POST" enctype="multipart/form-data">
+      <input type="text" name="student_name" placeholder="Student Name" required>
+      <select name="class" required>
         <option value="">Select Class</option>
-        <option>Nursery</option>
-        <option>LKG</option>
-        <option>UKG</option>
-        <option>Class 1</option>
-        <option>Class 2</option>
-        <option>Class 3</option>
-        <option>Class 4</option>
-        <option>Class 5</option>
-        <option>Class 6</option>
-        <option>Class 7</option>
-        <option>Class 8</option>
-        <option>Class 9</option>
-        <option>Class 10</option>
+        <option value="Nursery">Nursery</option>
+        <option value="KG">KG</option>
+        <option value="Class 1">Class 1</option>
+        <option value="Class 2">Class 2</option>
+        <option value="Class 3">Class 3</option>
+        <option value="Class 4">Class 4</option>
+        <option value="Class 5">Class 5</option>
+        <option value="Class 6">Class 6</option>
+        <option value="Class 7">Class 7</option>
+        <option value="Class 8">Class 8</option>
+        <option value="Class 9">Class 9</option>
+        <option value="Class 10">Class 10</option>
       </select>
-
-      <label for="parentName">Parent / Guardian Name</label>
-      <input type="text" id="parentName" name="parentName" required>
-
-      <label for="contact">Contact Number</label>
-      <input type="tel" id="contact" name="contact" required>
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="address">Address</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
-
-      <button type="submit" class="submit-btn">Submit Admission Form</button>
+      <input type="date" name="dob" required>
+      <input type="number" name="contact" placeholder="Contact Number" required>
+      <button type="submit">Submit Admission Form</button>
     </form>
   </section>
 </main>
 
-<div id="successPopup">✅ Form submitted successfully! PDF downloaded.</div>
-
 <footer>
   © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-
-  const form = document.getElementById('admissionForm');
-  const popup = document.getElementById('successPopup');
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    const formData = new FormData(form);
-
-    // Simple validation animation
-    let valid = true;
-    form.querySelectorAll('input, select, textarea').forEach(field => {
-      if (!field.checkValidity()) {
-        field.classList.add('invalid'); 
-        valid = false;
-        setTimeout(() => { field.classList.remove('invalid'); }, 500);
-      }
-    });
-    if (!valid) return;
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        // Show success popup
-        popup.classList.add('show');
-        setTimeout(() => { popup.classList.remove('show'); }, 4000);
-
-        // Generate PDF
-        generatePDF(formData);
-
-        form.reset();
-      } else {
-        alert("Oops! There was a problem submitting the form.");
-      }
-    } catch (error) {
-      alert("Oops! There was a problem submitting the form.");
-    }
-  });
-
-  function generatePDF(formData){
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text("Oxford Public School", 105, 20, null, null, "center");
-    doc.setFontSize(12);
-    doc.text("Admission Form 2025-26", 105, 30, null, null, "center");
-
-    let startY = 45;
-    formData.forEach((value, key) => {
-      doc.text(`${key}: ${value}`, 20, startY);
-      startY += 10;
-    });
-
-    doc.save("Admission_Form.pdf");
-  }
 </script>
 
 </body>
