@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notice • Oxford Public School</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: 'Segoe UI', sans-serif; background:#f6f8fb; color:#24324a; }
@@ -12,15 +13,16 @@
   header {
     background: linear-gradient(135deg,#5b86e5,#36d1dc);
     color:#fff;
-    padding:24px 16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
   }
   header img { height:60px; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; text-decoration:underline; margin-bottom:4px; }
-  header .title span { display:block; font-size:14px; font-weight:500; margin-top:2px; }
+  header .title { text-align:left; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
+  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
   /* Navigation */
   nav {
@@ -61,14 +63,14 @@
     max-width:900px;
     margin:30px auto;
     padding:20px;
-    background: #fffaf0; /* vibrant light background */
+    background: #fffaf0;
     border-radius:16px;
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
     text-align:center;
     animation: fadeInUp 0.8s ease;
   }
 
-  h2 { font-size:32px; color:#0f47b8; margin-bottom:20px; text-decoration:underline; font-family:'Georgia', serif; }
+  h2 { font-size:32px; color:#0f47b8; margin-bottom:20px; text-decoration:underline; font-family:'Roboto Slab', serif; }
   p { margin-bottom:20px; font-size:18px; }
 
   /* PDF Viewer */
@@ -104,25 +106,17 @@
     margin-top:40px;
     font-size:14px;
   }
-  footer span { font-style:italic; font-weight:600; color:#ffd700; }
-
-  /* Mobile adjustments */
-  @media(max-width:768px){
-    header .title h1 { font-size:20px; white-space:nowrap; }
-    header .title span { font-size:12px; }
-  }
+  footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo">
-    <div class="title">
-      <h1>Oxford Public School</h1>
-      <span>Co-Education English Medium | Rania Aurobindo Nagar, Kolkata 700154</span>
-    </div>
+  <img src="images/logo.png" alt="Oxford Logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education English Medium | Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -155,7 +149,8 @@
 
 <!-- Footer -->
 <footer>
-  © 2025 Oxford Public School | All Rights Reserved | <span>Designed by Mr. Ayush</span>
+  © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
 </footer>
 
 <script>
