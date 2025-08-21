@@ -4,57 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery • Oxford Public School</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family:'Segoe UI', sans-serif; background:#f7f8fc; color:#333; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI', sans-serif; background:#f6f8fb; color:#24324a; }
 
   /* Header */
   header {
-    background: linear-gradient(135deg,#1e3cb3,#4a6fe5);
-    color: #fff;
-    padding: 15px 30px;
+    background: linear-gradient(135deg,#5b86e5,#36d1dc);
+    color:#fff;
+    padding:24px 16px;
     display:flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top:0;
-    z-index:1000;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
   }
-  .logo { height:60px; }
-  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
-  .title span { font-size:14px; font-weight:500; display:block; }
+  header img { height:60px; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; text-decoration:underline; margin-bottom:4px; }
+  header .title span { display:block; font-size:14px; font-weight:500; margin-top:2px; }
 
   /* Navigation */
-  nav { background:#0f47b8; text-align:center; position:relative; }
-  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; margin:0; padding:0; }
-  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
-
-  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-
+  nav {
+    background: linear-gradient(135deg,#36d1dc,#5b86e5);
+    display:flex;
+    justify-content:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav ul {
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    margin:0;
+    padding:0;
+  }
+  nav ul li a {
+    color:#fff;
+    text-decoration:none;
+    padding:12px 18px;
+    font-weight:600;
+    transition:0.3s;
+    display:block;
+  }
+  nav ul li a:hover, nav ul li a.active {
+    background: rgba(255,255,255,0.2);
+    border-radius:6px;
+  }
+  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
   @media(max-width:768px){
     .menu-toggle { display:block; }
-    nav ul { display:none; flex-direction:column; width:100%; }
+    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:20px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  main { max-width:1200px; margin:30px auto; padding:0 16px; }
 
-  /* Album Grid */
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-  .album-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 6px 18px rgba(15,71,184,.12); transition: transform 0.3s; cursor:pointer; position:relative; }
-  .album-card:hover { transform:translateY(-6px) scale(1.03); }
+  h2.section-heading {
+    font-family:'Roboto Slab', serif;
+    font-size:32px;
+    text-align:center;
+    margin-bottom:24px;
+    color:#0f47b8;
+    text-decoration:underline;
+  }
+
+  /* Gallery Grid */
+  .grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    margin-bottom:40px;
+    padding:0 10px;
+  }
+
+  .album-card {
+    background:#fffaf0; /* Vibrant light color */
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(15,71,184,0.12);
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor:pointer;
+    position:relative;
+    opacity:0;
+    transform:translateY(40px);
+    animation: fadeUp 0.8s forwards;
+  }
+  .album-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow:0 12px 28px rgba(15,71,184,0.2);
+  }
   .album-card img { width:100%; display:block; height:180px; object-fit:cover; }
-  .album-card h3 { text-align:center; padding:12px 8px; background:#0f47b8; color:#fff; font-family:'Georgia', serif; margin:0; }
+  .album-card h3 { text-align:center; padding:12px 8px; background:#36d1dc; color:#fff; font-family:'Georgia', serif; margin:0; }
   .album-card p { text-align:center; font-size:14px; padding:6px 8px; color:#555; }
 
-  /* Animations */
-  .fade-up { animation: fadeUp 0.8s ease forwards; opacity:0; }
-  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(40px); }
+    to { opacity:1; transform:translateY(0); }
+  }
 
-  footer { text-align:center; color:#5b6b8b; padding:26px; margin-top:40px; }
+  footer {
+    text-align:center;
+    color:#5b6b8b;
+    padding:26px;
+    margin-top:40px;
+    font-size:14px;
+  }
   footer span { display:block; font-size:12px; font-style:italic; color:#24324a; }
+
 </style>
 </head>
 <body>
@@ -62,7 +119,7 @@
 <!-- Header -->
 <header>
   <div style="display:flex; align-items:center; gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo" class="logo">
+    <img src="images/logo.png" alt="Oxford Logo">
     <div class="title">
       <h1>Oxford Public School</h1>
       <span>Co-Education | English Medium</span>
@@ -79,7 +136,7 @@
     <li><a href="about.html">About</a></li>
     <li><a href="admission.html">Admission</a></li>
     <li><a href="gallery.html" class="active">Gallery</a></li>
-    <li><a href="general_notice.html">General Notice</a></li>
+    <li><a href="general_notice.html">Notice</a></li>
     <li><a href="study.html">Study Material</a></li>
     <li><a href="staff.html">Staff</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -87,35 +144,35 @@
 </nav>
 
 <main>
-  <h2>Our Albums</h2>
+  <h2 class="section-heading">Our Albums</h2>
 
   <div class="grid">
-    <div class="album-card fade-up">
+    <div class="album-card" style="animation-delay:0s;">
       <img src="images/science1.jpg" alt="Science Exhibition">
       <h3>Science Exhibition 2025</h3>
       <p>Explore innovative projects by our students.</p>
     </div>
-    <div class="album-card fade-up" style="animation-delay:0.1s;">
+    <div class="album-card" style="animation-delay:0.1s;">
       <img src="images/tour1.jpg" alt="Annual Tour">
       <h3>Annual Tour 2025</h3>
       <p>Fun moments and memories from our yearly tour.</p>
     </div>
-    <div class="album-card fade-up" style="animation-delay:0.2s;">
+    <div class="album-card" style="animation-delay:0.2s;">
       <img src="images/independence1.jpg" alt="Independence Day">
       <h3>Independence Day 2025</h3>
       <p>Patriotic celebrations and activities by students.</p>
     </div>
-    <div class="album-card fade-up" style="animation-delay:0.3s;">
+    <div class="album-card" style="animation-delay:0.3s;">
       <img src="images/saraswati1.jpg" alt="Saraswati Puja">
       <h3>Saraswati Puja 2025</h3>
       <p>Honoring knowledge and culture in festive spirit.</p>
     </div>
-    <div class="album-card fade-up" style="animation-delay:0.4s;">
+    <div class="album-card" style="animation-delay:0.4s;">
       <img src="images/food1.jpg" alt="Food Carnival">
       <h3>Food Carnival 2025</h3>
       <p>Delicious treats and fun activities for everyone.</p>
     </div>
-    <div class="album-card fade-up" style="animation-delay:0.5s;">
+    <div class="album-card" style="animation-delay:0.5s;">
       <img src="images/yoga1.jpg" alt="Yoga Day">
       <h3>Yoga Day 2025</h3>
       <p>Promoting health and wellness among students.</p>
@@ -132,8 +189,13 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
+
+  // Apply fade-up animation with delay
+  const cards = document.querySelectorAll('.album-card');
+  cards.forEach((card, index)=>{
+    card.style.animationDelay = `${index * 0.1}s`;
+  });
 </script>
 
 </body>
 </html>
-
