@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oxford Public School</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; line-height:1.6; }
@@ -41,8 +43,14 @@
     .card:hover { transform:scale(1.05); }
     .card a { display:inline-block; margin-top:10px; }
 
+    /* Connect With Us */
+    #connect { background:#f0f0f0; text-align:center; }
+    #connect .social-icons { margin-top:15px; display:flex; justify-content:center; gap:25px; font-size:1.8em; }
+    #connect .social-icons a { color:#0d47a1; transition:0.3s; }
+    #connect .social-icons a:hover { transform:scale(1.2); }
+
     /* Footer */
-    footer { background:#0d47a1; color:white; text-align:center; padding:15px 10px; margin-top:40px; }
+    footer { background:#0d47a1; color:white; text-align:center; padding:15px 10px; margin-top:0; }
   </style>
 </head>
 <body>
@@ -126,6 +134,17 @@
         <p>Access useful resources and study content.</p>
         <a href="study.html" class="btn">Go</a>
       </div>
+    </div>
+  </section>
+
+  <!-- Connect With Us -->
+  <section id="connect">
+    <h2>Connect With Us</h2>
+    <p>Follow us on social media to stay updated.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
     </div>
   </section>
 
