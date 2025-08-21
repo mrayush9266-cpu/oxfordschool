@@ -4,34 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: 'Segoe UI', sans-serif; background: #f6f6f6; color: #24324a; }
 
   /* Header */
   header {
-    background: linear-gradient(135deg,#5b86e5,#36d1dc);
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
     color:#fff;
-    padding: 24px 16px;
+    padding: 24px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    border-bottom: 2px solid #fff5;
   }
   header img { height:60px; }
-  header .title { text-align:left; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
-  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
+  header .title { text-align:left; flex:1; margin-left:12px; }
+  header .title h1 { font-family:'Playfair Display', serif; font-size:32px; font-weight:700; text-decoration:underline; }
+  header .title span { font-family:'Roboto Slab', serif; font-size:14px; font-weight:500; display:block; margin-top:4px; color:#2b3a67; }
 
   /* Navigation */
   nav {
-    background: linear-gradient(135deg,#36d1dc,#5b86e5);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display:flex;
     justify-content:center;
     position:sticky;
     top:0;
     z-index:10;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
   }
   nav ul {
     list-style:none;
@@ -47,6 +50,7 @@
     font-weight:600;
     transition:0.3s;
     display:block;
+    font-family:'Roboto Slab', serif;
   }
   nav ul li a:hover, nav ul li a.active {
     background: rgba(255,255,255,0.2);
@@ -55,7 +59,7 @@
   .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
   @media(max-width:768px){
     .menu-toggle { display:block; }
-    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
+    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#667eea,#764ba2); }
     nav ul.show { display:flex; }
   }
 
@@ -70,12 +74,12 @@
   .campus { background: #d4fc79; }
   .teacher { background: #cfd9df; }
   .facility { background: #fbc2eb; }
-  .explore { background: #a1c4fd; }
-  .connect { background: #ffdde1; }
+  .explore { background: #f5f0f8; }
+  .connect { background: #ffe6f0; }
 
   /* Card */
   .card { border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.15); transition: transform 0.3s; margin-bottom:16px; }
-  .card img { width:100%; display:block; }
+  .card img { width:100%; display:block; border-radius:12px; }
   .card:hover { transform: translateY(-5px); }
 
   /* Read more toggle */
@@ -83,16 +87,67 @@
   .readmore-btn { display:inline-block; margin-top:12px; padding:10px 16px; background:#0f47b8; color:#fff; border-radius:8px; cursor:pointer; transition:0.3s; }
   .readmore-btn:hover { background:#1e63e9; }
 
-  /* Explore cards */
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; text-align:center; }
-  .grid .btn { display:inline-block; margin-top:12px; padding:10px 14px; background:#fff; color:#24324a; border-radius:8px; font-weight:bold; text-decoration:none; transition:0.3s; }
-  .grid .btn:hover { background:#e0e0e0; }
+  /* Explore premium grid */
+  .explore .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .explore .grid > div {
+    background: #ffffffdd;
+    padding: 24px 16px;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    flex: 1 1 200px;
+    max-width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  .explore .grid > div:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+  }
+  .explore .grid h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #764ba2;
+    margin-bottom:8px;
+    position: relative;
+  }
+  .explore .grid h3::after {
+    content:"";
+    display:block;
+    width:0;
+    height:2px;
+    background:#764ba2;
+    transition: width 0.4s;
+    margin-top:4px;
+  }
+  .explore .grid div:hover h3::after { width:60%; }
+
+  .explore .grid p { font-size:14px; color:#24324a; margin-bottom:12px; }
+
+  .explore .grid a.btn { display:inline-block; margin-top:6px; padding:8px 12px; background:#764ba2; color:#fff; border-radius:6px; text-decoration:none; transition:0.3s; }
+  .explore .grid a.btn:hover { background:#5b42a1; }
+
+  /* Connect With Us icons */
+  .connect-icons a {
+    font-size:28px;
+    color:#764ba2;
+    margin:0 12px;
+    transition: transform 0.3s, color 0.3s;
+  }
+  .connect-icons a:hover { color:#5b42a1; transform: scale(1.2); }
 
   /* Footer */
   footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
 
   @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
 
+  @media(max-width:768px){
+    header .title h1 { font-size:24px; }
+  }
 </style>
 </head>
 <body>
@@ -102,7 +157,7 @@
   <img src="images/logo.png" alt="Logo">
   <div class="title">
     <h1>Oxford Public School</h1>
-    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
+    <span>Co-Education English Medium<br>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -196,10 +251,10 @@
   <!-- Connect With Us -->
   <section class="connect">
     <h2 class="section-heading">Connect With Us</h2>
-    <div style="text-align:center; font-size:24px; display:flex; justify-content:center; gap:20px;">
-      <a href="https://instagram.com/" target="_blank">📸</a>
-      <a href="https://facebook.com/" target="_blank">📘</a>
-      <a href="https://wa.me/91xxxxxxxxxx" target="_blank">💬</a>
+    <div class="connect-icons">
+      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/91xxxxxxxxxx" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </section>
 </main>
