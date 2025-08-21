@@ -5,23 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About • Oxford Public School</title>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f5f7; color: #333; }
 
   /* Header */
   header {
-    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    background: linear-gradient(135deg, #3a5fcd, #8ab6f3);
+    color: #fff; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
   }
-  .logo { height:60px; }
-  .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
-  .title span { font-size:14px; font-weight:500; }
+  .logo { height: 60px; }
+  .title h1 { font-family: 'Georgia', serif; font-size: 28px; font-weight: 900; text-decoration: underline; margin-bottom: 4px; }
+  .title span { font-size: 14px; font-weight: 500; display: block; }
 
   /* Navigation */
-  nav { background:#222; text-align:center; position:relative; }
-  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
-  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
-  nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+  nav { background: #2c3e91; position: sticky; top: 0; z-index: 1000; }
+  .menu-toggle { display: none; font-size: 28px; color: #fff; padding: 10px 16px; cursor: pointer; }
+  nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; margin: 0; padding: 0; }
+  nav ul li a { color: #fff; text-decoration: none; padding: 12px 18px; display: block; font-weight: 600; }
+  nav ul li a:hover, nav ul li a.active { background: #1b2b6d; border-radius: 6px; }
 
   @media(max-width:768px){
     .menu-toggle { display:block; }
@@ -29,28 +30,35 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1000px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
-  h3 { color:#0f47b8; margin-top:16px; margin-bottom:12px; font-weight:900; text-decoration:underline; font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; }
+  main { max-width: 1000px; margin: 26px auto; padding: 0 16px; }
 
-  /* Cards / Sections */
-  .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:18px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; }
-  .card:hover { transform:translateY(-5px); }
-  .card p { line-height:1.6; margin-bottom:12px; }
+  /* Section Headings */
+  h2 { font-size: 32px; margin-bottom: 12px; color: #2c3e91; font-family: 'Palatino Linotype','Book Antiqua',Palatino,serif; text-decoration: underline; }
 
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+  /* Sections */
+  section { margin-bottom: 40px; padding: 20px; border-radius: 16px; background: #e4e9f2; animation: fadeIn 1s ease; }
+  section img { max-width: 100%; border-radius: 12px; margin-bottom: 12px; transition: transform 0.3s; }
+  section img:hover { transform: scale(1.03); }
+  section p { line-height: 1.6; margin-bottom: 8px; }
+
+  /* Animations */
+  @keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+
+  /* Footer */
+  footer { background: linear-gradient(135deg, #2c3e91, #8ab6f3); color: #fff; text-align: center; padding: 30px; margin-top: 40px; font-size: 14px; }
+  footer span { font-family: 'Cursive', sans-serif; font-size: 12px; display: block; margin-top: 6px; }
+
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo" class="logo">
-    <div class="title">
-      <h1>Oxford Public School</h1>
-      <span>Rania Aurobindo Nagar, Kolkata 700154</span>
-    </div>
+  <img src="images/logo.png" alt="Oxford Logo" class="logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education | English Medium</span>
+    <span>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -71,30 +79,45 @@
 
 <!-- Main Content -->
 <main>
-  <section class="card">
-    <h2>Principal Desk</h2>
-    <p>It gives me great pleasure to welcome you to Oxford Public School.We are committed to academic excellence, moral values, and overall development of our students.Together, we shape young learners into responsible and confident citizens of tomorrow..</p>
+
+  <!-- School Vision & Mission -->
+  <section>
+    <h2>Our Vision & Mission</h2>
+    <img src="images/vision.jpg" alt="School Vision">
+    <p>Our vision is to nurture future leaders with integrity, knowledge, and creativity.</p>
+    <p>Our mission is to provide a holistic, inclusive, and innovative education that empowers students to excel academically and socially.</p>
   </section>
 
-  <section class="card">
-    <h3>Our Vision</h3>
-    <p>To create a learning community where students are encouraged to excel in academics, sports, arts, and values, becoming responsible and confident global citizens.</p>
+  <!-- Achievements -->
+  <section>
+    <h2>Achievements & Awards</h2>
+    <img src="images/achievements.jpg" alt="Achievements">
+    <p>Oxford Public School has consistently produced top-performing students in academics, sports, and cultural events.</p>
+    <p>Recognized for excellence in education by local and national education boards.</p>
   </section>
 
-  <section class="card">
-    <h3>Our Mission</h3>
-    <p>To provide holistic education with emphasis on knowledge, creativity, discipline, and ethical values. We aim to inspire lifelong learning and innovation in every student.</p>
+  <!-- Infrastructure -->
+  <section>
+    <h2>Our Campus & Facilities</h2>
+    <img src="images/campus.jpg" alt="Campus">
+    <p>Modern classrooms, fully equipped labs, smart boards, and safe playgrounds make learning engaging and fun.</p>
+    <p>We emphasize cleanliness, safety, and comfort for every student.</p>
   </section>
 
-  <section class="card">
-    <h3>Achievements</h3>
-    <p>Our students have consistently excelled in academics, arts, and sports. We regularly host inter-school competitions, science exhibitions, and cultural events, earning recognition and accolades at local and national levels.</p>
+  <!-- Teachers -->
+  <section>
+    <h2>Meet Our Teachers</h2>
+    <img src="images/teachers.jpg" alt="Teachers">
+    <p>Our passionate faculty inspires students to achieve excellence in academics and beyond.</p>
+    <p>Know more about our staff <a href="staff.html" style="color:#2c3e91; font-weight:bold;">here</a>.</p>
   </section>
+
 </main>
 
 <!-- Footer -->
 <footer>
   © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
 </footer>
 
 <script>
@@ -105,4 +128,3 @@
 
 </body>
 </html>
-
