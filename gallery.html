@@ -6,22 +6,31 @@
 <title>Gallery • Oxford Public School</title>
 <style>
   * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#f7f8fc; color:#333; }
+  body { font-family:'Segoe UI', sans-serif; background:#f7f8fc; color:#333; }
 
   /* Header */
   header {
-    background:#0f47b8; color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    background: linear-gradient(135deg,#1e3cb3,#4a6fe5);
+    color: #fff;
+    padding: 15px 30px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top:0;
+    z-index:1000;
   }
   .logo { height:60px; }
   .title h1 { margin:0; font-family:'Georgia', serif; font-size:28px; font-weight:900; text-decoration:underline; }
-  .title span { font-size:14px; font-weight:500; }
+  .title span { font-size:14px; font-weight:500; display:block; }
 
   /* Navigation */
-  nav { background:#222; text-align:center; position:relative; }
-  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
-  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; }
+  nav { background:#0f47b8; text-align:center; position:relative; }
+  nav ul { list-style:none; display:flex; justify-content:center; flex-wrap:wrap; margin:0; padding:0; }
   nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; display:block; font-weight:600; }
   nav ul li a:hover, nav ul li a.active { background:#444; border-radius:6px; }
+
+  .menu-toggle { display:none; font-size:28px; color:#fff; padding:10px 16px; cursor:pointer; }
 
   @media(max-width:768px){
     .menu-toggle { display:block; }
@@ -29,49 +38,23 @@
     nav ul.show { display:flex; }
   }
 
-  main { max-width:1100px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin:30px 0 16px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
+  main { max-width:1000px; margin:26px auto; padding:0 16px; }
+  h2 { font-size:32px; color:#0f47b8; text-align:center; margin-bottom:20px; font-weight:900; text-decoration:underline; font-family:'Georgia', serif; }
 
-  /* Gallery grid */
-  .grid { 
-    display:grid; 
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); 
-    gap:20px; 
-  }
+  /* Album Grid */
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+  .album-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 6px 18px rgba(15,71,184,.12); transition: transform 0.3s; cursor:pointer; position:relative; }
+  .album-card:hover { transform:translateY(-6px) scale(1.03); }
+  .album-card img { width:100%; display:block; height:180px; object-fit:cover; }
+  .album-card h3 { text-align:center; padding:12px 8px; background:#0f47b8; color:#fff; font-family:'Georgia', serif; margin:0; }
+  .album-card p { text-align:center; font-size:14px; padding:6px 8px; color:#555; }
 
-  /* Card Base */
-  .card { 
-    background:#fff; 
-    border-radius:12px; 
-    overflow:hidden; 
-    box-shadow:0 4px 12px rgba(0,0,0,0.1); 
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-    perspective: 1000px; /* enables 3D effect */
-  }
+  /* Animations */
+  .fade-up { animation: fadeUp 0.8s ease forwards; opacity:0; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
 
-  .card img { 
-    width:100%; 
-    height:200px;
-    object-fit:cover;
-    display:block; 
-    border-radius:8px; 
-    filter: brightness(85%);
-    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease; 
-    transform-style: preserve-3d;
-  }
-
-  /* Hover Animation */
-  .card:hover { 
-    transform: translateY(-10px) rotateX(2deg) rotateY(2deg) scale(1.05);
-    box-shadow:0 16px 30px rgba(0,0,0,0.35); 
-  }
-
-  .card:hover img { 
-    filter: brightness(100%);
-    transform: scale(1.05);
-  }
-
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+  footer { text-align:center; color:#5b6b8b; padding:26px; margin-top:40px; }
+  footer span { display:block; font-size:12px; font-style:italic; color:#24324a; }
 </style>
 </head>
 <body>
@@ -82,6 +65,7 @@
     <img src="images/logo.png" alt="Oxford Logo" class="logo">
     <div class="title">
       <h1>Oxford Public School</h1>
+      <span>Co-Education | English Medium</span>
       <span>Rania Aurobindo Nagar, Kolkata 700154</span>
     </div>
   </div>
@@ -102,76 +86,52 @@
   </ul>
 </nav>
 
-<!-- Main Content -->
 <main>
+  <h2>Our Albums</h2>
 
-  <section>
-    <h2>Science Exhibition 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/science1.jpg" alt="Science Exhibition 1"></div>
-      <div class="card"><img src="images/science2.jpg" alt="Science Exhibition 2"></div>
-      <div class="card"><img src="images/science3.jpg" alt="Science Exhibition 3"></div>
-      <div class="card"><img src="images/science4.jpg" alt="Science Exhibition 4"></div>
-      <div class="card"><img src="images/science5.jpg" alt="Science Exhibition 5"></div>
-      <div class="card"><img src="images/science6.jpg" alt="Science Exhibition 6"></div>
+  <div class="grid">
+    <div class="album-card fade-up">
+      <img src="images/science1.jpg" alt="Science Exhibition">
+      <h3>Science Exhibition 2025</h3>
+      <p>Explore innovative projects by our students.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Annual Tour 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/tour1.jpg" alt="Annual Tour 1"></div>
-      <div class="card"><img src="images/tour2.jpg" alt="Annual Tour 2"></div>
-      <div class="card"><img src="images/tour3.jpg" alt="Annual Tour 3"></div>
+    <div class="album-card fade-up" style="animation-delay:0.1s;">
+      <img src="images/tour1.jpg" alt="Annual Tour">
+      <h3>Annual Tour 2025</h3>
+      <p>Fun moments and memories from our yearly tour.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Independence Day 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/independence1.jpg" alt="Independence Day 1"></div>
-      <div class="card"><img src="images/independence2.jpg" alt="Independence Day 2"></div>
-      <div class="card"><img src="images/independence3.jpg" alt="Independence Day 3"></div>
+    <div class="album-card fade-up" style="animation-delay:0.2s;">
+      <img src="images/independence1.jpg" alt="Independence Day">
+      <h3>Independence Day 2025</h3>
+      <p>Patriotic celebrations and activities by students.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Saraswati Puja 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/puja1.jpg" alt="Saraswati Puja 1"></div>
-      <div class="card"><img src="images/puja2.jpg" alt="Saraswati Puja 2"></div>
-      <div class="card"><img src="images/puja3.jpg" alt="Saraswati Puja 3"></div>
+    <div class="album-card fade-up" style="animation-delay:0.3s;">
+      <img src="images/saraswati1.jpg" alt="Saraswati Puja">
+      <h3>Saraswati Puja 2025</h3>
+      <p>Honoring knowledge and culture in festive spirit.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Food Carnival 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/food1.jpg" alt="Food Carnival 1"></div>
-      <div class="card"><img src="images/food2.jpg" alt="Food Carnival 2"></div>
-      <div class="card"><img src="images/food3.jpg" alt="Food Carnival 3"></div>
+    <div class="album-card fade-up" style="animation-delay:0.4s;">
+      <img src="images/food1.jpg" alt="Food Carnival">
+      <h3>Food Carnival 2025</h3>
+      <p>Delicious treats and fun activities for everyone.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Yoga Day 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/yoga1.jpg" alt="Yoga Day 1"></div>
-      <div class="card"><img src="images/yoga2.jpg" alt="Yoga Day 2"></div>
-      <div class="card"><img src="images/yoga3.jpg" alt="Yoga Day 3"></div>
+    <div class="album-card fade-up" style="animation-delay:0.5s;">
+      <img src="images/yoga1.jpg" alt="Yoga Day">
+      <h3>Yoga Day 2025</h3>
+      <p>Promoting health and wellness among students.</p>
     </div>
-  </section>
- 
+  </div>
 </main>
 
 <footer>
   © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
 </footer>
 
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 </script>
 
 </body>
