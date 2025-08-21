@@ -67,7 +67,7 @@ h3 { color:#0f47b8; font-weight:900; margin-bottom:8px; }
 #connectUs .social-links {
   display:flex;
   justify-content:center;
-  gap:16px; /* smaller gap for compact grid */
+  gap:16px; 
   flex-wrap:wrap;
 }
 #connectUs .social-links a {
@@ -107,14 +107,14 @@ footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin
 #popupBanner .popup-content { 
   position:relative; 
   width:90%; 
-  max-width:600px; /* smaller on laptops */
+  max-width:600px; 
   text-align:center; 
 }
 #popupBanner img { 
   width:100%; 
   height:auto; 
   border-radius:12px; 
-  max-height:70vh; /* don’t overflow screen */
+  max-height:70vh; 
   object-fit:cover; 
 }
 #popupBanner .btn { 
@@ -182,7 +182,64 @@ footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin
 
 <!-- Main Content -->
 <main>
-  <!-- (your main content unchanged) -->
+
+  <!-- Principal Desk -->
+  <section class="section-card-extended">
+    <img src="images/principal.jpg" alt="Principal Desk">
+    <h3>Message from the Principal</h3>
+    <p>Welcome to Oxford Public School! We nurture young minds with a focus on academics and overall development.</p>
+    <p class="more-text" style="display:none;">Our aim is to build confident, responsible, and capable students ready for the future. We encourage creativity, curiosity, and critical thinking in every student.</p>
+    <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+  </section>
+
+  <!-- Campus Section -->
+  <section class="section-card-extended">
+    <img src="images/campus.jpg" alt="Our Campus">
+    <h3>Our Campus</h3>
+    <p>Spread over a beautiful, safe, and green campus, we provide an inspiring environment for learning.</p>
+    <p class="more-text" style="display:none;">Our infrastructure supports academics, sports, arts, and co-curricular activities effectively, ensuring each student gets a well-rounded experience.</p>
+    <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+  </section>
+
+  <!-- Teacher & Faculty -->
+  <section class="section-card-extended">
+    <img src="images/teachers.jpg" alt="Teacher & Faculty">
+    <h3>Our Teachers & Faculty</h3>
+    <p>Experienced and caring educators guide students to achieve their best academically and personally.</p>
+    <p>Dedicated staff ensure a supportive environment for holistic development.</p>
+    <button class="btn-general" onclick="location.href='staff.html'">Know About Our Staff</button>
+  </section>
+
+  <!-- Facilities -->
+  <section class="section-card-extended">
+    <img src="images/facilities.jpg" alt="Our Facilities">
+    <h3>Our Facilities</h3>
+    <p>State-of-the-art classrooms, libraries, laboratories, and playgrounds for comprehensive learning.</p>
+    <p class="more-text" style="display:none;">Modern facilities enable students to explore, innovate, and enjoy their school life fully, ensuring all-round development.</p>
+    <button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>
+  </section>
+
+  <!-- Explore Grid -->
+  <section>
+    <h2>Explore</h2>
+    <div class="grid">
+      <a href="admission.html" class="section-card"><h3>Admission</h3><p>Enroll your child in a safe and supportive learning environment.</p></a>
+      <a href="general_notice.html" class="section-card"><h3>Notices</h3><p>Stay updated with the latest school announcements and circulars.</p></a>
+      <a href="gallery.html" class="section-card"><h3>Gallery</h3><p>Take a look at our vibrant school life through photos of events and activities.</p></a>
+      <a href="study.html" class="section-card"><h3>Study Material</h3><p>Access study resources and materials to support your child’s academic growth.</p></a>
+    </div>
+  </section>
+
+  <!-- Connect With Us Section -->
+  <section id="connectUs">
+    <h2>Connect With Us</h2>
+    <div class="social-links">
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </section>
+
 </main>
 
 <!-- Footer -->
