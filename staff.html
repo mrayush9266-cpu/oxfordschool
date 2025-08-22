@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Staff • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'Segoe UI', sans-serif; background:#f6f8fb; color:#24324a; }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Segoe UI', sans-serif; background:#f6f8fb; color:#24324a; }
 
   /* Header */
   header {
@@ -20,8 +20,9 @@
     flex-wrap:wrap;
   }
   header img { height:60px; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; text-decoration:underline; margin-bottom:4px; }
-  header .title span { display:block; font-size:14px; font-weight:500; margin-top:2px; }
+  header .title { text-align:left; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
+  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
   /* Navigation */
   nav {
@@ -81,7 +82,7 @@
   }
 
   .card {
-    background:#fffaf0; /* Vibrant light color */
+    background:#fffaf0;
     border-radius:14px;
     padding:18px;
     box-shadow:0 8px 20px rgba(15,71,184,0.12);
@@ -111,21 +112,17 @@
     margin-top:40px;
     font-size:14px;
   }
-  footer span { display:block; font-size:12px; font-style:italic; color:#24324a; }
-
+  footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-  <div style="display:flex; align-items:center; gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo">
-    <div class="title">
-      <h1>Oxford Public School</h1>
-      <span>Co-Education | English Medium</span>
-      <span>Rania Aurobindo Nagar, Kolkata 700154</span>
-    </div>
+  <img src="images/logo.png" alt="Oxford Logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -147,15 +144,13 @@
 <main>
   <h2 class="section-heading">Our Staff</h2>
   <div class="grid">
-    <!-- Principal -->
+    <!-- Staff Cards -->
     <div class="card" style="animation-delay:0s;">
       <img src="images/staff1.jpg" alt="Principal">
       <h3>Mrs. Guriya Mishra</h3>
       <p>Principal</p>
       <p>Leading the school with vision, wisdom, and care for every student.</p>
     </div>
-
-    <!-- Other Staff -->
     <div class="card" style="animation-delay:0.1s;">
       <img src="images/staff2.jpg" alt="History Teacher">
       <h3>Mr. Aniket Bari</h3>
@@ -174,8 +169,6 @@
       <p>Multi Talented Teacher</p>
       <p>Unmatched skills across subjects, making learning fun and engaging.</p>
     </div>
-
-    <!-- Newly Added Staff -->
     <div class="card" style="animation-delay:0.4s;">
       <img src="images/staff5.jpg" alt="Teacher">
       <h3>Dolan Shaw</h3>
@@ -212,8 +205,6 @@
       <p>Teacher</p>
       <p>Passionate about student-centered learning.</p>
     </div>
-
-    <!-- Last 3 staff with updated bios -->
     <div class="card" style="animation-delay:1s;">
       <img src="images/staff13.jpg" alt="Teacher">
       <h3>Shwati Tripathi</h3>
@@ -251,3 +242,4 @@
 
 </body>
 </html>
+
