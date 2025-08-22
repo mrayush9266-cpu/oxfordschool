@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Segoe UI', sans-serif;background:#f6f8fb;color:#24324a;}
@@ -20,8 +20,9 @@
     flex-wrap:wrap;
   }
   header img{height:60px;}
-  header .title h1{font-family:'Pacifico', cursive;font-size:28px;text-decoration:underline;margin-bottom:4px;}
-  header .title span{display:block;font-size:14px;font-weight:500;margin-top:2px;}
+  header .title{ text-align:left; }
+  header .title h1{ font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
+  header .title span{ font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
   /* Navigation */
   nav{
@@ -83,6 +84,7 @@
   .map{margin-top:20px;}
   iframe{width:100%;height:300px;border:0;border-radius:12px;}
 
+  /* Footer */
   footer{
     text-align:center;
     color:#5b6b8b;
@@ -90,20 +92,17 @@
     margin-top:40px;
     font-size:14px;
   }
-  footer span{display:block;font-size:12px;font-style:italic;color:#24324a;}
+  footer span{ font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <header>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <img src="images/logo.png" alt="Oxford Logo">
-    <div class="title">
-      <h1>Oxford Public School</h1>
-      <span>Co-Education | English Medium</span>
-      <span>Rania Aurobindo Nagar, Kolkata 700154</span>
-    </div>
+  <img src="images/logo.png" alt="Oxford Logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -146,7 +145,7 @@
         <input type="email" id="email" placeholder="Your Email" required>
         <label for="phone">Phone</label>
         <input type="text" id="phone" placeholder="Your Phone">
-        <label for="message">Messageee.</label>
+        <label for="message">Message</label>
         <textarea id="message" placeholder="Write your message here..." required></textarea>
         <button type="submit" class="btn">Submit</button>
       </form>
