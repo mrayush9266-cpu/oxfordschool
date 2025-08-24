@@ -1,192 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog • Oxford Public School</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f6f8fb;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog • Oxford Public School</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f6f8fb; color: #24324a; }
 
-    /* Header */
-    header {
-      background: linear-gradient(135deg, #36d1dc, #5b86e5);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-family: 'Pacifico', cursive;
-      margin: 0;
-      font-size: 36px;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      text-decoration: none;
-      color: white;
-      margin: 0 12px;
-      font-size: 18px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffeb3b;
-    }
+  /* Header */
+  header {
+    background: linear-gradient(135deg,#5b86e5,#36d1dc);
+    color:#fff;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  header img { height:60px; }
+  header .title { text-align:left; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
+  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
-    /* Blog Section */
-    .blog-section {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 30px;
-      background: #fffafc;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      animation: fadeInUp 0.8s ease;
-      text-align: center;
-    }
-    .blog-section h2 {
-      font-family: 'Pacifico', cursive;
-      font-size: 32px;
-      color: #e6399b;
-      margin-bottom: 20px;
-    }
-    .blog-section .intro {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 15px;
-      color: #333;
-    }
+  /* Navigation */
+  nav {
+    background: linear-gradient(135deg,#36d1dc,#5b86e5);
+    display:flex;
+    justify-content:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav ul {
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    margin:0;
+    padding:0;
+  }
+  nav ul li a {
+    color:#fff;
+    text-decoration:none;
+    padding:12px 18px;
+    font-weight:600;
+    transition:0.3s;
+    display:block;
+  }
+  nav ul li a:hover, nav ul li a.active {
+    background: rgba(255,255,255,0.2);
+    border-radius:6px;
+  }
+  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
+  @media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
+    nav ul.show { display:flex; }
+  }
 
-    /* Slideshow */
-    .slideshow-container {
-      position: relative;
-      margin-top: 30px;
-      max-width: 100%;
-      height: 400px;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-    .slide {
-      display: none;
-      width: 100%;
-      height: 100%;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border: 10px solid transparent;
-      border-radius: 20px;
-      animation: borderAnimation 5s infinite;
-    }
+  /* Blog Section */
+  .blog-section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fffafc;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    animation: fadeInUp 0.8s ease;
+    text-align: center;
+  }
+  .blog-section h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+    color: #e6399b;
+    margin-bottom: 20px;
+  }
+  .blog-section .intro {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333;
+  }
 
-    /* Different border styles (animated) */
-    @keyframes borderAnimation {
-      0%   { border-color: #ffb3ba; border-style: dashed; }
-      25%  { border-color: #ffdfba; border-style: dotted; }
-      50%  { border-color: #baffc9; border-style: double; }
-      75%  { border-color: #bae1ff; border-style: groove; }
-      100% { border-color: #ffb3ba; border-style: dashed; }
-    }
+  /* Slideshow */
+  .slideshow-container {
+    position: relative;
+    margin-top: 30px;
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 10px solid transparent;
+    border-radius: 20px;
+    animation: borderAnimation 5s infinite;
+  }
+  @keyframes borderAnimation {
+    0%   { border-color: #ffb3ba; border-style: dashed; }
+    25%  { border-color: #ffdfba; border-style: dotted; }
+    50%  { border-color: #baffc9; border-style: double; }
+    75%  { border-color: #bae1ff; border-style: groove; }
+    100% { border-color: #ffb3ba; border-style: dashed; }
+  }
+  .fade { animation: fadeEffect 2s; }
+  @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
 
-    /* Fading animation for slideshow */
-    .fade { animation: fadeEffect 2s; }
-    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Animation */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Footer */
-    footer {
-      background: #5b86e5;
-      color: white;
-      text-align: center;
-      padding: 12px;
-      margin-top: 40px;
-    }
-  </style>
+  /* Footer */
+  footer {
+    background: #5b86e5;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 40px;
+  }
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
+<!-- Header -->
+<header>
+  <img src="images/logo.png" alt="Oxford Logo">
+  <div class="title">
     <h1>Oxford Public School</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="notice.html">Notices</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="study.html">Study Material</a>
-      <a href="contact.html">Contact</a>
-      <a href="blog.html">Blog</a> <!-- NEW -->
-    </nav>
-  </header>
+    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
+  </div>
+  <div class="menu-toggle">☰</div>
+</header>
 
-  <!-- Blog Section -->
-  <section class="blog-section">
-    <h2>✨ Welcome to Our Creative Corner! ✨</h2>
-    <p class="intro">
-      At Oxford Public School, we believe every child is an artist, a dreamer, and a storyteller. 
-      Our <b>BLOG</b> is a vibrant space where imagination comes alive! Here, we showcase the colorful world of our students through their artworks, paintings, poems, stories, craftwork, and creative write-ups.
-    </p>
-    <p class="intro">
-      Every brushstroke, every line of poetry, every handmade craft tells a unique story of curiosity, joy, and inspiration. 
-      This platform is not just about talent—it’s about celebrating expression, encouraging creativity, and giving children the confidence to share their voices with the world.
-    </p>
-    <p class="intro">
-      Step inside and explore the magic created by little hands and big imaginations. 
-      Each post in this blog reflects the passion, innocence, and originality of our budding creators. 
-      From thoughtful essays to dazzling drawings, from heartfelt stories to innovative crafts—this is a gallery of young minds shaping the future with creativity.
-    </p>
-    <p class="intro"><b>Dive in, get inspired, and witness the extraordinary in the ordinary! 🌈</b></p>
+<!-- Navigation -->
+<nav>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="general_notice.html">Notice</a></li>
+    <li><a href="study.html">Study Material</a></li>
+    <li><a href="staff.html">Staff</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-    <!-- Slideshow -->
-    <div class="slideshow-container">
-      <div class="slide fade">
-        <img src="images/blog1.jpg" alt="Student Artwork">
-      </div>
-      <div class="slide fade">
-        <img src="images/blog2.jpg" alt="Student Poem">
-      </div>
-      <div class="slide fade">
-        <img src="images/blog3.jpg" alt="Student Craft">
-      </div>
-      <div class="slide fade">
-        <img src="images/blog4.jpg" alt="Student Painting">
-      </div>
+<!-- Blog Section -->
+<section class="blog-section">
+  <h2>✨ Welcome to Our Creative Corner! ✨</h2>
+  <p class="intro">
+    At Oxford Public School, we believe every child is an artist, a dreamer, and a storyteller. 
+    Our <b>BLOG</b> is a vibrant space where imagination comes alive! Here, we showcase the colorful world of our students through their artworks, paintings, poems, stories, craftwork, and creative write-ups.
+  </p>
+  <p class="intro">
+    Every brushstroke, every line of poetry, every handmade craft tells a unique story of curiosity, joy, and inspiration. 
+    This platform is not just about talent—it’s about celebrating expression, encouraging creativity, and giving children the confidence to share their voices with the world.
+  </p>
+  <p class="intro">
+    Step inside and explore the magic created by little hands and big imaginations. 
+    Each post in this blog reflects the passion, innocence, and originality of our budding creators. 
+    From thoughtful essays to dazzling drawings, from heartfelt stories to innovative crafts—this is a gallery of young minds shaping the future with creativity.
+  </p>
+  <p class="intro"><b>Dive in, get inspired, and witness the extraordinary in the ordinary! 🌈</b></p>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="images/blog1.jpg" alt="Student Artwork">
     </div>
-  </section>
+    <div class="slide fade">
+      <img src="images/blog2.jpg" alt="Student Poem">
+    </div>
+    <div class="slide fade">
+      <img src="images/blog3.jpg" alt="Student Craft">
+    </div>
+    <div class="slide fade">
+      <img src="images/blog4.jpg" alt="Student Painting">
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Oxford Public School. All Rights Reserved.
-  </footer>
+<!-- Footer -->
+<footer>
+  &copy; 2025 Oxford Public School. All Rights Reserved.
+</footer>
 
-  <!-- Slideshow Script -->
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
-      slides[slideIndex-1].style.display = "block";  
-      setTimeout(showSlides, 4000); // Change every 4s
-    }
-  </script>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
+
+  let slideIndex = 0;
+  showSlides();
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1;}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 4000);
+  }
+</script>
 
 </body>
 </html>
