@@ -118,7 +118,7 @@
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student login.html">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
@@ -151,7 +151,7 @@
 
   <section class="form-section" id="form">
     <h2 class="section-heading">Admission Form</h2>
-    <form id="admissionForm">
+    <form id="admissionForm" action="https://formspree.io/f/xpwlgyzy" method="POST">
       <input type="text" name="student_name" placeholder="Student Name" required>
       <input type="text" name="father_name" placeholder="Father's Name" required>
       <input type="text" name="mother_name" placeholder="Mother's Name" required>
@@ -176,7 +176,6 @@
       <textarea name="address" placeholder="Full Address" rows="3" required></textarea>
       <button type="submit">Submit Admission Form</button>
     </form>
-    <p id="confirmation" style="display:none; margin-top:15px; color:green; font-weight:bold;"></p>
   </section>
 </main>
 
@@ -185,7 +184,7 @@
   <span>Designed by Mr. Ayush</span>
 </footer>
 
-<!-- Include jsPDF Library -->
+<!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
@@ -194,77 +193,61 @@ const menu = document.getElementById('menu');
 menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
 const form = document.getElementById('admissionForm');
-const confirmation = document.getElementById('confirmation');
 
 form.addEventListener('submit', async function(e) {
-  e.preventDefault(); // Prevent default submission
+  e.preventDefault();
 
-  // Show confirmation message
-  confirmation.textContent = "Thank you! Your admission form has been submitted successfully.";
-  confirmation.style.display = "block";
+  const formData = new FormData(form);
 
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
+  // Send data to Formspree
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });
 
-  // Page background
-  doc.setFillColor(245, 245, 255);
-  doc.rect(0, 0, 210, 297, 'F');
+  if (response.ok) {
+    // Generate PDF Confirmation for Parent
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-  // Logo
-  const logoUrl = 'images/logo.png';
-  const logo = new Image();
-  logo.src = logoUrl;
-
-  logo.onload = function() {
-    doc.addImage(logo, 'PNG', 80, 10, 50, 50);
-
-    // Header
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(24);
-    doc.setTextColor(91, 134, 229);
-    doc.text("Oxford Public School", 105, 70, null, null, 'center');
+    doc.setFontSize(20);
+    doc.setTextColor(54, 100, 200);
+    doc.text("Oxford Public School", 105, 20, null, null, "center");
 
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.setTextColor(54, 209, 220);
-    doc.text("Rania Aurobindo Nagar, Kolkata 700154", 105, 78, null, null, 'center');
+    doc.text("Admission Confirmation", 105, 30, null, null, "center");
+    doc.text("Rania Aurobindo Nagar, Kolkata 700154", 105, 36, null, null, "center");
 
-    // Decorative line
-    doc.setDrawColor(91, 134, 229);
-    doc.setLineWidth(1);
-    doc.line(20, 85, 190, 85);
-
-    // Student Info Box
-    let startY = 95;
+    let startY = 55;
     const lineHeight = 10;
-    const boxHeight = 95;
-
-    doc.setFillColor(230, 247, 255);
-    doc.roundedRect(15, startY - 5, 180, boxHeight, 4, 4, 'F');
 
     doc.setFontSize(14);
-    doc.setTextColor(20, 47, 184);
-    doc.text(`Student Name: ${form.student_name.value}`, 20, startY);
-    doc.text(`Father's Name: ${form.father_name.value}`, 20, startY + lineHeight);
-    doc.text(`Mother's Name: ${form.mother_name.value}`, 20, startY + 2*lineHeight);
-    doc.text(`Class: ${form.class.value}`, 20, startY + 3*lineHeight);
-    doc.text(`Date of Birth: ${form.dob.value}`, 20, startY + 4*lineHeight);
-    doc.text(`Contact: ${form.contact.value}`, 20, startY + 5*lineHeight);
-    doc.text(`Email: ${form.email.value}`, 20, startY + 6*lineHeight);
-    doc.text(`Address: ${form.address.value}`, 20, startY + 7*lineHeight, { maxWidth: 170 });
+    doc.setTextColor(0, 0, 0);
+    doc.text(`Student Name: ${formData.get('student_name')}`, 20, startY);
+    doc.text(`Father's Name: ${formData.get('father_name')}`, 20, startY + lineHeight);
+    doc.text(`Mother's Name: ${formData.get('mother_name')}`, 20, startY + 2*lineHeight);
+    doc.text(`Class: ${formData.get('class')}`, 20, startY + 3*lineHeight);
+    doc.text(`Date of Birth: ${formData.get('dob')}`, 20, startY + 4*lineHeight);
+    doc.text(`Contact: ${formData.get('contact')}`, 20, startY + 5*lineHeight);
+    doc.text(`Email: ${formData.get('email')}`, 20, startY + 6*lineHeight);
+    doc.text(`Address: ${formData.get('address')}`, 20, startY + 7*lineHeight, { maxWidth: 170 });
 
-    // Footer
     doc.setFontSize(10);
-    doc.setTextColor(91, 134, 229);
-    doc.setFont("helvetica", "italic");
-    doc.text("Admission Confirmation • Oxford Public School", 105, 280, null, null, 'center');
+    doc.setTextColor(100, 100, 100);
+    doc.text("This is a system-generated admission confirmation.", 105, 280, null, null, "center");
 
-    // Save PDF
     doc.save('AdmissionConfirmation.pdf');
 
-    // Reset form
     form.reset();
-  };
+
+    // Redirect to Thank You page
+    window.location.href = "thankyou.html";
+  } else {
+    alert("❌ Something went wrong. Please try again.");
+  }
 });
 </script>
 
