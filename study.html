@@ -309,23 +309,4 @@
 <footer>
   © 2025 Oxford Public School | All Rights Reserved
   <span>Designed by Mr. Ayush</span>
-</footer>
-
-<script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
-
-  // One class open at a time
-  const cards = document.querySelectorAll('.material-card');
-  cards.forEach(card => {
-    const title = card.querySelector('h3');
-    title.addEventListener('click', () => {
-      cards.forEach(c => { if(c !== card) c.classList.remove('active'); });
-      card.classList.toggle('active');
-    });
-  });
-</script>
-
-</body>
-</html>   kepping header navigation and footer design colour font same change the study material section design colour font and made a good extraorfinary animated class wise 
+</footer> 
