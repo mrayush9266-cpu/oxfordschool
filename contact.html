@@ -118,7 +118,7 @@
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student login.html">Student Login</a></li>
     <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
 </nav>
@@ -140,15 +140,20 @@
     <!-- Form -->
     <div class="form">
       <h3>Any other enquiries</h3>
-      <form>
+      <form action="https://formspree.io/f/xpwlgyzy" method="POST">
         <label for="name">Name</label>
-        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Your Email" required>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
         <label for="phone">Phone</label>
-        <input type="text" id="phone" placeholder="Your Phone">
+        <input type="text" id="phone" name="phone" placeholder="Your Phone">
+
         <label for="message">Message</label>
-        <textarea id="message" placeholder="Write your message here..." required></textarea>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+        <input type="hidden" name="_next" value="thankyou.html"> <!-- Redirect after submission -->
         <button type="submit" class="btn">Submit</button>
       </form>
     </div>
