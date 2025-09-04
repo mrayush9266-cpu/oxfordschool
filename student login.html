@@ -288,7 +288,12 @@
   feesForm.addEventListener('submit', function(e){
     e.preventDefault();
     const formData = new FormData(feesForm);
-    fetch("https://formspree.io/f/xpwlgyzy", { method:"POST", body:formData })
+fetch("https://formspree.io/f/xpwlgyzy", {
+  method: "POST",
+  body: formData,
+  headers: { 'Accept': 'application/json' }
+})
+
       .then(()=> {
         successMessage.style.display='flex';
         feesForm.querySelector('button').disabled = true;
@@ -300,3 +305,4 @@
 
 </body>
 </html>
+
