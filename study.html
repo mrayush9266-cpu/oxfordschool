@@ -12,133 +12,60 @@
   /* Header */
   header {
     background: linear-gradient(135deg,#5b86e5,#36d1dc);
-    color:#fff;
-    padding:24px 16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+    color:#fff; padding:24px 16px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
   }
   header img { height:60px; }
-  header .title { text-align:left; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
-  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; text-decoration:underline; }
+  header .title span { font-size:14px; display:block; margin-top:2px; }
 
   /* Navigation */
-  nav {
-    background: linear-gradient(135deg,#36d1dc,#5b86e5);
-    display:flex;
-    justify-content:center;
-    position:sticky;
-    top:0;
-    z-index:10;
-  }
-  nav ul {
-    list-style:none;
-    display:flex;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
-  }
-  nav ul li a {
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-weight:600;
-    transition:0.3s;
-    display:block;
-  }
-  nav ul li a:hover, nav ul li a.active {
-    background: rgba(255,255,255,0.2);
-    border-radius:6px;
-  }
+  nav { background: linear-gradient(135deg,#36d1dc,#5b86e5); display:flex; justify-content:center; position:sticky; top:0; z-index:10; }
+  nav ul { list-style:none; display:flex; flex-wrap:wrap; }
+  nav ul li a { color:#fff; text-decoration:none; padding:12px 18px; font-weight:600; display:block; transition:0.3s; }
+  nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,0.2); border-radius:6px; }
   .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
   @media(max-width:768px){
-    .menu-toggle { display:block; }
-    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
-    nav ul.show { display:flex; }
+    .menu-toggle{display:block;}
+    nav ul{display:none;flex-direction:column;width:100%;}
+    nav ul.show{display:flex;}
   }
 
-  main {
-    max-width:1100px;
-    margin:30px auto;
-    padding:20px;
-    background:#fffaf0;
-    border-radius:16px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
-    animation: fadeInUp 0.8s ease;
-  }
-
+  main { max-width:1100px; margin:30px auto; padding:20px; background:#fffaf0; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
   h2 { font-size:32px; color:#0f47b8; margin-bottom:20px; text-decoration:underline; font-family:'Roboto Slab', serif; text-align:center; }
 
-  /* Class Card */
-  .class-card {
-    background:#fff;
-    border-radius:14px;
-    margin-bottom:18px;
-    padding:16px;
-    box-shadow:0 6px 18px rgba(15,71,184,.12);
-    transition:0.3s;
-  }
-  .class-card:hover { transform:translateY(-4px); }
-  .class-card h3 {
-    cursor:pointer;
-    font-size:20px;
-    color:#2c3e91;
-    margin-bottom:10px;
-    text-decoration:underline;
-  }
+  /* Class Cards */
+  .class-card { border-radius:18px; padding:18px; margin-bottom:20px; box-shadow:0 6px 18px rgba(0,0,0,0.12); transition:0.3s; }
+  .class-card:hover { transform:translateY(-6px); }
+  .class-header { display:flex; justify-content:space-between; align-items:center; cursor:pointer; margin-bottom:12px; }
+  .class-header h3 { font-size:22px; color:#2c3e91; }
+  .class-header span { font-size:20px; }
 
-  /* Subjects */
-  .subjects { display:none; flex-wrap:wrap; gap:12px; }
-  .class-card.active .subjects { display:flex; animation: fadeIn 0.5s ease; }
-  .subject {
-    background:#36d1dc;
-    color:#fff;
-    padding:10px 16px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:600;
-    transition:0.3s;
-  }
-  .subject:hover { background:#5b86e5; transform:scale(1.05); }
+  /* Gradient backgrounds */
+  .nursery { background:linear-gradient(135deg,#fbc2eb,#a6c1ee); }
+  .kg { background:linear-gradient(135deg,#f6d365,#fda085); }
+  .c1 { background:linear-gradient(135deg,#84fab0,#8fd3f4); }
+  .c2 { background:linear-gradient(135deg,#ffecd2,#fcb69f); }
+  .c3 { background:linear-gradient(135deg,#cfd9df,#e2ebf0); }
+  .c4 { background:linear-gradient(135deg,#fddb92,#d1fdff); }
+  .c5 { background:linear-gradient(135deg,#a1c4fd,#c2e9fb); }
+  .c6 { background:linear-gradient(135deg,#fda085,#f6d365); }
+  .c7 { background:linear-gradient(135deg,#ff9a9e,#fad0c4); }
+  .c8 { background:linear-gradient(135deg,#a18cd1,#fbc2eb); }
+  .c9 { background:linear-gradient(135deg,#fbc2eb,#a6c1ee); }
+  .c10{ background:linear-gradient(135deg,#f6d365,#fda085); }
 
-  /* Files */
-  .files { display:none; flex-direction:column; margin-top:12px; width:100%; }
-  .subject.active + .files { display:flex; animation: fadeIn 0.5s ease; }
-  .file-item {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#f9f9f9;
-    padding:10px 14px;
-    border-radius:8px;
-    margin-bottom:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.08);
-  }
-  .file-item span { font-size:14px; color:#333; }
-  .file-item a {
-    padding:6px 12px;
-    background:#36d1dc;
-    color:#fff;
-    border-radius:6px;
-    font-size:13px;
-    text-decoration:none;
-    transition:0.3s;
-  }
+  .subject { background:#2c3e91; color:#fff; padding:10px 14px; border-radius:8px; margin-top:8px; cursor:pointer; display:inline-block; transition:0.3s; }
+  .subject:hover { background:#0f47b8; }
+  .files { margin-top:10px; display:none; }
+  .subject.active + .files { display:block; }
+
+  .file-item { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:10px 14px; border-radius:8px; margin-top:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  .file-item a { padding:6px 12px; background:#36d1dc; color:#fff; border-radius:6px; font-size:13px; text-decoration:none; transition:0.3s; }
   .file-item a:hover { background:#5b86e5; }
 
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-
-  /* Footer */
-  footer {
-    text-align:center;
-    color:#5b6b8b;
-    padding:26px;
-    font-size:14px;
-  }
-  footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
+  footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
+  footer span { font-family:'Lobster', cursive; display:block; margin-top:6px; }
 </style>
 </head>
 <body>
@@ -171,262 +98,145 @@
 
 <main>
   <h2>Study Material</h2>
-
-  <!-- Classes -->
   <div id="classes">
 
     <!-- Nursery -->
-    <div class="class-card">
-      <h3>Nursery</h3>
+    <div class="class-card nursery">
+      <div class="class-header"><h3>Nursery</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
+        <div class="subject">📘 English</div>
         <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/nursery_english.pdf" download>Download</a></div>
+          <div class="file-item"><span>English Part 1</span><a href="materials/nursery_english1.pdf" download>Download</a></div>
+          <div class="file-item"><span>English Part 2</span><a href="materials/nursery_english2.pdf" download>Download</a></div>
         </div>
-        <div class="subject">Math</div>
+        <div class="subject">➕ Math</div>
         <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/nursery_math.pdf" download>Download</a></div>
+          <div class="file-item"><span>Math Part 1</span><a href="materials/nursery_math1.pdf" download>Download</a></div>
         </div>
       </div>
     </div>
 
     <!-- KG -->
-    <div class="class-card">
-      <h3>KG</h3>
+    <div class="class-card kg">
+      <div class="class-header"><h3>KG</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/kg_english.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/kg_math.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div>
+        <div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/kg_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div>
+        <div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/kg_math1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <!-- Class 1 to 4 simple -->
-    <!-- Example: Class 1 -->
-    <div class="class-card">
-      <h3>Class 1</h3>
+    <!-- Classes 1-4 (English + Math) -->
+    <div class="class-card c1"><div class="class-header"><h3>Class 1</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/class1_english.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/class1_math.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div>
+        <div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class1_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div>
+        <div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class1_math1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 2</h3>
+    <div class="class-card c2"><div class="class-header"><h3>Class 2</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/class2_english.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/class2_math.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div>
+        <div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class2_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div>
+        <div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class2_math1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 3</h3>
+    <div class="class-card c3"><div class="class-header"><h3>Class 3</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/class3_english.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/class3_math.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div>
+        <div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class3_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div>
+        <div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class3_math1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 4</h3>
+    <div class="class-card c4"><div class="class-header"><h3>Class 4</h3><span>📘➕</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Book</span><a href="materials/class4_english.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Book</span><a href="materials/class4_math.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div>
+        <div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class4_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div>
+        <div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class4_math1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <!-- Class 5 to 10 expanded with all subjects -->
-    <!-- Example Class 5 -->
-    <div class="class-card">
-      <h3>Class 5</h3>
+    <!-- Classes 5-10 (English + Math + Science + SST) -->
+    <div class="class-card c5"><div class="class-header"><h3>Class 5</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Part 1</span><a href="materials/class5_english1.pdf" download>Download</a></div>
-          <div class="file-item"><span>English Part 2</span><a href="materials/class5_english2.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class5_math1.pdf" download>Download</a></div>
-          <div class="file-item"><span>Math Part 2</span><a href="materials/class5_math2.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class5_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class5_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div><div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class5_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class5_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class5_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class5_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <!-- Repeat for Class 6–10 -->
-    <div class="class-card">
-      <h3>Class 6</h3>
+    <div class="class-card c6"><div class="class-header"><h3>Class 6</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Part 1</span><a href="materials/class6_english1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class6_math1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class6_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class6_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div><div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class6_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class6_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class6_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class6_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 7</h3>
+    <div class="class-card c7"><div class="class-header"><h3>Class 7</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Part 1</span><a href="materials/class7_english1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class7_math1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class7_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class7_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div><div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class7_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class7_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class7_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class7_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 8</h3>
+    <div class="class-card c8"><div class="class-header"><h3>Class 8</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">Computer</div>
-        <div class="files">
-          <div class="file-item"><span>E Commerce Notes</span><a href="pdfs/class8_computer.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class8_math1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class8_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class8_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 Computer</div><div class="files"><div class="file-item"><span>E-COMMERCE NOTES</span><a href="pdfs/class8_computer.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class8_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class8_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class8_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 9</h3>
+    <div class="class-card c9"><div class="class-header"><h3>Class 9</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Part 1</span><a href="materials/class9_english1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class9_math1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class9_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class9_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div><div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class9_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class9_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class9_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class9_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
-    <div class="class-card">
-      <h3>Class 10</h3>
+    <div class="class-card c10"><div class="class-header"><h3>Class 10</h3><span>📘➕🔬🌍</span></div>
       <div class="subjects">
-        <div class="subject">English</div>
-        <div class="files">
-          <div class="file-item"><span>English Part 1</span><a href="materials/class10_english1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Math</div>
-        <div class="files">
-          <div class="file-item"><span>Math Part 1</span><a href="materials/class10_math1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">Science</div>
-        <div class="files">
-          <div class="file-item"><span>Science Part 1</span><a href="materials/class10_science1.pdf" download>Download</a></div>
-        </div>
-        <div class="subject">SST</div>
-        <div class="files">
-          <div class="file-item"><span>SST Part 1</span><a href="materials/class10_sst1.pdf" download>Download</a></div>
-        </div>
+        <div class="subject">📘 English</div><div class="files"><div class="file-item"><span>English Part 1</span><a href="materials/class10_english1.pdf" download>Download</a></div></div>
+        <div class="subject">➕ Math</div><div class="files"><div class="file-item"><span>Math Part 1</span><a href="materials/class10_math1.pdf" download>Download</a></div></div>
+        <div class="subject">🔬 Science</div><div class="files"><div class="file-item"><span>Science Part 1</span><a href="materials/class10_science1.pdf" download>Download</a></div></div>
+        <div class="subject">🌍 SST</div><div class="files"><div class="file-item"><span>SST Part 1</span><a href="materials/class10_sst1.pdf" download>Download</a></div></div>
       </div>
     </div>
 
   </div>
 </main>
 
-<!-- Footer -->
 <footer>
-  <p>© 2025 Oxford Public School | All Rights Reserved</p>
+  <p>&copy; 2025 Oxford Public School. All rights reserved.</p>
   <span>Designed by Mr. Ayush</span>
 </footer>
 
 <script>
-  document.querySelectorAll('.class-card h3').forEach(h=>{
-    h.addEventListener('click',()=>{
-      h.parentElement.classList.toggle('active');
+  document.querySelector(".menu-toggle").onclick = () => {
+    document.querySelector("#menu").classList.toggle("show");
+  };
+  document.querySelectorAll(".subject").forEach(subject=>{
+    subject.addEventListener("click",()=>{
+      subject.classList.toggle("active");
     });
-  });
-
-  document.querySelectorAll('.subject').forEach(s=>{
-    s.addEventListener('click',()=>{
-      document.querySelectorAll('.subject').forEach(x=>x.classList.remove('active'));
-      s.classList.toggle('active');
-    });
-  });
-
-  document.querySelector('.menu-toggle').addEventListener('click',()=>{
-    document.getElementById('menu').classList.toggle('show');
   });
 </script>
+
 </body>
 </html>
-
