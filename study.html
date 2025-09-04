@@ -60,7 +60,7 @@
   }
 
   main {
-    max-width:1000px;
+    max-width:1100px;
     margin:30px auto;
     padding:20px;
     background:#fffaf0;
@@ -71,50 +71,65 @@
 
   h2 { font-size:32px; color:#0f47b8; margin-bottom:20px; text-decoration:underline; font-family:'Roboto Slab', serif; text-align:center; }
 
-  /* Material Grid */
-  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-  .material-card {
+  /* Class Card */
+  .class-card {
     background:#fff;
     border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 6px 18px rgba(15,71,184,.12);
-    transition: transform 0.3s;
-    position:relative;
+    margin-bottom:18px;
     padding:16px;
-    text-align:center;
+    box-shadow:0 6px 18px rgba(15,71,184,.12);
+    transition:0.3s;
   }
-  .material-card:hover { transform:translateY(-6px) scale(1.03); }
-  .material-card h3 { font-family:'Georgia', serif; font-size:18px; margin-bottom:8px; color:#2c3e91; text-decoration:underline; cursor:pointer; }
-  .material-card p { font-size:14px; color:#555; margin-bottom:10px; }
+  .class-card:hover { transform:translateY(-4px); }
+  .class-card h3 {
+    cursor:pointer;
+    font-size:20px;
+    color:#2c3e91;
+    margin-bottom:10px;
+    text-decoration:underline;
+  }
 
-  .subjects {
-    display:none;
-    margin-top:12px;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:center;
+  /* Subjects */
+  .subjects { display:none; flex-wrap:wrap; gap:12px; }
+  .class-card.active .subjects { display:flex; animation: fadeIn 0.5s ease; }
+  .subject {
+    background:#36d1dc;
+    color:#fff;
+    padding:10px 16px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
   }
-  .material-card.active .subjects {
+  .subject:hover { background:#5b86e5; transform:scale(1.05); }
+
+  /* Files */
+  .files { display:none; flex-direction:column; margin-top:12px; width:100%; }
+  .subject.active + .files { display:flex; animation: fadeIn 0.5s ease; }
+  .file-item {
     display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f9f9f9;
+    padding:10px 14px;
+    border-radius:8px;
+    margin-bottom:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
   }
-  .material-card a.btn {
-    display:inline-block;
-    padding:8px 16px;
+  .file-item span { font-size:14px; color:#333; }
+  .file-item a {
+    padding:6px 12px;
     background:#36d1dc;
     color:#fff;
     border-radius:6px;
-    font-weight:600;
+    font-size:13px;
     text-decoration:none;
     transition:0.3s;
   }
-  .material-card a.btn:hover {
-    background:#5b86e5;
-    transform:scale(1.05);
-    box-shadow:0 6px 18px rgba(15,71,184,0.4);
-  }
+  .file-item a:hover { background:#5b86e5; }
 
-  /* Animations */
   @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
   /* Footer */
   footer {
@@ -124,12 +139,6 @@
     font-size:14px;
   }
   footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
-
-  /* Mobile header */
-  @media(max-width:768px){
-    header .title h1 { font-size:20px; white-space:nowrap; }
-    header .title span { font-size:12px; }
-  }
 </style>
 </head>
 <body>
@@ -155,158 +164,269 @@
     <li><a href="study.html" class="active">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student login.html">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
 <main>
   <h2>Study Material</h2>
-  <div class="grid">
+
+  <!-- Classes -->
+  <div id="classes">
+
     <!-- Nursery -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Nursery</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/nursery_english.pdf" class="btn" download>English</a>
-        <a href="materials/nursery_math.pdf" class="btn" download>Math</a>
-        <a href="materials/nursery_gk.pdf" class="btn" download>General Knowledge</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/nursery_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/nursery_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
     <!-- KG -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>KG</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/kg_english.pdf" class="btn" download>English</a>
-        <a href="materials/kg_math.pdf" class="btn" download>Math</a>
-        <a href="materials/kg_fun.pdf" class="btn" download>Fun Activities</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/kg_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/kg_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 1 -->
-    <div class="material-card">
+    <!-- Class 1 to 4 simple -->
+    <!-- Example: Class 1 -->
+    <div class="class-card">
       <h3>Class 1</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class1_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class1_english.pdf" class="btn" download>English</a>
-        <a href="materials/class1_gk.pdf" class="btn" download>General Knowledge</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/class1_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/class1_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 2 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 2</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class2_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class2_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class2_english.pdf" class="btn" download>English</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/class2_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/class2_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 3 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 3</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class3_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class3_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class3_english.pdf" class="btn" download>English</a>
-        <a href="materials/class3_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/class3_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/class3_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 4 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 4</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class4_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class4_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class4_english.pdf" class="btn" download>English</a>
-        <a href="materials/class4_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Book</span><a href="materials/class4_english.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Book</span><a href="materials/class4_math.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 5 -->
-    <div class="material-card">
+    <!-- Class 5 to 10 expanded with all subjects -->
+    <!-- Example Class 5 -->
+    <div class="class-card">
       <h3>Class 5</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class5_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class5_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class5_english.pdf" class="btn" download>English</a>
-        <a href="materials/class5_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class5_english1.pdf" download>Download</a></div>
+          <div class="file-item"><span>English Part 2</span><a href="materials/class5_english2.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class5_math1.pdf" download>Download</a></div>
+          <div class="file-item"><span>Math Part 2</span><a href="materials/class5_math2.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class5_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class5_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 6 -->
-    <div class="material-card">
+    <!-- Repeat for Class 6–10 -->
+    <div class="class-card">
       <h3>Class 6</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class6_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class6_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class6_english.pdf" class="btn" download>English</a>
-        <a href="materials/class6_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class6_english1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class6_math1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class6_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class6_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 7 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 7</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class7_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class7_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class7_english.pdf" class="btn" download>English</a>
-        <a href="materials/class7_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class7_english1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class7_math1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class7_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class7_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 8 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 8</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class8_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class8_science.pdf" class="btn" download>Science</a>
-        <a href="pdfs/class8_computer.pdf" class="btn" download>Computer</a>
-        <a href="materials/class8_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class8_english1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class8_math1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class8_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class8_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 9 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 9</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class9_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class9_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class9_english.pdf" class="btn" download>English</a>
-        <a href="materials/class9_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class9_english1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class9_math1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class9_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class9_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
 
-    <!-- Class 10 -->
-    <div class="material-card">
+    <div class="class-card">
       <h3>Class 10</h3>
-      <p>Click to view subjects</p>
       <div class="subjects">
-        <a href="materials/class10_math.pdf" class="btn" download>Math</a>
-        <a href="materials/class10_science.pdf" class="btn" download>Science</a>
-        <a href="materials/class10_english.pdf" class="btn" download>English</a>
-        <a href="materials/class10_sst.pdf" class="btn" download>SST</a>
+        <div class="subject">English</div>
+        <div class="files">
+          <div class="file-item"><span>English Part 1</span><a href="materials/class10_english1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Math</div>
+        <div class="files">
+          <div class="file-item"><span>Math Part 1</span><a href="materials/class10_math1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">Science</div>
+        <div class="files">
+          <div class="file-item"><span>Science Part 1</span><a href="materials/class10_science1.pdf" download>Download</a></div>
+        </div>
+        <div class="subject">SST</div>
+        <div class="files">
+          <div class="file-item"><span>SST Part 1</span><a href="materials/class10_sst1.pdf" download>Download</a></div>
+        </div>
       </div>
     </div>
+
   </div>
 </main>
 
 <!-- Footer -->
 <footer>
-  © 2025 Oxford Public School | All Rights Reserved
+  <p>© 2025 Oxford Public School | All Rights Reserved</p>
   <span>Designed by Mr. Ayush</span>
-</footer> 
+</footer>
+
+<script>
+  document.querySelectorAll('.class-card h3').forEach(h=>{
+    h.addEventListener('click',()=>{
+      h.parentElement.classList.toggle('active');
+    });
+  });
+
+  document.querySelectorAll('.subject').forEach(s=>{
+    s.addEventListener('click',()=>{
+      document.querySelectorAll('.subject').forEach(x=>x.classList.remove('active'));
+      s.classList.toggle('active');
+    });
+  });
+
+  document.querySelector('.menu-toggle').addEventListener('click',()=>{
+    document.getElementById('menu').classList.toggle('show');
+  });
+</script>
+</body>
+</html>
+
