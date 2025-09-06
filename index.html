@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-8JXWQVJQJX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8JXWQVJQJX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-8JXWQVJQJX');
 </script>
- 
- <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Segoe UI', sans-serif; background: #f6f6f6; color: #24324a; }
+
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: #f6f6f6; color: #2c3e50; line-height: 1.7; font-size: 16px; }
 
   /* Header */
   header {
@@ -33,7 +33,7 @@
   header img { height:60px; }
   header .title { text-align:left; flex:1; margin-left:12px; }
   header .title h1 { font-family:'Playfair Display', serif; font-size:32px; font-weight:700; text-decoration:underline; }
-  header .title span { font-family:'Roboto Slab', serif; font-size:14px; font-weight:500; display:block; margin-top:4px; color:#2b3a67; }
+  header .title span { font-family:'Poppins', sans-serif; font-size:14px; font-weight:500; display:block; margin-top:4px; color:#2b3a67; }
 
   /* Navigation */
   nav {
@@ -57,9 +57,9 @@
     text-decoration:none;
     padding:12px 18px;
     font-weight:600;
-    transition:0.3s;
     display:block;
-    font-family:'Roboto Slab', serif;
+    font-family:'Poppins', sans-serif;
+    transition:0.3s;
   }
   nav ul li a:hover, nav ul li a.active {
     background: rgba(255,255,255,0.2);
@@ -74,9 +74,27 @@
 
   main { max-width:1200px; margin:30px auto; padding:0 16px; }
 
-  h2.section-heading { font-family:'Roboto Slab', serif; font-size:32px; color:#0f47b8; text-align:center; margin-bottom:16px; text-decoration:underline; }
+  h2.section-heading {
+    font-family:'Playfair Display', serif;
+    font-size:36px;
+    text-align:center;
+    margin-bottom:24px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: all 0.8s ease;
+  }
+  h2.section-heading.visible { opacity: 1; }
 
-  section { border-radius:16px; margin-bottom:36px; padding:40px 20px; animation: fadeInUp 1s ease; }
+  section { 
+    border-radius:16px; 
+    margin-bottom:36px; 
+    padding:40px 20px; 
+    opacity:0; 
+    transition: all 1s ease; 
+  }
 
   /* Section Colors */
   .principal { background: #ffecd2; }
@@ -88,15 +106,55 @@
 
   /* Card */
   .card { border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.15); transition: transform 0.3s; margin-bottom:16px; }
-  .card img { width:100%; display:block; border-radius:12px; }
+  .card img {
+    width:100%;
+    display:block;
+    border-radius:12px;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+  }
+  .card:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
   .card:hover { transform: translateY(-5px); }
 
-  /* Read more toggle */
-  .readmore-content { display:none; margin-top:12px; }
-  .readmore-btn { display:inline-block; margin-top:12px; padding:10px 16px; background:#0f47b8; color:#fff; border-radius:8px; cursor:pointer; transition:0.3s; }
-  .readmore-btn:hover { background:#1e63e9; }
+  .card p { font-size: 16px; color: #2f2f2f; line-height: 1.8; }
 
-  /* Explore premium grid */
+  /* Read more toggle */
+  .readmore-btn {
+    display:inline-block; 
+    margin-top:12px; 
+    padding:10px 18px; 
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color:#fff; 
+    border-radius:50px; 
+    cursor:pointer; 
+    transition:0.4s; 
+    font-family:'Poppins', sans-serif; 
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  }
+  .readmore-btn:hover { 
+    background: linear-gradient(135deg, #764ba2, #667eea); 
+    transform:scale(1.05);
+  }
+  .readmore-content {
+    margin-top:12px;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+    overflow:hidden;
+    max-height:0;
+    opacity:0;
+    font-family:'Playfair Display', serif;
+    font-size:16px;
+    color:#2c3e50;
+    line-height:1.8;
+  }
+  .readmore-content.show {
+    max-height:2000px;
+    opacity:1;
+  }
+
+  /* Explore grid */
   .explore .grid {
     display: flex;
     flex-wrap: wrap;
@@ -137,7 +195,7 @@
 
   .explore .grid p { font-size:14px; color:#24324a; margin-bottom:12px; }
 
-  .explore .grid a.btn { display:inline-block; margin-top:6px; padding:8px 12px; background:#764ba2; color:#fff; border-radius:6px; text-decoration:none; transition:0.3s; }
+  .explore .grid a.btn { display:inline-block; margin-top:6px; padding:8px 12px; background:#764ba2; color:#fff; border-radius:6px; text-decoration:none; transition:0.3s; font-family:'Poppins', sans-serif; }
   .explore .grid a.btn:hover { background:#5b42a1; }
 
   /* Connect With Us */
@@ -158,16 +216,24 @@
   /* Footer */
   footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
 
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
-
   @media(max-width:768px){
     header .title h1 { font-size:24px; }
+  }
+
+  /* Animation classes */
+  .fade-up { transform: translateY(50px); }
+  .fade-left { transform: translateX(-50px); }
+  .fade-right { transform: translateX(50px); }
+  .zoom-in { transform: scale(0.8); }
+
+  section.visible, h2.section-heading.visible {
+    opacity:1 !important;
+    transform: translate(0,0) scale(1) !important;
   }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <img src="images/logo.png" alt="Logo">
   <div class="title">
@@ -177,7 +243,6 @@
   <div class="menu-toggle">☰</div>
 </header>
 
-<!-- Navigation -->
 <nav>
   <ul id="menu">
     <li><a href="index.html" class="active">Home</a></li>
@@ -194,59 +259,64 @@
 </nav>
 
 <main>
+
   <!-- Principal Desk -->
-  <section class="principal">
+  <section class="principal fade-left">
     <h2 class="section-heading">Principal Desk</h2>
     <div class="card">
       <img src="images/principal1.jpg" alt="Principal">
-      <p>Welcome to Oxford Public School! We aim for excellence in education and holistic student development.</p>
+      <p><strong>A Message From The Principal</strong></p>
       <div class="readmore-content">
-        <p>The management of Oxford Public School is pleased to share with all parents and guardians the vision, mission, and role of the institution towards the students. The school firmly believes that education is a lifelong process that goes beyond the boundaries of textbooks and examinations. Our vision is to develop a community of lifelong learners who are confident, creative, and capable of facing the challenges of the modern world with courage and wisdom. We aim to prepare every student not only for academic success but also for life, ensuring that they grow into responsible citizens and compassionate human beings.
-
-The mission of our school is to provide holistic education that strikes the right balance between knowledge, skills, and values. We strive to create a stimulating environment where curiosity and creativity are encouraged, and where children learn to think critically and independently. Equal importance is given to academics, sports, cultural activities, and life skills so that students can develop in all dimensions of personality. The school is committed to instilling moral values such as honesty, discipline, respect, and empathy in every learner, thereby shaping their character and attitude. Through modern teaching methods, innovative classroom practices, and continuous motivation, we aim to bring out the best in each child and make them capable of contributing positively to society.
-
-The role of the school towards students goes far beyond teaching subjects. We act as mentors, guides, and facilitators who provide a safe, supportive, and inclusive environment where each child feels valued and cared for. The school plays an active role in identifying the unique abilities of every student and giving them opportunities to nurture their talents. By encouraging leadership qualities, teamwork, and social responsibility, we prepare our students to step into the world with confidence and determination. In close partnership with parents and guardians, we aspire to ensure that every child entrusted to us emerges as a knowledgeable, skilled, and compassionate individual, ready to embrace the future with positivity and purpose.
-
-.</p>
+        <p>The management of Oxford Public School is pleased to share with all parents and guardians the vision, mission, and role of the institution towards the students. The school firmly believes that education is a lifelong process that goes beyond the boundaries of textbooks and examinations. Our vision is to develop a community of lifelong learners who are confident, creative, and capable of facing the challenges of the modern world with courage and wisdom. We aim to prepare every student not only for academic success but also for life, ensuring that they grow into responsible citizens and compassionate human beings.</p>
+        <p>The mission of our school is to provide holistic education that strikes the right balance between knowledge, skills, and values. We strive to create a stimulating environment where curiosity and creativity are encouraged, and where children learn to think critically and independently. Equal importance is given to academics, sports, cultural activities, and life skills so that students can develop in all dimensions of personality. The school is committed to instilling moral values such as honesty, discipline, respect, and empathy in every learner, thereby shaping their character and attitude. Through modern teaching methods, innovative classroom practices, and continuous motivation, we aim to bring out the best in each child and make them capable of contributing positively to society.</p>
+        <p>The role of the school towards students goes far beyond teaching subjects. We act as mentors, guides, and facilitators who provide a safe, supportive, and inclusive environment where each child feels valued and cared for. The school plays an active role in identifying the unique abilities of every student and giving them opportunities to nurture their talents. By encouraging leadership qualities, teamwork, and social responsibility, we prepare our students to step into the world with confidence and determination. In close partnership with parents and guardians, we aspire to ensure that every child entrusted to us emerges as a knowledgeable, skilled, and compassionate individual, ready to embrace the future with positivity and purpose.</p>
+        <p><em>Principal – Oxford Public School</em></p>
       </div>
       <span class="readmore-btn">Read More</span>
     </div>
   </section>
 
-  <!-- Our Campus -->
-  <section class="campus">
+  <!-- Campus Section -->
+  <section class="campus fade-right">
     <h2 class="section-heading">Our Campus</h2>
     <div class="card">
       <img src="images/campus.jpg" alt="Campus">
       <p>Our campus provides a safe and inspiring environment for learning and personal growth.</p>
       <div class="readmore-content">
-        <p>The campus of Oxford Public School is a vibrant hub of learning and creativity, designed to inspire young minds. Spacious classrooms, well-equipped laboratories, a rich library, modern computer labs, and dedicated art and activity rooms provide the perfect environment for holistic growth. Lush green playgrounds encourage sportsmanship and physical fitness, while safe and secure surroundings ensure peace of mind for parents. Our campus blends modern facilities with a warm, welcoming atmosphere, making it a second home where children learn, explore, and flourish with confidence..</p>
+        <p>The campus of Oxford Public School is a vibrant hub of learning and creativity, designed to inspire young minds. Spacious classrooms, well-equipped laboratories, a rich library, modern computer labs, and dedicated art and activity rooms provide the perfect environment for holistic growth. Lush green playgrounds encourage sportsmanship and physical fitness, while safe and secure surroundings ensure peace of mind for parents. Our campus blends modern facilities with a warm, welcoming atmosphere, making it a second home where children learn, explore, and flourish with confidence.</p>
       </div>
       <span class="readmore-btn">Read More</span>
     </div>
   </section>
 
-  <!-- Our Teachers & Faculty -->
-  <section class="teacher">
+  <!-- Teachers Section -->
+  <section class="teacher zoom-in">
     <h2 class="section-heading">Our Teachers & Faculty</h2>
     <div class="card">
       <img src="images/teachers.jpg" alt="Teachers">
-      <p>At Oxford Public School, our dedicated teachers and staff are the pillars of learning and guidance. Highly qualified, experienced, and compassionate, they inspire students to think, create, and achieve. Beyond academics, they mentor children in values, discipline, and life skills, ensuring holistic development. With their commitment, patience, and innovative teaching methods, our faculty creates a nurturing environment where every child feels supported, encouraged, and motivated to reach their full potential. The non-teaching staff too play a vital role in maintaining a safe, caring, and well-organized campus, making the school a true second home for students..</p>
-      <a class="btn" href="staff.html">Know About Our Staff</a>
+      <p>At Oxford Public School, our dedicated teachers and staff are the pillars of learning and guidance.</p>
+      <div class="readmore-content">
+        <p>Highly qualified, experienced, and compassionate, they inspire students to think, create, and achieve. Beyond academics, they mentor children in values, discipline, and life skills, ensuring holistic development. With their commitment, patience, and innovative teaching methods, our faculty creates a nurturing environment where every child feels supported, encouraged, and motivated to reach their full potential. The non-teaching staff too play a vital role in maintaining a safe, caring, and well-organized campus, making the school a true second home for students.</p>
+      </div>
+      <span class="readmore-btn">Read More</span>
     </div>
   </section>
 
-  <!-- Our Facilities -->
-  <section class="facility">
+  <!-- Facilities Section -->
+  <section class="facility fade-up">
     <h2 class="section-heading">Our Facilities</h2>
     <div class="card">
       <img src="images/facilities.jpg" alt="Facilities">
-      <p>Oxford Public School provides world-class facilities to ensure a safe, healthy, and inspiring learning environment for every child. The entire campus is under 24-hour CCTV surveillance, guaranteeing security and peace of mind. Spacious and airy classrooms promote comfort and focus, while well-maintained sanitary washrooms ensure hygiene. Students have access to clean, purified drinking water at all times. A vast sports ground encourages physical fitness and teamwork, and a modern auditorium hosts cultural programs, fests, and functions. Each facility is thoughtfully designed to support academic excellence, co-curricular activities, and overall student well-being..</p>
+      <p>Oxford Public School provides world-class facilities to ensure a safe, healthy, and inspiring learning environment.</p>
+      <div class="readmore-content">
+        <p>Spacious classrooms, modern labs, sports facilities, library, computer labs, art rooms, playgrounds, and safe campus environment contribute to holistic student development. Our aim is to provide children with the best learning resources in a nurturing, supportive, and motivating atmosphere.</p>
+      </div>
+      <span class="readmore-btn">Read More</span>
     </div>
   </section>
 
   <!-- Explore Section -->
-  <section class="explore">
+  <section class="explore fade-left">
     <h2 class="section-heading">Explore</h2>
     <div class="grid">
       <div>
@@ -273,7 +343,7 @@ The role of the school towards students goes far beyond teaching subjects. We ac
   </section>
 
   <!-- Connect With Us -->
-  <section class="connect">
+  <section class="connect fade-right">
     <h2 class="section-heading">Connect With Us</h2>
     <div class="connect-icons">
       <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -281,9 +351,9 @@ The role of the school towards students goes far beyond teaching subjects. We ac
       <a href="https://wa.me/916290705327" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </section>
+
 </main>
 
-<!-- Footer -->
 <footer>
   © 2025 Oxford Public School | All Rights Reserved <br>
   <span style="font-family:'Lobster', cursive; font-size:14px;">Designed by Mr. Ayush</span>
@@ -294,19 +364,24 @@ The role of the school towards students goes far beyond teaching subjects. We ac
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
-  // Read More Toggle
   document.querySelectorAll('.readmore-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
+    btn.addEventListener('click', ()=>{
       const content = btn.previousElementSibling;
-      if(content.style.display === 'block'){
-        content.style.display = 'none';
-        btn.textContent = 'Read More';
-      } else {
-        content.style.display = 'block';
-        btn.textContent = 'Read Less';
-      }
+      content.classList.toggle('show');
+      btn.textContent = content.classList.contains('show') ? 'Read Less' : 'Read More';
     });
   });
+
+  // Scroll animations
+  const sections = document.querySelectorAll("section, h2.section-heading");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(sec => { observer.observe(sec); });
 </script>
 
 </body>
