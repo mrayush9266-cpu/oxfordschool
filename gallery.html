@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@600&family=Poppins:wght@600&family=Merriweather:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: 'Segoe UI', sans-serif; background: #f7f8fc; color: #333; }
@@ -21,7 +20,6 @@
     flex-wrap: wrap;
   }
   header img { height:60px; }
-  header .title { text-align:left; }
   header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
   header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
@@ -34,13 +32,7 @@
     top:0;
     z-index:10;
   }
-  nav ul {
-    list-style:none;
-    display:flex;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
-  }
+  nav ul { list-style:none; display:flex; flex-wrap:wrap; margin:0; padding:0; }
   nav ul li a {
     color:#fff;
     text-decoration:none;
@@ -61,7 +53,6 @@
   }
 
   main { max-width:1100px; margin:26px auto; padding:0 16px; }
-  h2 { font-size:32px; color:#0f47b8; text-align:center; margin:30px 0 16px; font-weight:700; text-decoration:underline; font-family:'Pacifico', cursive; }
 
   /* Gallery grid */
   .grid { 
@@ -78,26 +69,109 @@
     box-shadow:0 4px 12px rgba(0,0,0,0.1); 
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
   }
-
   .card img { 
-    width:100%; 
-    height:200px;
+    width:100%; height:200px;
     object-fit:cover;
     display:block; 
     border-radius:8px; 
     filter: brightness(85%);
-    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease; 
+    transition: transform 0.4s ease, filter 0.4s ease; 
+  }
+  .card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 16px 30px rgba(0,0,0,0.35); }
+  .card:hover img { filter: brightness(100%); transform: scale(1.05); }
+
+  /* Section Container */
+  section {
+    padding: 24px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  section.show { opacity: 1; transform: translateY(0); }
+
+  /* Different premium faded gradients */
+  section:nth-of-type(1) { background: linear-gradient(145deg, #fef9f9, #f5f0ff); } 
+  section:nth-of-type(2) { background: linear-gradient(145deg, #fdfbfb, #ebedee); } 
+  section:nth-of-type(3) { background: linear-gradient(145deg, #fefcfb, #f3f7f9); } 
+  section:nth-of-type(4) { background: linear-gradient(145deg, #fdfdfb, #f5fafb); } 
+  section:nth-of-type(5) { background: linear-gradient(145deg, #fcfdfc, #f3f8fc); } 
+  section:nth-of-type(6) { background: linear-gradient(145deg, #fffdfc, #f9f5f7); } 
+  section:nth-of-type(7) { background: linear-gradient(145deg, #fdfcfe, #f4f6fa); } 
+
+  /* Heading fonts + animations */
+  h2 {
+    text-align:center;
+    margin:30px 0 16px;
+    font-size:32px;
+    text-decoration:underline;
+    opacity:0;
+  }
+  /* Teachers' Day */
+  section:nth-of-type(1) h2 {
+    font-family: 'Playfair Display', serif;
+    color: #8a2be2;
+    animation: zoomFade 1.5s forwards;
+  }
+  /* Science Exhibition */
+  section:nth-of-type(2) h2 {
+    font-family: 'Poppins', sans-serif;
+    color:#0f47b8;
+    animation: slideLeft 1.5s forwards;
+  }
+  /* Tour */
+  section:nth-of-type(3) h2 {
+    font-family: 'Merriweather', serif;
+    color:#c0392b;
+    animation: slideRight 1.5s forwards;
+  }
+  /* Independence */
+  section:nth-of-type(4) h2 {
+    font-family: 'Raleway', sans-serif;
+    color:#16a085;
+    animation: fadeUp 1.5s forwards;
+  }
+  /* Saraswati Puja */
+  section:nth-of-type(5) h2 {
+    font-family: 'Playfair Display', serif;
+    color:#d35400;
+    animation: fadeDown 1.5s forwards;
+  }
+  /* Food Carnival */
+  section:nth-of-type(6) h2 {
+    font-family: 'Poppins', sans-serif;
+    color:#8e44ad;
+    animation: slideLeft 1.5s forwards;
+  }
+  /* Yoga Day */
+  section:nth-of-type(7) h2 {
+    font-family: 'Merriweather', serif;
+    color:#2c3e50;
+    animation: slideRight 1.5s forwards;
   }
 
-  /* Hover Animation */
-  .card:hover { 
-    transform: translateY(-10px) scale(1.05);
-    box-shadow:0 16px 30px rgba(0,0,0,0.35); 
+  /* Keyframes */
+  @keyframes zoomFade {
+    0% { opacity:0; transform: scale(0.85); }
+    100% { opacity:1; transform: scale(1); }
   }
-
-  .card:hover img { 
-    filter: brightness(100%);
-    transform: scale(1.05);
+  @keyframes slideLeft {
+    0% { opacity:0; transform: translateX(-50px); }
+    100% { opacity:1; transform: translateX(0); }
+  }
+  @keyframes slideRight {
+    0% { opacity:0; transform: translateX(50px); }
+    100% { opacity:1; transform: translateX(0); }
+  }
+  @keyframes fadeUp {
+    0% { opacity:0; transform: translateY(40px); }
+    100% { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    0% { opacity:0; transform: translateY(-40px); }
+    100% { opacity:1; transform: translateY(0); }
   }
 
   footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
@@ -126,14 +200,23 @@
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student login.html">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
 <!-- Main Content -->
 <main>
-  <!-- Gallery Sections remain unchange -->
+  <section>
+    <h2>Teachers’ Day 2025</h2>
+    <div class="grid">
+      <div class="card"><img src="images/teacher1.jpg" alt="Teachers Day 1"></div>
+      <div class="card"><img src="images/teacher2.jpg" alt="Teachers Day 2"></div>
+      <div class="card"><img src="images/teacher3.jpg" alt="Teachers Day 3"></div>
+      <div class="card"><img src="images/teacher4.jpg" alt="Teachers Day 4"></div>
+    </div>
+  </section>
+
   <section>
     <h2>Science Exhibition 2025</h2>
     <div class="grid">
@@ -200,6 +283,20 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+
+  // Section animation
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        const heading = entry.target.querySelector('h2');
+        if(heading){ heading.style.opacity = "1"; } // trigger animation
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(sec => observer.observe(sec));
 </script>
 
 </body>
