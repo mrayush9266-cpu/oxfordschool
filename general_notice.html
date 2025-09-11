@@ -89,6 +89,18 @@
     color: #0f47b8;
     font-family: 'Roboto Slab', serif;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge-new {
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
   }
   .notice-card .date {
     font-size: 14px;
@@ -185,7 +197,7 @@
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student login.html">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
@@ -193,6 +205,29 @@
 <!-- Main Content -->
 <main>
   <h2>📢 Latest Notices</h2>
+
+  <!-- Vishwakarma Puja Holiday Notice (NEW) -->
+  <div class="notice-card">
+    <h3><span class="badge-new">NEW</span> Vishwakarma Puja Holiday</h3>
+    <p class="date">Date: 17th September 2025</p>
+    <p class="desc">
+      This is to inform all students, teachers, and staff that the school will remain <b>closed on 17th September 2025</b> 
+      on the occasion of <b>Vishwakarma Puja</b>. Regular classes will resume from the next working day.
+    </p>
+
+    <div class="pdf-thumb">
+      <iframe src="pdfs/vishwakarma_Puja_Notice.pdf" width="100%" height="120" style="border:none;"></iframe>
+    </div>
+
+    <div class="notice-actions">
+      <button class="btn preview-btn" onclick="togglePreview(this)">👁 Preview</button>
+      <a class="btn" href="pdfs/vishwakarma_Puja_Notice.pdf" download>📄 Download</a>
+    </div>
+
+    <div class="pdf-full">
+      <iframe src="pdfs/vishwakarma_Puja_Notice.pdf" width="100%" height="400" style="border:none;"></iframe>
+    </div>
+  </div>
 
   <!-- Notice 1 -->
   <div class="notice-card">
