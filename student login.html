@@ -309,17 +309,84 @@
   menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
   const students = {
-    "OPS_CLASS1": { password:"OPS2025",  class:"Class 1" , routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf", report:"materials/class1_report.pdf" },
-    "OPS_CLASS2": { password:"OPS2025",  class:"Class 2" , routine:"materials/class2_routine.pdf", admit:"materials/class2_admit.pdf", report:"materials/class2_report.pdf" },
-    "OPS_CLASS3": { password:"OPS2025",  class:"Class 3" , routine:"materials/class3_routine.pdf", admit:"materials/class3_admit.pdf", report:"materials/class3_report.pdf" },
-    "OPS_CLASS4": { password:"OPS2025",  class:"Class 4" , routine:"materials/class4_routine.pdf", admit:"materials/class4_admit.pdf", report:"materials/class4_report.pdf" },
-    "OPS_CLASS5": { password:"OPS2025",  class:"Class 5" ,routine:"materials/class5_routine.pdf", admit:"materials/class5_admit.pdf", report:"materials/class5_report.pdf" },
-    "OPS_CLASS6": { password:"OPS2025",  class:"Class 6" , routine:"materials/class6_routine.pdf", admit:"materials/class6_admit.pdf", report:"materials/class6_report.pdf" },
-    "OPS_CLASS7": { password:"OPS2025",  class:"Class 7" , routine:"materials/class7_routine.pdf", admit:"materials/class7_admit.pdf", report:"materials/class7_report.pdf" },
-    "OPS_CLASS8": { password:"OPS2025",  class:"Class 8" ,routine:"materials/class8_routine.pdf", admit:"materials/class8_admit.pdf", report:"materials/class8_report.pdf" },
-    "OPS_CLASS9": { password:"OPS2025",  class:"Class 9" , routine:"materials/class9_routine.pdf", admit:"materials/class9_admit.pdf", report:"materials/class9_report.pdf" },
-    "OPS_CLASS10": { password:"OPS2025", class:"Class 10" ,routine:"materials/class10_routine.pdf", admit:"materials/class10_admit.pdf", report:"materials/class10_report.pdf" }
-  };
+    const students = {
+  // Classes 1–4 (common login)
+  "OPS_CLASS1": { password:"OPS2025", class:"Class 1", routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf", report:"materials/class1_report.pdf" },
+  "OPS_CLASS2": { password:"OPS2025", class:"Class 2", routine:"materials/class2_routine.pdf", admit:"materials/class2_admit.pdf", report:"materials/class2_report.pdf" },
+  "OPS_CLASS3": { password:"OPS2025", class:"Class 3", routine:"materials/class3_routine.pdf", admit:"materials/class3_admit.pdf", report:"materials/class3_report.pdf" },
+  "OPS_CLASS4": { password:"OPS2025", class:"Class 4", routine:"materials/class4_routine.pdf", admit:"materials/class4_admit.pdf", report:"materials/class4_report.pdf" },
+
+  // CLASS 5 (18 students)
+  "OPS_CLASS5_STU1": { password:"PASS51", class:"Class 5", routine:"materials/class5/stu1_routine.pdf", admit:"materials/class5/stu1_admit.pdf", report:"materials/class5/stu1_report.pdf" },
+  "OPS_CLASS5_STU2": { password:"PASS52", class:"Class 5", routine:"materials/class5/stu2_routine.pdf", admit:"materials/class5/stu2_admit.pdf", report:"materials/class5/stu2_report.pdf" },
+  "OPS_CLASS5_STU3": { password:"PASS53", class:"Class 5", routine:"materials/class5/stu3_routine.pdf", admit:"materials/class5/stu3_admit.pdf", report:"materials/class5/stu3_report.pdf" },
+  "OPS_CLASS5_STU4": { password:"PASS54", class:"Class 5", routine:"materials/class5/stu4_routine.pdf", admit:"materials/class5/stu4_admit.pdf", report:"materials/class5/stu4_report.pdf" },
+  "OPS_CLASS5_STU5": { password:"PASS55", class:"Class 5", routine:"materials/class5/stu5_routine.pdf", admit:"materials/class5/stu5_admit.pdf", report:"materials/class5/stu5_report.pdf" },
+  "OPS_CLASS5_STU6": { password:"PASS56", class:"Class 5", routine:"materials/class5/stu6_routine.pdf", admit:"materials/class5/stu6_admit.pdf", report:"materials/class5/stu6_report.pdf" },
+  "OPS_CLASS5_STU7": { password:"PASS57", class:"Class 5", routine:"materials/class5/stu7_routine.pdf", admit:"materials/class5/stu7_admit.pdf", report:"materials/class5/stu7_report.pdf" },
+  "OPS_CLASS5_STU8": { password:"PASS58", class:"Class 5", routine:"materials/class5/stu8_routine.pdf", admit:"materials/class5/stu8_admit.pdf", report:"materials/class5/stu8_report.pdf" },
+  "OPS_CLASS5_STU9": { password:"PASS59", class:"Class 5", routine:"materials/class5/stu9_routine.pdf", admit:"materials/class5/stu9_admit.pdf", report:"materials/class5/stu9_report.pdf" },
+  "OPS_CLASS5_STU10": { password:"PASS510", class:"Class 5", routine:"materials/class5/stu10_routine.pdf", admit:"materials/class5/stu10_admit.pdf", report:"materials/class5/stu10_report.pdf" },
+  "OPS_CLASS5_STU11": { password:"PASS511", class:"Class 5", routine:"materials/class5/stu11_routine.pdf", admit:"materials/class5/stu11_admit.pdf", report:"materials/class5/stu11_report.pdf" },
+  "OPS_CLASS5_STU12": { password:"PASS512", class:"Class 5", routine:"materials/class5/stu12_routine.pdf", admit:"materials/class5/stu12_admit.pdf", report:"materials/class5/stu12_report.pdf" },
+  "OPS_CLASS5_STU13": { password:"PASS513", class:"Class 5", routine:"materials/class5/stu13_routine.pdf", admit:"materials/class5/stu13_admit.pdf", report:"materials/class5/stu13_report.pdf" },
+  "OPS_CLASS5_STU14": { password:"PASS514", class:"Class 5", routine:"materials/class5/stu14_routine.pdf", admit:"materials/class5/stu14_admit.pdf", report:"materials/class5/stu14_report.pdf" },
+  "OPS_CLASS5_STU15": { password:"PASS515", class:"Class 5", routine:"materials/class5/stu15_routine.pdf", admit:"materials/class5/stu15_admit.pdf", report:"materials/class5/stu15_report.pdf" },
+  "OPS_CLASS5_STU16": { password:"PASS516", class:"Class 5", routine:"materials/class5/stu16_routine.pdf", admit:"materials/class5/stu16_admit.pdf", report:"materials/class5/stu16_report.pdf" },
+  "OPS_CLASS5_STU17": { password:"PASS517", class:"Class 5", routine:"materials/class5/stu17_routine.pdf", admit:"materials/class5/stu17_admit.pdf", report:"materials/class5/stu17_report.pdf" },
+  "OPS_CLASS5_STU18": { password:"PASS518", class:"Class 5", routine:"materials/class5/stu18_routine.pdf", admit:"materials/class5/stu18_admit.pdf", report:"materials/class5/stu18_report.pdf" },
+
+  // CLASS 6 (13 students)
+  "OPS_CLASS6_STU1": { password:"PASS61", class:"Class 6", routine:"materials/class6/stu1_routine.pdf", admit:"materials/class6/stu1_admit.pdf", report:"materials/class6/stu1_report.pdf" },
+  "OPS_CLASS6_STU2": { password:"PASS62", class:"Class 6", routine:"materials/class6/stu2_routine.pdf", admit:"materials/class6/stu2_admit.pdf", report:"materials/class6/stu2_report.pdf" },
+  "OPS_CLASS6_STU3": { password:"PASS63", class:"Class 6", routine:"materials/class6/stu3_routine.pdf", admit:"materials/class6/stu3_admit.pdf", report:"materials/class6/stu3_report.pdf" },
+  "OPS_CLASS6_STU4": { password:"PASS64", class:"Class 6", routine:"materials/class6/stu4_routine.pdf", admit:"materials/class6/stu4_admit.pdf", report:"materials/class6/stu4_report.pdf" },
+  "OPS_CLASS6_STU5": { password:"PASS65", class:"Class 6", routine:"materials/class6/stu5_routine.pdf", admit:"materials/class6/stu5_admit.pdf", report:"materials/class6/stu5_report.pdf" },
+  "OPS_CLASS6_STU6": { password:"PASS66", class:"Class 6", routine:"materials/class6/stu6_routine.pdf", admit:"materials/class6/stu6_admit.pdf", report:"materials/class6/stu6_report.pdf" },
+  "OPS_CLASS6_STU7": { password:"PASS67", class:"Class 6", routine:"materials/class6/stu7_routine.pdf", admit:"materials/class6/stu7_admit.pdf", report:"materials/class6/stu7_report.pdf" },
+  "OPS_CLASS6_STU8": { password:"PASS68", class:"Class 6", routine:"materials/class6/stu8_routine.pdf", admit:"materials/class6/stu8_admit.pdf", report:"materials/class6/stu8_report.pdf" },
+  "OPS_CLASS6_STU9": { password:"PASS69", class:"Class 6", routine:"materials/class6/stu9_routine.pdf", admit:"materials/class6/stu9_admit.pdf", report:"materials/class6/stu9_report.pdf" },
+  "OPS_CLASS6_STU10": { password:"PASS610", class:"Class 6", routine:"materials/class6/stu10_routine.pdf", admit:"materials/class6/stu10_admit.pdf", report:"materials/class6/stu10_report.pdf" },
+  "OPS_CLASS6_STU11": { password:"PASS611", class:"Class 6", routine:"materials/class6/stu11_routine.pdf", admit:"materials/class6/stu11_admit.pdf", report:"materials/class6/stu11_report.pdf" },
+  "OPS_CLASS6_STU12": { password:"PASS612", class:"Class 6", routine:"materials/class6/stu12_routine.pdf", admit:"materials/class6/stu12_admit.pdf", report:"materials/class6/stu12_report.pdf" },
+  "OPS_CLASS6_STU13": { password:"PASS613", class:"Class 6", routine:"materials/class6/stu13_routine.pdf", admit:"materials/class6/stu13_admit.pdf", report:"materials/class6/stu13_report.pdf" },
+
+  // CLASS 7 (5 students)
+  "OPS_CLASS7_STU1": { password:"PASS71", class:"Class 7", routine:"materials/class7/stu1_routine.pdf", admit:"materials/class7/stu1_admit.pdf", report:"materials/class7/stu1_report.pdf" },
+  "OPS_CLASS7_STU2": { password:"PASS72", class:"Class 7", routine:"materials/class7/stu2_routine.pdf", admit:"materials/class7/stu2_admit.pdf", report:"materials/class7/stu2_report.pdf" },
+  "OPS_CLASS7_STU3": { password:"PASS73", class:"Class 7", routine:"materials/class7/stu3_routine.pdf", admit:"materials/class7/stu3_admit.pdf", report:"materials/class7/stu3_report.pdf" },
+  "OPS_CLASS7_STU4": { password:"PASS74", class:"Class 7", routine:"materials/class7/stu4_routine.pdf", admit:"materials/class7/stu4_admit.pdf", report:"materials/class7/stu4_report.pdf" },
+  "OPS_CLASS7_STU5": { password:"PASS75", class:"Class 7", routine:"materials/class7/stu5_routine.pdf", admit:"materials/class7/stu5_admit.pdf", report:"materials/class7/stu5_report.pdf" },
+
+  // CLASS 8 (7 students)
+  "OPS_CLASS8_STU1": { password:"PASS81", class:"Class 8", routine:"materials/class8/stu1_routine.pdf", admit:"materials/class8/stu1_admit.pdf", report:"materials/class8/stu1_report.pdf" },
+  "OPS_CLASS8_STU2": { password:"PASS82", class:"Class 8", routine:"materials/class8/stu2_routine.pdf", admit:"materials/class8/stu2_admit.pdf", report:"materials/class8/stu2_report.pdf" },
+  "OPS_CLASS8_STU3": { password:"PASS83", class:"Class 8", routine:"materials/class8/stu3_routine.pdf", admit:"materials/class8/stu3_admit.pdf", report:"materials/class8/stu3_report.pdf" },
+  "OPS_CLASS8_STU4": { password:"PASS84", class:"Class 8", routine:"materials/class8/stu4_routine.pdf", admit:"materials/class8/stu4_admit.pdf", report:"materials/class8/stu4_report.pdf" },
+  "OPS_CLASS8_STU5": { password:"PASS85", class:"Class 8", routine:"materials/class8/stu5_routine.pdf", admit:"materials/class8/stu5_admit.pdf", report:"materials/class8/stu5_report.pdf" },
+  "OPS_CLASS8_STU6": { password:"PASS86", class:"Class 8", routine:"materials/class8/stu6_routine.pdf", admit:"materials/class8/stu6_admit.pdf", report:"materials/class8/stu6_report.pdf" },
+  "OPS_CLASS8_STU7": { password:"PASS87", class:"Class 8", routine:"materials/class8/stu7_routine.pdf", admit:"materials/class8/stu7_admit.pdf", report:"materials/class8/stu7_report.pdf" },
+
+  // CLASS 9 (7 students)
+  "OPS_CLASS9_STU1": { password:"PASS91", class:"Class 9", routine:"materials/class9/stu1_routine.pdf", admit:"materials/class9/stu1_admit.pdf", report:"materials/class9/stu1_report.pdf" },
+  "OPS_CLASS9_STU2": { password:"PASS92", class:"Class 9", routine:"materials/class9/stu2_routine.pdf", admit:"materials/class9/stu2_admit.pdf", report:"materials/class9/stu2_report.pdf" },
+  "OPS_CLASS9_STU3": { password:"PASS93", class:"Class 9", routine:"materials/class9/stu3_routine.pdf", admit:"materials/class9/stu3_admit.pdf", report:"materials/class9/stu3_report.pdf" },
+  "OPS_CLASS9_STU4": { password:"PASS94", class:"Class 9", routine:"materials/class9/stu4_routine.pdf", admit:"materials/class9/stu4_admit.pdf", report:"materials/class9/stu4_report.pdf" },
+  "OPS_CLASS9_STU5": { password:"PASS95", class:"Class 9", routine:"materials/class9/stu5_routine.pdf", admit:"materials/class9/stu5_admit.pdf", report:"materials/class9/stu5_report.pdf" },
+  "OPS_CLASS9_STU6": { password:"PASS96", class:"Class 9", routine:"materials/class9/stu6_routine.pdf", admit:"materials/class9/stu6_admit.pdf", report:"materials/class9/stu6_report.pdf" },
+  "OPS_CLASS9_STU7": { password:"PASS97", class:"Class 9", routine:"materials/class9/stu7_routine.pdf", admit:"materials/class9/stu7_admit.pdf", report:"materials/class9/stu7_report.pdf" },
+
+  // CLASS 10 (8 students)
+  "OPS_CLASS10_STU1": { password:"PASS101", class:"Class 10", routine:"materials/class10/stu1_routine.pdf", admit:"materials/class10/stu1_admit.pdf", report:"materials/class10/stu1_report.pdf" },
+  "OPS_CLASS10_STU2": { password:"PASS102", class:"Class 10", routine:"materials/class10/stu2_routine.pdf", admit:"materials/class10/stu2_admit.pdf", report:"materials/class10/stu2_report.pdf" },
+  "OPS_CLASS10_STU3": { password:"PASS103", class:"Class 10", routine:"materials/class10/stu3_routine.pdf", admit:"materials/class10/stu3_admit.pdf", report:"materials/class10/stu3_report.pdf" },
+  "OPS_CLASS10_STU4": { password:"PASS104", class:"Class 10", routine:"materials/class10/stu4_routine.pdf", admit:"materials/class10/stu4_admit.pdf", report:"materials/class10/stu4_report.pdf" },
+  "OPS_CLASS10_STU5": { password:"PASS105", class:"Class 10", routine:"materials/class10/stu5_routine.pdf", admit:"materials/class10/stu5_admit.pdf", report:"materials/class10/stu5_report.pdf" },
+  "OPS_CLASS10_STU6": { password:"PASS106", class:"Class 10", routine:"materials/class10/stu6_routine.pdf", admit:"materials/class10/stu6_admit.pdf", report:"materials/class10/stu6_report.pdf" },
+  "OPS_CLASS10_STU7": { password:"PASS107", class:"Class 10", routine:"materials/class10/stu7_routine.pdf", admit:"materials/class10/stu7_admit.pdf", report:"materials/class10/stu7_report.pdf" },
+  "OPS_CLASS10_STU8": { password:"PASS108", class:"Class 10", routine:"materials/class10/stu8_routine.pdf", admit:"materials/class10/stu8_admit.pdf", report:"materials/class10/stu8_report.pdf" }
+};
+
 
   function login(){
     const user = document.getElementById('username').value.trim();
@@ -377,3 +444,4 @@
 
 </body>
 </html>
+
