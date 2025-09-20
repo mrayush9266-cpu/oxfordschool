@@ -14,7 +14,7 @@
   header {
     background: linear-gradient(135deg,#5b86e5,#36d1dc);
     color:#fff;
-    padding: 24px 16px;
+    padding: 20px 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,8 +62,13 @@
 
   /* ===== LOGIN BOX ===== */
   .login-box {
-    max-width: 400px; margin:50px auto; background:#fff;
-    padding:30px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    width:90%;
+    max-width: 400px;
+    margin:30px auto;
+    background:#fff;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
   }
   .login-box h2 { margin-bottom:20px; text-align:center; font-family:'Roboto Slab', serif; }
   input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:16px; }
@@ -92,7 +97,8 @@
 
   .notification { background:#fffbeb; border-left:5px solid #ffd700; padding:10px 15px; border-radius:8px; }
 
-  canvas { background:white; border-radius:12px; padding:10px; }
+  embed { width:100%; max-width:100%; border-radius:12px; background:white; }
+  .admit-pdf, .routine-pdf { height:200px; }
 
   .carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
   .carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
@@ -104,8 +110,21 @@
 
   @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
 
-  @media(max-width:900px){ .dashboard-grid { grid-template-columns:1fr; } }
-
+  /* ===== RESPONSIVE FIXES ===== */
+  @media(max-width:900px){
+    .dashboard-grid { grid-template-columns:1fr; }
+  }
+  @media(max-width:600px){
+    header { flex-direction: column; text-align:center; }
+    header img { height:50px; margin-bottom:10px; }
+    header .title h1 { font-size:22px; }
+    header .title span { font-size:12px; }
+    .carousel img { height:70px; }
+  }
+  @media(max-width:480px){
+    .carousel img { height:60px; }
+    .admit-pdf, .routine-pdf { height:160px; }
+  }
 </style>
 </head>
 <body>
@@ -152,7 +171,7 @@
       </div>
       <div class="dash-card">
         📄 Admit Card
-        <embed class="admit-pdf" src="" type="application/pdf" width="100%" height="180px" />
+        <embed class="admit-pdf" src="" type="application/pdf"/>
         <div class="links">
           <a class="admit-full" href="#" target="_blank">🖥 Full Screen</a>
           <a class="admit-download" href="#" download>⬇️ Download</a>
@@ -160,7 +179,7 @@
       </div>
       <div class="dash-card">
         📅 Routine
-        <embed class="routine-pdf" src="" type="application/pdf" width="100%" height="180px" />
+        <embed class="routine-pdf" src="" type="application/pdf"/>
         <div class="links">
           <a class="routine-full" href="#" target="_blank">🖥 Full Screen</a>
           <a class="routine-download" href="#" download>⬇️ Download</a>
