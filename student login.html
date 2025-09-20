@@ -4,311 +4,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Portal • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Segoe UI', sans-serif; background:#f6f8fb; color:#24324a; }
+  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
+  body { background: #eef2f7; color: #333; padding: 20px; transition: background 0.3s; }
 
-  /* Header */
-  header {
-    background: linear-gradient(135deg,#5b86e5,#36d1dc);
-    color:#fff;
-    padding:24px 16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-  }
-  header img { height:60px; }
-  header .title { text-align:left; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
-  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
+  h1 { font-family: 'Pacifico', cursive; text-align:center; margin-bottom:20px; color:#2c3e50; }
 
-  /* Navigation */
-  nav {
-    background: linear-gradient(135deg,#36d1dc,#5b86e5);
-    display:flex;
-    justify-content:center;
-    position:sticky;
-    top:0;
-    z-index:10;
-  }
-  nav ul {
-    list-style:none;
-    display:flex;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
-  }
-  nav ul li a {
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-weight:600;
-    transition:0.3s;
-    display:block;
-  }
-  nav ul li a:hover, nav ul li a.active {
-    background: rgba(255,255,255,0.2);
-    border-radius:6px;
-  }
-  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
-  @media(max-width:768px){
-    .menu-toggle { display:block; }
-    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
-    nav ul.show { display:flex; }
-  }
+  /* LOGIN BOX */
+  .login-box { max-width: 400px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+  .login-box h2 { margin-bottom: 20px; text-align:center; }
+  input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
+  button { width: 100%; background: linear-gradient(90deg,#36d1dc,#5b86e5); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+  button:hover { background: linear-gradient(90deg,#5b86e5,#36d1dc); }
 
-  footer {
-    text-align:center;
-    color:#5b6b8b;
-    padding:26px;
-    font-size:14px;
-  }
-  footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
+  /* DASHBOARD */
+  .dashboard { display: none; margin-top: 30px; animation: fadeIn 0.5s ease-in; }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  .dashboard-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 25px; }
 
-  main { max-width:1000px; margin:30px auto; padding:20px; min-height:400px; }
+  .left-panel, .right-panel { display: flex; flex-direction: column; gap: 20px; padding: 20px; border-radius: 16px; background: linear-gradient(145deg,#f9fafc,#e6ebf5); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
 
-  /* Login Form */
-  .login-container { max-width:400px; margin:50px auto; background:#fff; padding:30px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1); text-align:center; transition:0.5s; }
-  .login-container h2 { color:#0f47b8; margin-bottom:20px; font-family:'Roboto Slab', serif; }
-  .login-container input { width:100%; padding:10px 12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:16px; }
-  .login-container button { width:100%; padding:12px; background:#36d1dc; color:#fff; font-weight:600; border:none; border-radius:8px; cursor:pointer; font-size:16px; transition:0.3s; }
-  .login-container button:hover { background:#5b86e5; }
+  /* STUDENT PHOTO */
+  .student-photo { text-align:center; }
+  .student-photo img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #36d1dc; margin-bottom: 10px; transition: transform 0.3s; }
+  .student-photo img:hover { transform: scale(1.05); }
 
-  /* Dashboard */
-  .dashboard {
-    display:none;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap:25px;
-    margin-top:30px;
-  }
-  .dashboard.active { display:grid; }
+  /* DASHBOARD CARD */
+  .dash-card { background: white; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; }
+  .dash-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); transform: translateY(-3px); }
 
-  /* Gradient heading style */
-  .class-name {
-    font-size: 2rem;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 30px;
-    background: linear-gradient(90deg, #36d1dc, #5b86e5, #8e54e9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: fadeSlideDown 1s ease forwards;
-    opacity: 0;
-  }
-  @keyframes fadeSlideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* LINKS */
+  .links { margin-top: 8px; display:flex; gap:8px; flex-wrap: wrap; }
+  .links a { display: inline-block; padding: 6px 12px; border-radius: 6px; background: #36d1dc; color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
+  .links a:hover { background: #5b86e5; }
 
-  .dash-card {
-    background:#fff;
-    padding:30px 20px;
-    border-radius:20px;
-    text-align:center;
-    font-size:18px;
-    font-weight:600;
-    color:#24324a;
-    box-shadow:0 8px 24px rgba(0,0,0,0.1);
-    transition:all 0.3s ease;
-    position:relative;
-    overflow:hidden;
-  }
-  .dash-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow:0 12px 28px rgba(0,0,0,0.15);
-  }
-  .dash-card a {
-    text-decoration:none;
-    color:#0f47b8;
-    font-weight:600;
-    font-size:18px;
-    display:block;
-    margin:10px 0;
-  }
+  /* NOTIFICATIONS */
+  .notification { background: #fffbeb; border-left: 5px solid #ffd700; padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; }
 
-  /* Gradient top border */
-  .dash-card::before {
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:5px;
-    background:linear-gradient(90deg,#36d1dc,#5b86e5);
-    border-radius:20px 20px 0 0;
-  }
+  /* PERFORMANCE CHART */
+  canvas { background: white; border-radius: 12px; padding:10px; }
 
-  /* Glowing border effect */
-  .dash-card::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #36d1dc, #5b86e5, #8e54e9, #4776e6);
-    background-size: 300% 300%;
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    animation: borderGlow 6s linear infinite;
-  }
-  .dash-card:hover::before {
-    opacity: 1;
-  }
-  @keyframes borderGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+  /* ACHIEVEMENTS CAROUSEL */
+  .carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
+  .carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
+  .carousel img:hover { transform: scale(1.1); }
 
-  /* Fees Form Popup */
-  .fees-form-overlay {
-    display:none;
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(0,0,0,0.5); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:1000;
-    animation: fadeInOverlay 0.4s ease;
-  }
-  @keyframes fadeInOverlay { from {opacity:0;} to {opacity:1;} }
-
-  .fees-form {
-    background:#fff; padding:30px; border-radius:16px; max-width:400px; width:90%; position:relative; text-align:center;
-    transform: translateY(-20px); animation: slideIn 0.4s forwards;
-  }
-  @keyframes slideIn { to { transform: translateY(0); } }
-
-  .fees-form h3 { margin-bottom:20px; color:#0f47b8; font-family:'Roboto Slab', serif; }
-  .fees-form input { width:100%; padding:10px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:16px; }
-  .fees-form button { width:100%; padding:12px; background:#36d1dc; color:#fff; font-weight:600; border:none; border-radius:8px; cursor:pointer; font-size:16px; transition:0.3s; }
-  .fees-form button:hover { background:#5b86e5; }
-  .close-btn { position:absolute; top:10px; right:16px; font-size:24px; cursor:pointer; }
-  .success-message { color:green; font-weight:600; margin-top:15px; display:flex; align-items:center; justify-content:center; }
-  
-  /* Green tick animation */
-  .green-tick {
-    width:40px; height:40px; border-radius:50%; background:green; display:inline-block; position:relative; margin-right:10px;
-  }
-  .green-tick::after {
-    content:''; position:absolute; left:12px; top:6px; width:8px; height:16px; border:solid #fff; border-width:0 3px 3px 0; transform:rotate(45deg); opacity:0;
-  }
-  .animate-tick::after {
-    animation: tickAnimation 0.6s forwards;
-  }
-  @keyframes tickAnimation {
-    0% { transform: rotate(45deg) scale(0); opacity:0; }
-    50% { transform: rotate(45deg) scale(1.2); opacity:1; }
-    100% { transform: rotate(45deg) scale(1); opacity:1; }
-  }
-
-  .fade-in { animation: fadeIn 0.6s ease forwards; opacity:0; }
-  @keyframes fadeIn { to { opacity:1; } }
+  /* RESPONSIVE */
+  @media(max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<header>
-  <img src="images/logo.png" alt="Oxford Logo">
-  <div class="title">
-    <h1>Oxford Public School</h1>
-    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
-  </div>
-  <div class="menu-toggle">☰</div>
-</header>
+<h1>Oxford Public School • Student Portal</h1>
 
-<nav>
-  <ul id="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="admission.html">Admission</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="general_notice.html">Notice</a></li>
-    <li><a href="study.html">Study Material</a></li>
-    <li><a href="blogg.html">Blog</a></li>
-    <li><a href="staff.html">Staff</a></li>
-    <li><a href="student login.html" class="active">Student Login</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+<!-- LOGIN -->
+<div class="login-box" id="loginBox">
+  <h2>Student Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
 
-<main>
-  <!-- Login Form -->
-  <div class="login-container fade-in" id="loginForm">
-    <h2>Student Login</h2>
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button onclick="login()">Login</button>
-  </div>
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dashboard-grid">
 
-  <!-- Dashboard -->
-  <div class="dashboard fade-in" id="dashboard">
-    <h3 class="class-name"></h3>
-    <div class="dash-card"><a class="admit-link" href="#" target="_blank">📄 Admit Card</a></div>
-    <div class="dash-card"><a class="routine-link" href="#" target="_blank">📅 Routine</a></div>
-    <div class="dash-card"><a class="report-link" href="#" target="_blank">📊 Report Card</a></div>
-    <div class="dash-card" id="payFeesCard">💰 Pay Fees Online</div>
-  </div>
-</main>
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <div class="student-photo">
+        <img src="images/placeholder.png" alt="Student Photo">
+      </div>
 
-<!-- Fees Popup -->
-<div class="fees-form-overlay" id="feesFormOverlay">
-  <div class="fees-form">
-    <span class="close-btn" onclick="closeFeesForm()">×</span>
+      <div class="dash-card">
+        📄 Admit Card
+        <embed class="admit-pdf" src="" type="application/pdf" width="100%" height="180px" />
+        <div class="links">
+          <a class="admit-full" href="#" target="_blank">🖥 Full Screen</a>
+          <a class="admit-download" href="#" download>⬇️ Download</a>
+        </div>
+      </div>
 
-    <!-- Step 1: Payment Instructions -->
-    <div id="paymentStep1">
-      <h3>Pay Fees Online</h3>
-      <p><strong>Bank Account Details:</strong><br>
-      Account Name: Oxford Public School<br>
-      Account No: 1234567890<br>
-      IFSC: ABCD0123456</p>
+      <div class="dash-card">
+        📅 Routine
+        <embed class="routine-pdf" src="" type="application/pdf" width="100%" height="180px" />
+        <div class="links">
+          <a class="routine-full" href="#" target="_blank">🖥 Full Screen</a>
+          <a class="routine-download" href="#" download>⬇️ Download</a>
+        </div>
+      </div>
 
-      <p><strong>UPI Payment:</strong><br>
-      UPI ID: oxford@upi</p>
-
-      <img src="images/upi-qr.png" alt="UPI QR" style="width:200px; margin:10px auto; display:block; border:2px solid #ccc; border-radius:8px;">
-
-      <button type="button" id="toReceiptFormBtn">I have paid, submit receipt →</button>
+      <div class="dash-card" id="payFeesCard">💰 Pay Fees Online</div>
+      
+      <div class="dash-card">
+        🏆 Achievements
+        <div class="carousel">
+          <img src="images/award1.png" alt="Award 1">
+          <img src="images/award2.png" alt="Award 2">
+          <img src="images/award3.png" alt="Award 3">
+        </div>
+      </div>
     </div>
 
-    <!-- Step 2: Upload Receipt -->
-    <div id="paymentStep2" style="display:none;">
-      <h3>Submit Payment Receipt</h3>
-      <form id="feesForm" enctype="multipart/form-data">
-        <label for="studentName">Student Name</label>
-        <input type="text" name="studentName" id="studentName" required>
-
-        <label for="studentClass">Class</label>
-        <input type="text" name="studentClass" id="studentClass" required>
-
-        <label for="receipt">Upload Payment Receipt</label>
-        <input type="file" name="receipt" id="receipt" accept="image/*" required>
-
-        <button type="submit">Submit</button>
-      </form>
-
-      <!-- Animated success tick -->
-      <div class="success-message" id="successMessage" style="display:none;">
-        <div class="green-tick"></div> Your payment will be reviewed shortly.
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <h3 class="class-name"></h3>
+      <div class="dash-card student-info">
+        <strong>Name:</strong> <span id="studentName"></span><br>
+        <strong>Class:</strong> <span id="studentClass"></span><br>
+        <strong>Roll No:</strong> <span id="studentRoll">001</span><br>
+        <strong>Parent:</strong> <span id="studentParent">Mr/Mrs XYZ</span>
       </div>
+
+      <div class="dash-card notification">📢 Upcoming Holiday - Durga Puja</div>
+
+      <div class="dash-card">
+        📊 Performance
+        <canvas id="performanceChart" height="200"></canvas>
+      </div>
+
+      <div class="dash-card">
+        📈 Attendance: <progress id="attendanceProgress" value="85" max="100"></progress> 85%
+      </div>
+
+      <div class="dash-card">📝 Behaviour & Discipline: Excellent</div>
     </div>
 
   </div>
 </div>
 
-<footer>
-  © 2025 Oxford Public School | All Rights Reserved
-  <span>Designed by Mr. Ayush</span>
-</footer>
-
 <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
-
-  const students = {
+const students = {
   // Classes 1–4 (common login)
   "OPS_CLASS1": { password:"OPS2025", class:"Class 1", routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf", report:"materials/class1_report.pdf" },
   "OPS_CLASS2": { password:"OPS2025", class:"Class 2", routine:"materials/class2_routine.pdf", admit:"materials/class2_admit.pdf", report:"materials/class2_report.pdf" },
@@ -386,63 +213,59 @@
   "OPS_CLASS10_STU8": { password:"PASS108", class:"Class 10", routine:"materials/class10/stu8_routine.pdf", admit:"materials/class10/stu8_admit.pdf", report:"materials/class10/stu8_report.pdf" }
 };
 
+function login() {
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  function login(){
-    const user = document.getElementById('username').value.trim();
-    const pass = document.getElementById('password').value.trim();
-    if(students[user] && students[user].password === pass){
-      document.getElementById('loginForm').style.display='none';
-      const dash = document.getElementById('dashboard');
-      dash.style.display='grid';
-      const studentClass = students[user].class;
-      document.querySelector('.class-name').innerText = studentClass;
-      dash.querySelector('.routine-link').href = students[user].routine;
-      dash.querySelector('.admit-link').href = students[user].admit;
-      dash.querySelector('.report-link').href = students[user].report;
-    } else {
-      alert("Invalid username or password!");
-    }
+  if (students[username] && students[username].password === password) {
+    const stu = students[username];
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    document.querySelector(".class-name").textContent = stu.class;
+    document.getElementById("studentName").textContent = stu.name;
+    document.getElementById("studentClass").textContent = stu.class;
+    document.getElementById("studentRoll").textContent = stu.roll;
+    document.getElementById("studentParent").textContent = stu.parent;
+
+    document.querySelector(".admit-pdf").src = stu.admit;
+    document.querySelector(".admit-full").href = stu.admit;
+    document.querySelector(".admit-download").href = stu.admit;
+
+    document.querySelector(".routine-pdf").src = stu.routine;
+    document.querySelector(".routine-full").href = stu.routine;
+    document.querySelector(".routine-download").href = stu.routine;
+
+    document.querySelector(".student-photo img").src = stu.photo;
+
+    // Performance Chart
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Math', 'English', 'Science', 'Social', 'Computer'],
+        datasets: [{
+          label: 'Marks',
+          data: stu.marks,
+          backgroundColor: 'rgba(54, 209, 220, 0.6)',
+          borderColor: 'rgba(54, 209, 220, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true, max:100 } },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Attendance
+    document.getElementById('attendanceProgress').value = stu.attendance;
+
+  } else {
+    alert("Invalid username or password!");
   }
-
-  // Fees Form popup
-  const payFeesCard = document.getElementById('payFeesCard');
-  const feesFormOverlay = document.getElementById('feesFormOverlay');
-  const paymentStep1 = document.getElementById('paymentStep1');
-  const paymentStep2 = document.getElementById('paymentStep2');
-  const toReceiptFormBtn = document.getElementById('toReceiptFormBtn');
-  const feesForm = document.getElementById('feesForm');
-  const successMessage = document.getElementById('successMessage');
-
-  function closeFeesForm(){
-    feesFormOverlay.style.display='none';
-    paymentStep1.style.display='block';
-    paymentStep2.style.display='none';
-    feesForm.reset();
-    successMessage.style.display='none';
-    feesForm.querySelector('button').disabled = false;
-    document.querySelector('.green-tick').classList.remove('animate-tick');
-  }
-
-  payFeesCard.addEventListener('click', ()=>{ 
-    feesFormOverlay.style.display='flex'; 
-  });
-
-  toReceiptFormBtn.addEventListener('click', ()=>{
-    paymentStep1.style.display='none';
-    paymentStep2.style.display='block';
-  });
-
-  feesForm.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    successMessage.style.display='flex';
-    document.querySelector('.green-tick').classList.add('animate-tick');
-    feesForm.querySelector('button').disabled = true;
-    setTimeout(()=>{ closeFeesForm(); }, 2500);
-  });
+}
 </script>
 
 </body>
 </html>
-
-
-
