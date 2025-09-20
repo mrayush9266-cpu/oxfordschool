@@ -20,9 +20,9 @@
     flex-wrap: wrap;
   }
   header img { height:60px; }
-  header .title { text-align:left; }
   header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
   header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
+  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
 
   /* Navigation */
   nav {
@@ -33,26 +33,15 @@
     top:0;
     z-index:10;
   }
-  nav ul {
-    list-style:none;
-    display:flex;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
-  }
+  nav ul { list-style:none; display:flex; flex-wrap:wrap; margin:0; padding:0; }
   nav ul li a {
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-weight:600;
-    transition:0.3s;
-    display:block;
+    color:#fff; text-decoration:none; padding:12px 18px;
+    font-weight:600; transition:0.3s; display:block;
   }
   nav ul li a:hover, nav ul li a.active {
     background: rgba(255,255,255,0.2);
     border-radius:6px;
   }
-  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
   @media(max-width:768px){
     .menu-toggle { display:block; }
     nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
@@ -60,117 +49,34 @@
   }
 
   /* Main */
-  main {
-    max-width:950px;
-    margin:40px auto;
-    padding:20px;
-    background:transparent;
-    animation: fadeInUp 0.8s ease;
-    text-align:center;
-  }
+  main { max-width:950px; margin:40px auto; padding:20px; text-align:center; }
   h2 { font-size:32px; color:#0f47b8; margin-bottom:30px; text-decoration:underline; font-family:'Roboto Slab', serif; }
 
   /* Notice Card */
   .notice-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 30px 25px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    text-align: left;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background:#fff; border-radius:18px; padding:30px 25px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:left;
+    margin-bottom:30px; transition:transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .notice-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-  }
-  .notice-card h3 {
-    font-size: 24px;
-    color: #0f47b8;
-    font-family: 'Roboto Slab', serif;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .badge-new {
-    background: red;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 2px 8px;
-    border-radius: 12px;
-    text-transform: uppercase;
-  }
-  .notice-card .date {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 15px;
-    font-style: italic;
-  }
-  .notice-card .desc {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #333;
-  }
+  .notice-card:hover { transform:translateY(-5px); box-shadow:0 10px 24px rgba(0,0,0,0.15); }
+  .notice-card h3 { font-size:24px; color:#0f47b8; font-family:'Roboto Slab', serif; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .badge-new { background:red; color:#fff; font-size:12px; font-weight:bold; padding:2px 8px; border-radius:12px; text-transform:uppercase; }
+  .notice-card .date { font-size:14px; color:#555; margin-bottom:15px; font-style:italic; }
+  .notice-card .desc { font-size:17px; line-height:1.6; margin-bottom:20px; color:#333; }
 
-  /* Small Preview Thumbnail */
-  .pdf-thumb {
-    width: 100%;
-    height: 120px;
-    border: 2px solid #36d1dc;
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 15px 0;
-  }
+  .pdf-thumb { width:100%; height:120px; border:2px solid #36d1dc; border-radius:10px; overflow:hidden; margin:15px 0; }
+  .pdf-full { display:none; margin-top:15px; border:2px solid #36d1dc; border-radius:12px; overflow:hidden; }
 
-  /* Full Preview (hidden initially) */
-  .pdf-full {
-    display: none;
-    margin-top: 15px;
-    border: 2px solid #36d1dc;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  /* Buttons side by side */
-  .notice-actions {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  /* Button */
+  .notice-actions { margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; }
   .btn {
-    display:inline-block;
-    padding:10px 20px;
-    background: #36d1dc;
-    color:#fff;
-    border-radius:8px;
-    font-weight:600;
-    text-decoration:none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    cursor:pointer;
-    border:none;
+    padding:10px 20px; background:#36d1dc; color:#fff; border-radius:8px;
+    font-weight:600; text-decoration:none; transition:0.3s;
+    cursor:pointer; border:none; display:inline-block;
   }
-  .btn:hover {
-    transform: scale(1.05);
-    box-shadow:0 6px 18px rgba(15,71,184,0.4);
-    background:#5b86e5;
-  }
-
-  /* Animations */
-  @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+  .btn:hover { transform:scale(1.05); box-shadow:0 6px 18px rgba(15,71,184,0.4); background:#5b86e5; }
 
   /* Footer */
-  footer { 
-    text-align:center; 
-    color:#5b6b8b; 
-    padding:26px; 
-    font-size:14px; 
-  }
+  footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
   footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 </style>
 </head>
@@ -206,74 +112,27 @@
 <main>
   <h2>📢 Latest Notices</h2>
 
-  <!-- Vishwakarma Puja Holiday Notice (NEW) -->
-  <div class="notice-card">
-    <h3><span class="badge-new">NEW</span> Vishwakarma Puja Holiday</h3>
-    <p class="date">Date: 17th September 2025</p>
+  <!-- Durga Puja Holiday Notice -->
+  <div class="notice-card" expiry="2025-10-05T23:59:59">
+    <h3><span class="badge-new">NEW</span> Durga Puja Holiday</h3>
+    <p class="date">Date: 29th September 2025 – 5th October 2025</p>
     <p class="desc">
-      This is to inform all students, teachers, and staff that the school will remain <b>closed on 17th September 2025</b> 
-      on the occasion of <b>Vishwakarma Puja</b>. Regular classes will resume from the next working day.
+      This is to inform all students, teachers, and staff that the school will remain 
+      <b>closed from 29th September 2025 to 5th October 2025</b> on the occasion of 
+      <b>Durga Puja</b>. Regular classes will resume from 6th October 2025.
     </p>
 
     <div class="pdf-thumb">
-      <iframe src="pdfs/Vishwakarma_Puja_Notice.pdf" width="100%" height="120" style="border:none;"></iframe>
+      <iframe src="pdfs/Durga_Puja_Notice.pdf" width="100%" height="120" style="border:none;"></iframe>
     </div>
 
     <div class="notice-actions">
       <button class="btn preview-btn" onclick="togglePreview(this)">👁 Preview</button>
-      <a class="btn" href="pdfs/Vishwakarma_Puja_Notice.pdf" download>📄 Download</a>
+      <a class="btn" href="pdfs/Durga_Puja_Notice.pdf" download>📄 Download</a>
     </div>
 
     <div class="pdf-full">
-      <iframe src="pdfs/Vishwakarma_Puja_Notice.pdf" width="100%" height="400" style="border:none;"></iframe>
-    </div>
-  </div>
-
-  <!-- Notice 1 -->
-  <div class="notice-card">
-    <h3>Teacher's Day Celebration 2025</h3>
-    <p class="date">Date: 5th September 2025 | Time: 9:00 AM onwards</p>
-    <p class="desc">
-      We are delighted to announce that our school will celebrate <b>Teacher’s Day</b> 
-      with cultural programs, student performances, and a special felicitation 
-      ceremony to honor our respected teachers. All students must attend in proper school uniform.
-    </p>
-
-    <div class="pdf-thumb">
-      <iframe src="pdfs/teachers_day.pdf" width="100%" height="120" style="border:none;"></iframe>
-    </div>
-
-    <div class="notice-actions">
-      <button class="btn preview-btn" onclick="togglePreview(this)">👁 Preview</button>
-      <a class="btn" href="pdfs/teachers_day.pdf" download>📄 Download</a>
-    </div>
-
-    <div class="pdf-full">
-      <iframe src="pdfs/teachers_day.pdf" width="100%" height="400" style="border:none;"></iframe>
-    </div>
-  </div>
-
-  <!-- Notice 2 -->
-  <div class="notice-card">
-    <h3>2nd Unit Examination Schedule</h3>
-    <p class="date">Published: 20th August 2025</p>
-    <p class="desc">
-      The 2nd Unit Examination will begin from <b>08th September 2025</b>. 
-      Students are advised to prepare well in advance and carry their admit card 
-      on all examination days.
-    </p>
-
-    <div class="pdf-thumb">
-      <iframe src="pdfs/exam_schedule.pdf" width="100%" height="120" style="border:none;"></iframe>
-    </div>
-
-    <div class="notice-actions">
-      <button class="btn preview-btn" onclick="togglePreview(this)">👁 Preview</button>
-      <a class="btn" href="pdfs/exam_schedule.pdf" download>📄 Download</a>
-    </div>
-
-    <div class="pdf-full">
-      <iframe src="pdfs/exam_schedule.pdf" width="100%" height="400" style="border:none;"></iframe>
+      <iframe src="pdfs/Durga_Puja_Notice.pdf" width="100%" height="400" style="border:none;"></iframe>
     </div>
   </div>
 
@@ -286,14 +145,15 @@
 </footer>
 
 <script>
+  // Menu toggle for mobile
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
+  // Toggle Preview
   function togglePreview(button) {
     const card = button.closest('.notice-card');
     const preview = card.querySelector('.pdf-full');
-    
     if (preview.style.display === "block") {
       preview.style.display = "none";
       button.textContent = "👁 Preview";
@@ -302,8 +162,23 @@
       button.textContent = "❌ Close Preview";
     }
   }
+
+  // Auto-hide notices based on expiry attribute
+  function checkExpiry() {
+    document.querySelectorAll(".notice-card").forEach(card => {
+      const expiryAttr = card.getAttribute("expiry");
+      if (expiryAttr) {
+        const expiryDate = new Date(expiryAttr).getTime();
+        const now = new Date().getTime();
+        if (now > expiryDate) {
+          card.style.display = "none";
+        }
+      }
+    });
+  }
+  checkExpiry(); // Run on page load
+  setInterval(checkExpiry, 3600000); // Re-check every hour
 </script>
 
 </body>
 </html>
-
