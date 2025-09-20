@@ -4,119 +4,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Portal • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-/* ===== GENERAL ===== */
-* { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; transition: all 0.3s ease; }
-body { background: #eef2f7; color: #333; padding: 20px; }
+  * { box-sizing: border-box; margin:0; padding:0; transition: all 0.3s ease; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f6f6f6; color: #24324a; }
 
-h1 { font-family: 'Pacifico', cursive; text-align:center; margin-bottom:20px; color:#2c3e50; }
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg,#5b86e5,#36d1dc);
+    color:#fff;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  header img { height:60px; }
+  header .title { text-align:left; }
+  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
+  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
 
-/* ===== HEADER ===== */
-header {
-  background: linear-gradient(135deg,#5b86e5,#36d1dc);
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-}
-header img { height:50px; }
-header .title h1 { font-size:28px; }
-header .title span { font-size:14px; display:block; margin-top:4px; }
+  /* ===== NAVIGATION ===== */
+  nav {
+    background: linear-gradient(135deg,#36d1dc,#5b86e5);
+    display:flex;
+    justify-content:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav ul {
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    margin:0;
+    padding:0;
+  }
+  nav ul li a {
+    color:#fff;
+    text-decoration:none;
+    padding:12px 18px;
+    font-weight:600;
+    transition:0.3s;
+    display:block;
+  }
+  nav ul li a:hover, nav ul li a.active {
+    background: rgba(255,255,255,0.2);
+    border-radius:6px;
+  }
+  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
+  @media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
+    nav ul.show { display:flex; }
+  }
 
-/* ===== NAVIGATION ===== */
-nav {
-  display:flex;
-  justify-content:center;
-  margin-top:12px;
-  background: linear-gradient(135deg,#36d1dc,#5b86e5);
-  border-radius: 12px;
-  overflow:hidden;
-}
-nav ul { list-style:none; display:flex; flex-wrap:wrap; width:100%; justify-content:center; }
-nav ul li a {
-  color:#fff; text-decoration:none; padding:12px 18px; font-weight:600; display:block;
-}
-nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,0.2); border-radius:6px; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
-@media(max-width:768px){
-  .menu-toggle { display:block; }
-  nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
-  nav ul.show { display:flex; }
-}
+  /* ===== LOGIN BOX ===== */
+  .login-box {
+    max-width: 400px; margin:50px auto; background:#fff;
+    padding:30px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  }
+  .login-box h2 { margin-bottom:20px; text-align:center; font-family:'Roboto Slab', serif; }
+  input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:16px; }
+  button { width:100%; background: linear-gradient(90deg,#36d1dc,#5b86e5); color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px; }
+  button:hover { background: linear-gradient(90deg,#5b86e5,#36d1dc); }
 
-/* ===== LOGIN BOX ===== */
-.login-box {
-  max-width: 400px; margin:50px auto; background:#fff;
-  padding:30px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-.login-box h2 { margin-bottom:20px; text-align:center; }
-input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:16px; }
-button { width:100%; background: linear-gradient(90deg,#36d1dc,#5b86e5); color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px; }
-button:hover { background: linear-gradient(90deg,#5b86e5,#36d1dc); }
+  /* ===== DASHBOARD ===== */
+  .dashboard { display:none; margin-top:30px; animation: fadeInUp 0.5s ease-in; }
+  .dashboard-grid { display:grid; grid-template-columns:1fr 2fr; gap:25px; }
+  .left-panel, .right-panel {
+    display:flex; flex-direction:column; gap:20px; padding:20px;
+    border-radius:16px; background: linear-gradient(145deg,#f9fafc,#e6ebf5);
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  }
 
-/* ===== DASHBOARD ===== */
-.dashboard { display:none; margin-top:30px; animation: fadeIn 0.5s ease-in; }
-.dashboard-grid { display:grid; grid-template-columns:1fr 2fr; gap:25px; }
+  .dash-card { background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
+  .dash-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
 
-.left-panel, .right-panel { display:flex; flex-direction:column; gap:20px; padding:20px; border-radius:16px; background: linear-gradient(145deg,#f9fafc,#e6ebf5); box-shadow:0 4px 20px rgba(0,0,0,0.05); }
+  .student-photo { text-align:center; }
+  .student-photo img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid #36d1dc; transition: transform 0.3s; }
+  .student-photo img:hover { transform: scale(1.05); }
 
-/* ===== CARDS ===== */
-.dash-card {
-  background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.dash-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+  .links { margin-top:8px; display:flex; gap:8px; flex-wrap: wrap; }
+  .links a { display:inline-block; padding:6px 12px; border-radius:6px; background:#36d1dc; color:white; text-decoration:none; font-size:14px; }
+  .links a:hover { background:#5b86e5; }
 
-/* ===== STUDENT PHOTO ===== */
-.student-photo { text-align:center; }
-.student-photo img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid #36d1dc; transition: transform 0.3s; }
-.student-photo img:hover { transform: scale(1.05); }
+  .notification { background:#fffbeb; border-left:5px solid #ffd700; padding:10px 15px; border-radius:8px; }
 
-/* ===== LINKS ===== */
-.links { margin-top:8px; display:flex; gap:8px; flex-wrap: wrap; }
-.links a { display:inline-block; padding:6px 12px; border-radius:6px; background:#36d1dc; color:white; text-decoration:none; font-size:14px; }
-.links a:hover { background:#5b86e5; }
+  canvas { background:white; border-radius:12px; padding:10px; }
 
-/* ===== NOTIFICATIONS ===== */
-.notification { background:#fffbeb; border-left:5px solid #ffd700; padding:10px 15px; border-radius:8px; }
+  .carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
+  .carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
+  .carousel img:hover { transform: scale(1.1); }
 
-/* ===== PERFORMANCE CHART ===== */
-canvas { background:white; border-radius:12px; padding:10px; }
+  /* ===== FOOTER ===== */
+  footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
+  footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 
-/* ===== CAROUSEL ===== */
-.carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
-.carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
-.carousel img:hover { transform: scale(1.1); }
+  @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
 
-/* ===== DARK MODE ===== */
-body.dark { background:#1e1e2f; color:#e0e0e0; }
-body.dark .left-panel, body.dark .right-panel { background:#2a2a40; }
-body.dark .dash-card, body.dark canvas { background:#3a3a55; color:#fff; }
-body.dark .links a { background:#5b86e5; }
-body.dark nav, body.dark header { background:#2a2a40; }
-body.dark nav ul li a:hover, body.dark nav ul li a.active { background: rgba(255,255,255,0.1); }
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){ .dashboard-grid { grid-template-columns:1fr; } }
-
-/* ===== ANIMATION ===== */
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  @media(max-width:900px){ .dashboard-grid { grid-template-columns:1fr; } }
 
 </style>
 </head>
 <body>
 
 <header>
-  <img src="images/logo.png" alt="Logo">
+  <img src="images/logo.png" alt="Oxford Logo">
   <div class="title">
     <h1>Oxford Public School</h1>
-    <span>Co-Education English Medium • Kolkata</span>
+    <span>Co-Education English Medium <br>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
   <div class="menu-toggle">☰</div>
 </header>
@@ -131,7 +129,7 @@ body.dark nav ul li a:hover, body.dark nav ul li a.active { background: rgba(255
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-     <li><a href="student login.html" class="active">Student Login</a></li> 
+    <li><a href="student login.html" class="active">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
@@ -142,8 +140,6 @@ body.dark nav ul li a:hover, body.dark nav ul li a.active { background: rgba(255
   <input type="text" id="username" placeholder="Username">
   <input type="password" id="password" placeholder="Password">
   <button onclick="login()">Login</button>
-  <div style="margin-top:10px; text-align:center;">
-  </div>
 </div>
 
 <!-- DASHBOARD -->
@@ -203,67 +199,62 @@ body.dark nav ul li a:hover, body.dark nav ul li a.active { background: rgba(255
   </div>
 </div>
 
+<!-- FOOTER -->
+<footer>
+  © 2025 Oxford Public School | All Rights Reserved
+  <span>Designed by Mr. Ayush</span>
+</footer>
+
 <script>
-/* ===== MOBILE MENU ===== */
-const menuToggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
-/* ===== DARK MODE ===== */
-function toggleDarkMode() {
-  document.body.classList.toggle('dark');
-}
+  const students = {
+    "OPS_AKRITI": { password:"AKRITI2025", class:"Class 5", name:"Akriti Shaw", roll:"01", parent:"Mr. ABC", photo:"images/placeholder.png", marks:[75,80,70,85,90], attendance:90, routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf" }
+  };
 
-/* ===== STUDENT DATA ===== */
-const students = {
-  "OPS_AKRITI": { password:"AKRITI2025", class:"Class 5", name:"Akriti Shaw", roll:"01", parent:"Mr. ABC", photo:"images/placeholder.png", marks:[75,80,70,85,90], attendance:90, routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf" }
-};
+  function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-function login() {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
+    if(students[username] && students[username].password===password){
+      const stu = students[username];
+      document.getElementById("loginBox").style.display="none";
+      document.getElementById("dashboard").style.display="block";
 
-  if(students[username] && students[username].password===password){
-    const stu = students[username];
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("dashboard").style.display="block";
+      document.querySelector(".class-name").textContent = stu.class;
+      document.getElementById("studentName").textContent = stu.name;
+      document.getElementById("studentClass").textContent = stu.class;
+      document.getElementById("studentRoll").textContent = stu.roll;
+      document.getElementById("studentParent").textContent = stu.parent;
 
-    document.querySelector(".class-name").textContent = stu.class;
-    document.getElementById("studentName").textContent = stu.name;
-    document.getElementById("studentClass").textContent = stu.class;
-    document.getElementById("studentRoll").textContent = stu.roll;
-    document.getElementById("studentParent").textContent = stu.parent;
+      document.querySelector(".admit-pdf").src = stu.admit;
+      document.querySelector(".admit-full").href = stu.admit;
+      document.querySelector(".admit-download").href = stu.admit;
 
-    document.querySelector(".admit-pdf").src = stu.admit;
-    document.querySelector(".admit-full").href = stu.admit;
-    document.querySelector(".admit-download").href = stu.admit;
+      document.querySelector(".routine-pdf").src = stu.routine;
+      document.querySelector(".routine-full").href = stu.routine;
+      document.querySelector(".routine-download").href = stu.routine;
 
-    document.querySelector(".routine-pdf").src = stu.routine;
-    document.querySelector(".routine-full").href = stu.routine;
-    document.querySelector(".routine-download").href = stu.routine;
+      document.querySelector(".student-photo img").src = stu.photo;
 
-    document.querySelector(".student-photo img").src = stu.photo;
+      const ctx = document.getElementById('performanceChart').getContext('2d');
+      new Chart(ctx, {
+        type:'bar',
+        data: {
+          labels:['Math','English','Science','S S T','Computer'],
+          datasets:[{label:'Marks', data:stu.marks, backgroundColor:'rgba(54, 209, 220, 0.6)', borderColor:'rgba(54, 209, 220, 1)', borderWidth:1}]
+        },
+        options:{scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
+      });
 
-    const ctx = document.getElementById('performanceChart').getContext('2d');
-    new Chart(ctx, {
-      type:'bar',
-      data: {
-        labels:['Math','English','Science','S S T','Computer'],
-        datasets:[{label:'Marks', data:stu.marks, backgroundColor:'rgba(54, 209, 220, 0.6)', borderColor:'rgba(54, 209, 220, 1)', borderWidth:1}]
-      },
-      options:{scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
-    });
-
-    document.getElementById('attendanceProgress').value = stu.attendance;
-  } else {
-    alert("Invalid username or password!");
+      document.getElementById('attendanceProgress').value = stu.attendance;
+    } else {
+      alert("Invalid username or password!");
+    }
   }
-}
 </script>
 
 </body>
 </html>
-
-
-
-
