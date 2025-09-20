@@ -213,7 +213,7 @@ function toggleDarkMode() {
 
 /* ===== STUDENT DATA ===== */
 const students = {
-  "OPS_CLASS1": { password:"OPS2025", class:"Class 1", name:"John Doe", roll:"01", parent:"Mr. ABC", photo:"images/placeholder.png", marks:[75,80,70,85,90], attendance:90, routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf" }
+  "OPS_AKRITI": { password:"AKRITI2025", class:"Class 5", name:"Akriti Shaw", roll:"01", parent:"Mr. ABC", photo:"images/placeholder.png", marks:[75,80,70,85,90], attendance:90, routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf" }
 };
 
 function login() {
@@ -245,7 +245,7 @@ function login() {
     new Chart(ctx, {
       type:'bar',
       data: {
-        labels:['Math','English','Science','Social','Computer'],
+        labels:['Math','English','Science','S S T','Computer'],
         datasets:[{label:'Marks', data:stu.marks, backgroundColor:'rgba(54, 209, 220, 0.6)', borderColor:'rgba(54, 209, 220, 1)', borderWidth:1}]
       },
       options:{scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
@@ -260,3 +260,4 @@ function login() {
 
 </body>
 </html>
+
