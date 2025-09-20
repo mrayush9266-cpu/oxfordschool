@@ -7,57 +7,130 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; }
-  body { background: #eef2f7; color: #333; padding: 20px; transition: background 0.3s; }
+/* ===== GENERAL ===== */
+* { box-sizing: border-box; margin:0; padding:0; font-family: 'Roboto', sans-serif; transition: all 0.3s ease; }
+body { background: #eef2f7; color: #333; padding: 20px; }
 
-  h1 { font-family: 'Pacifico', cursive; text-align:center; margin-bottom:20px; color:#2c3e50; }
+h1 { font-family: 'Pacifico', cursive; text-align:center; margin-bottom:20px; color:#2c3e50; }
 
-  /* LOGIN BOX */
-  .login-box { max-width: 400px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
-  .login-box h2 { margin-bottom: 20px; text-align:center; }
-  input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; }
-  button { width: 100%; background: linear-gradient(90deg,#36d1dc,#5b86e5); color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
-  button:hover { background: linear-gradient(90deg,#5b86e5,#36d1dc); }
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg,#5b86e5,#36d1dc);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+}
+header img { height:50px; }
+header .title h1 { font-size:28px; }
+header .title span { font-size:14px; display:block; margin-top:4px; }
 
-  /* DASHBOARD */
-  .dashboard { display: none; margin-top: 30px; animation: fadeIn 0.5s ease-in; }
-  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-  .dashboard-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 25px; }
+/* ===== NAVIGATION ===== */
+nav {
+  display:flex;
+  justify-content:center;
+  margin-top:12px;
+  background: linear-gradient(135deg,#36d1dc,#5b86e5);
+  border-radius: 12px;
+  overflow:hidden;
+}
+nav ul { list-style:none; display:flex; flex-wrap:wrap; width:100%; justify-content:center; }
+nav ul li a {
+  color:#fff; text-decoration:none; padding:12px 18px; font-weight:600; display:block;
+}
+nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,0.2); border-radius:6px; }
+.menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
+@media(max-width:768px){
+  .menu-toggle { display:block; }
+  nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
+  nav ul.show { display:flex; }
+}
 
-  .left-panel, .right-panel { display: flex; flex-direction: column; gap: 20px; padding: 20px; border-radius: 16px; background: linear-gradient(145deg,#f9fafc,#e6ebf5); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+/* ===== LOGIN BOX ===== */
+.login-box {
+  max-width: 400px; margin:50px auto; background:#fff;
+  padding:30px; border-radius:16px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.login-box h2 { margin-bottom:20px; text-align:center; }
+input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; font-size:16px; }
+button { width:100%; background: linear-gradient(90deg,#36d1dc,#5b86e5); color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px; }
+button:hover { background: linear-gradient(90deg,#5b86e5,#36d1dc); }
 
-  /* STUDENT PHOTO */
-  .student-photo { text-align:center; }
-  .student-photo img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #36d1dc; margin-bottom: 10px; transition: transform 0.3s; }
-  .student-photo img:hover { transform: scale(1.05); }
+/* ===== DASHBOARD ===== */
+.dashboard { display:none; margin-top:30px; animation: fadeIn 0.5s ease-in; }
+.dashboard-grid { display:grid; grid-template-columns:1fr 2fr; gap:25px; }
 
-  /* DASHBOARD CARD */
-  .dash-card { background: white; border-radius: 12px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: 0.3s; }
-  .dash-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.left-panel, .right-panel { display:flex; flex-direction:column; gap:20px; padding:20px; border-radius:16px; background: linear-gradient(145deg,#f9fafc,#e6ebf5); box-shadow:0 4px 20px rgba(0,0,0,0.05); }
 
-  /* LINKS */
-  .links { margin-top: 8px; display:flex; gap:8px; flex-wrap: wrap; }
-  .links a { display: inline-block; padding: 6px 12px; border-radius: 6px; background: #36d1dc; color: white; text-decoration: none; font-size: 14px; transition: 0.3s; }
-  .links a:hover { background: #5b86e5; }
+/* ===== CARDS ===== */
+.dash-card {
+  background:white; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.dash-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.1); }
 
-  /* NOTIFICATIONS */
-  .notification { background: #fffbeb; border-left: 5px solid #ffd700; padding: 10px 15px; border-radius: 8px; margin-bottom: 10px; }
+/* ===== STUDENT PHOTO ===== */
+.student-photo { text-align:center; }
+.student-photo img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid #36d1dc; transition: transform 0.3s; }
+.student-photo img:hover { transform: scale(1.05); }
 
-  /* PERFORMANCE CHART */
-  canvas { background: white; border-radius: 12px; padding:10px; }
+/* ===== LINKS ===== */
+.links { margin-top:8px; display:flex; gap:8px; flex-wrap: wrap; }
+.links a { display:inline-block; padding:6px 12px; border-radius:6px; background:#36d1dc; color:white; text-decoration:none; font-size:14px; }
+.links a:hover { background:#5b86e5; }
 
-  /* ACHIEVEMENTS CAROUSEL */
-  .carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
-  .carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
-  .carousel img:hover { transform: scale(1.1); }
+/* ===== NOTIFICATIONS ===== */
+.notification { background:#fffbeb; border-left:5px solid #ffd700; padding:10px 15px; border-radius:8px; }
 
-  /* RESPONSIVE */
-  @media(max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
+/* ===== PERFORMANCE CHART ===== */
+canvas { background:white; border-radius:12px; padding:10px; }
+
+/* ===== CAROUSEL ===== */
+.carousel { display:flex; overflow-x:auto; gap:10px; padding:10px 0; }
+.carousel img { height:100px; border-radius:8px; flex-shrink:0; transition: transform 0.3s; }
+.carousel img:hover { transform: scale(1.1); }
+
+/* ===== DARK MODE ===== */
+body.dark { background:#1e1e2f; color:#e0e0e0; }
+body.dark .left-panel, body.dark .right-panel { background:#2a2a40; }
+body.dark .dash-card, body.dark canvas { background:#3a3a55; color:#fff; }
+body.dark .links a { background:#5b86e5; }
+body.dark nav, body.dark header { background:#2a2a40; }
+body.dark nav ul li a:hover, body.dark nav ul li a.active { background: rgba(255,255,255,0.1); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){ .dashboard-grid { grid-template-columns:1fr; } }
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
 </style>
 </head>
 <body>
 
-<h1>Oxford Public School • Student Portal</h1>
+<header>
+  <img src="images/logo.png" alt="Logo">
+  <div class="title">
+    <h1>Oxford Public School</h1>
+    <span>Co-Education English Medium • Kolkata</span>
+  </div>
+  <div class="menu-toggle">☰</div>
+</header>
+
+<nav>
+  <ul id="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="admission.html">Admission</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="student login.html" class="active">Student Login</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
 <!-- LOGIN -->
 <div class="login-box" id="loginBox">
@@ -65,18 +138,19 @@
   <input type="text" id="username" placeholder="Username">
   <input type="password" id="password" placeholder="Password">
   <button onclick="login()">Login</button>
+  <div style="margin-top:10px; text-align:center;">
+    <button onclick="toggleDarkMode()" style="background:#555;">Toggle Dark Mode</button>
+  </div>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
   <div class="dashboard-grid">
 
-    <!-- LEFT PANEL -->
     <div class="left-panel">
       <div class="student-photo">
         <img src="images/placeholder.png" alt="Student Photo">
       </div>
-
       <div class="dash-card">
         📄 Admit Card
         <embed class="admit-pdf" src="" type="application/pdf" width="100%" height="180px" />
@@ -85,7 +159,6 @@
           <a class="admit-download" href="#" download>⬇️ Download</a>
         </div>
       </div>
-
       <div class="dash-card">
         📅 Routine
         <embed class="routine-pdf" src="" type="application/pdf" width="100%" height="180px" />
@@ -94,9 +167,7 @@
           <a class="routine-download" href="#" download>⬇️ Download</a>
         </div>
       </div>
-
       <div class="dash-card" id="payFeesCard">💰 Pay Fees Online</div>
-      
       <div class="dash-card">
         🏆 Achievements
         <div class="carousel">
@@ -107,27 +178,22 @@
       </div>
     </div>
 
-    <!-- RIGHT PANEL -->
     <div class="right-panel">
       <h3 class="class-name"></h3>
       <div class="dash-card student-info">
         <strong>Name:</strong> <span id="studentName"></span><br>
         <strong>Class:</strong> <span id="studentClass"></span><br>
-        <strong>Roll No:</strong> <span id="studentRoll">001</span><br>
-        <strong>Parent:</strong> <span id="studentParent">Mr/Mrs XYZ</span>
+        <strong>Roll No:</strong> <span id="studentRoll"></span><br>
+        <strong>Parent:</strong> <span id="studentParent"></span>
       </div>
-
       <div class="dash-card notification">📢 Upcoming Holiday - Durga Puja</div>
-
       <div class="dash-card">
         📊 Performance
         <canvas id="performanceChart" height="200"></canvas>
       </div>
-
       <div class="dash-card">
         📈 Attendance: <progress id="attendanceProgress" value="85" max="100"></progress> 85%
       </div>
-
       <div class="dash-card">📝 Behaviour & Discipline: Excellent</div>
     </div>
 
@@ -135,92 +201,29 @@
 </div>
 
 <script>
+/* ===== MOBILE MENU ===== */
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
+
+/* ===== DARK MODE ===== */
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+}
+
+/* ===== STUDENT DATA ===== */
 const students = {
-  // Classes 1–4 (common login)
-  "OPS_CLASS1": { password:"OPS2025", class:"Class 1", routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf", report:"materials/class1_report.pdf" },
-  "OPS_CLASS2": { password:"OPS2025", class:"Class 2", routine:"materials/class2_routine.pdf", admit:"materials/class2_admit.pdf", report:"materials/class2_report.pdf" },
-  "OPS_CLASS3": { password:"OPS2025", class:"Class 3", routine:"materials/class3_routine.pdf", admit:"materials/class3_admit.pdf", report:"materials/class3_report.pdf" },
-  "OPS_CLASS4": { password:"OPS2025", class:"Class 4", routine:"materials/class4_routine.pdf", admit:"materials/class4_admit.pdf", report:"materials/class4_report.pdf" },
-
-  // CLASS 5 (18 students)
-  "OPS_CLASS5_STU1": { password:"PASS51", class:"Class 5", routine:"materials/class5/stu1_routine.pdf", admit:"materials/class5/stu1_admit.pdf", report:"materials/class5/stu1_report.pdf" },
-  "OPS_CLASS5_STU2": { password:"PASS52", class:"Class 5", routine:"materials/class5/stu2_routine.pdf", admit:"materials/class5/stu2_admit.pdf", report:"materials/class5/stu2_report.pdf" },
-  "OPS_CLASS5_STU3": { password:"PASS53", class:"Class 5", routine:"materials/class5/stu3_routine.pdf", admit:"materials/class5/stu3_admit.pdf", report:"materials/class5/stu3_report.pdf" },
-  "OPS_CLASS5_STU4": { password:"PASS54", class:"Class 5", routine:"materials/class5/stu4_routine.pdf", admit:"materials/class5/stu4_admit.pdf", report:"materials/class5/stu4_report.pdf" },
-  "OPS_CLASS5_STU5": { password:"PASS55", class:"Class 5", routine:"materials/class5/stu5_routine.pdf", admit:"materials/class5/stu5_admit.pdf", report:"materials/class5/stu5_report.pdf" },
-  "OPS_CLASS5_STU6": { password:"PASS56", class:"Class 5", routine:"materials/class5/stu6_routine.pdf", admit:"materials/class5/stu6_admit.pdf", report:"materials/class5/stu6_report.pdf" },
-  "OPS_CLASS5_STU7": { password:"PASS57", class:"Class 5", routine:"materials/class5/stu7_routine.pdf", admit:"materials/class5/stu7_admit.pdf", report:"materials/class5/stu7_report.pdf" },
-  "OPS_CLASS5_STU8": { password:"PASS58", class:"Class 5", routine:"materials/class5/stu8_routine.pdf", admit:"materials/class5/stu8_admit.pdf", report:"materials/class5/stu8_report.pdf" },
-  "OPS_CLASS5_STU9": { password:"PASS59", class:"Class 5", routine:"materials/class5/stu9_routine.pdf", admit:"materials/class5/stu9_admit.pdf", report:"materials/class5/stu9_report.pdf" },
-  "OPS_CLASS5_STU10": { password:"PASS510", class:"Class 5", routine:"materials/class5/stu10_routine.pdf", admit:"materials/class5/stu10_admit.pdf", report:"materials/class5/stu10_report.pdf" },
-  "OPS_CLASS5_STU11": { password:"PASS511", class:"Class 5", routine:"materials/class5/stu11_routine.pdf", admit:"materials/class5/stu11_admit.pdf", report:"materials/class5/stu11_report.pdf" },
-  "OPS_CLASS5_STU12": { password:"PASS512", class:"Class 5", routine:"materials/class5/stu12_routine.pdf", admit:"materials/class5/stu12_admit.pdf", report:"materials/class5/stu12_report.pdf" },
-  "OPS_CLASS5_STU13": { password:"PASS513", class:"Class 5", routine:"materials/class5/stu13_routine.pdf", admit:"materials/class5/stu13_admit.pdf", report:"materials/class5/stu13_report.pdf" },
-  "OPS_CLASS5_STU14": { password:"PASS514", class:"Class 5", routine:"materials/class5/stu14_routine.pdf", admit:"materials/class5/stu14_admit.pdf", report:"materials/class5/stu14_report.pdf" },
-  "OPS_CLASS5_STU15": { password:"PASS515", class:"Class 5", routine:"materials/class5/stu15_routine.pdf", admit:"materials/class5/stu15_admit.pdf", report:"materials/class5/stu15_report.pdf" },
-  "OPS_CLASS5_STU16": { password:"PASS516", class:"Class 5", routine:"materials/class5/stu16_routine.pdf", admit:"materials/class5/stu16_admit.pdf", report:"materials/class5/stu16_report.pdf" },
-  "OPS_CLASS5_STU17": { password:"PASS517", class:"Class 5", routine:"materials/class5/stu17_routine.pdf", admit:"materials/class5/stu17_admit.pdf", report:"materials/class5/stu17_report.pdf" },
-  "OPS_CLASS5_STU18": { password:"PASS518", class:"Class 5", routine:"materials/class5/stu18_routine.pdf", admit:"materials/class5/stu18_admit.pdf", report:"materials/class5/stu18_report.pdf" },
-
-  // CLASS 6 (13 students)
-  "OPS_CLASS6_STU1": { password:"PASS61", class:"Class 6", routine:"materials/class6/stu1_routine.pdf", admit:"materials/class6/stu1_admit.pdf", report:"materials/class6/stu1_report.pdf" },
-  "OPS_CLASS6_STU2": { password:"PASS62", class:"Class 6", routine:"materials/class6/stu2_routine.pdf", admit:"materials/class6/stu2_admit.pdf", report:"materials/class6/stu2_report.pdf" },
-  "OPS_CLASS6_STU3": { password:"PASS63", class:"Class 6", routine:"materials/class6/stu3_routine.pdf", admit:"materials/class6/stu3_admit.pdf", report:"materials/class6/stu3_report.pdf" },
-  "OPS_CLASS6_STU4": { password:"PASS64", class:"Class 6", routine:"materials/class6/stu4_routine.pdf", admit:"materials/class6/stu4_admit.pdf", report:"materials/class6/stu4_report.pdf" },
-  "OPS_CLASS6_STU5": { password:"PASS65", class:"Class 6", routine:"materials/class6/stu5_routine.pdf", admit:"materials/class6/stu5_admit.pdf", report:"materials/class6/stu5_report.pdf" },
-  "OPS_CLASS6_STU6": { password:"PASS66", class:"Class 6", routine:"materials/class6/stu6_routine.pdf", admit:"materials/class6/stu6_admit.pdf", report:"materials/class6/stu6_report.pdf" },
-  "OPS_CLASS6_STU7": { password:"PASS67", class:"Class 6", routine:"materials/class6/stu7_routine.pdf", admit:"materials/class6/stu7_admit.pdf", report:"materials/class6/stu7_report.pdf" },
-  "OPS_CLASS6_STU8": { password:"PASS68", class:"Class 6", routine:"materials/class6/stu8_routine.pdf", admit:"materials/class6/stu8_admit.pdf", report:"materials/class6/stu8_report.pdf" },
-  "OPS_CLASS6_STU9": { password:"PASS69", class:"Class 6", routine:"materials/class6/stu9_routine.pdf", admit:"materials/class6/stu9_admit.pdf", report:"materials/class6/stu9_report.pdf" },
-  "OPS_CLASS6_STU10": { password:"PASS610", class:"Class 6", routine:"materials/class6/stu10_routine.pdf", admit:"materials/class6/stu10_admit.pdf", report:"materials/class6/stu10_report.pdf" },
-  "OPS_CLASS6_STU11": { password:"PASS611", class:"Class 6", routine:"materials/class6/stu11_routine.pdf", admit:"materials/class6/stu11_admit.pdf", report:"materials/class6/stu11_report.pdf" },
-  "OPS_CLASS6_STU12": { password:"PASS612", class:"Class 6", routine:"materials/class6/stu12_routine.pdf", admit:"materials/class6/stu12_admit.pdf", report:"materials/class6/stu12_report.pdf" },
-  "OPS_CLASS6_STU13": { password:"PASS613", class:"Class 6", routine:"materials/class6/stu13_routine.pdf", admit:"materials/class6/stu13_admit.pdf", report:"materials/class6/stu13_report.pdf" },
-
-  // CLASS 7 (5 students)
-  "OPS_CLASS7_STU1": { password:"PASS71", class:"Class 7", routine:"materials/class7/stu1_routine.pdf", admit:"materials/class7/stu1_admit.pdf", report:"materials/class7/stu1_report.pdf" },
-  "OPS_CLASS7_STU2": { password:"PASS72", class:"Class 7", routine:"materials/class7/stu2_routine.pdf", admit:"materials/class7/stu2_admit.pdf", report:"materials/class7/stu2_report.pdf" },
-  "OPS_CLASS7_STU3": { password:"PASS73", class:"Class 7", routine:"materials/class7/stu3_routine.pdf", admit:"materials/class7/stu3_admit.pdf", report:"materials/class7/stu3_report.pdf" },
-  "OPS_CLASS7_STU4": { password:"PASS74", class:"Class 7", routine:"materials/class7/stu4_routine.pdf", admit:"materials/class7/stu4_admit.pdf", report:"materials/class7/stu4_report.pdf" },
-  "OPS_CLASS7_STU5": { password:"PASS75", class:"Class 7", routine:"materials/class7/stu5_routine.pdf", admit:"materials/class7/stu5_admit.pdf", report:"materials/class7/stu5_report.pdf" },
-
-  // CLASS 8 (7 students)
-  "OPS_CLASS8_STU1": { password:"PASS81", class:"Class 8", routine:"materials/class8/stu1_routine.pdf", admit:"materials/class8/stu1_admit.pdf", report:"materials/class8/stu1_report.pdf" },
-  "OPS_CLASS8_STU2": { password:"PASS82", class:"Class 8", routine:"materials/class8/stu2_routine.pdf", admit:"materials/class8/stu2_admit.pdf", report:"materials/class8/stu2_report.pdf" },
-  "OPS_VICKY_CLASS8": { password:"01/01/2011", class:"Class 8", routine:"materials/class8/stu3_routine.pdf", admit:"materials/class8/stu3_admit.pdf", report:"materials/class8/stu3_report.pdf" },
-  "OPS_CLASS8_STU4": { password:"PASS84", class:"Class 8", routine:"materials/class8/stu4_routine.pdf", admit:"materials/class8/stu4_admit.pdf", report:"materials/class8/stu4_report.pdf" },
-  "OPS_CLASS8_STU5": { password:"PASS85", class:"Class 8", routine:"materials/class8/stu5_routine.pdf", admit:"materials/class8/stu5_admit.pdf", report:"materials/class8/stu5_report.pdf" },
-  "OPS_CLASS8_STU6": { password:"PASS86", class:"Class 8", routine:"materials/class8/stu6_routine.pdf", admit:"materials/class8/stu6_admit.pdf", report:"materials/class8/stu6_report.pdf" },
-  "OPS_CLASS8_STU7": { password:"PASS87", class:"Class 8", routine:"materials/class8/stu7_routine.pdf", admit:"materials/class8/stu7_admit.pdf", report:"materials/class8/stu7_report.pdf" },
-
-  // CLASS 9 (7 students)
-  "OPS_CLASS9_STU1": { password:"PASS91", class:"Class 9", routine:"materials/class9/stu1_routine.pdf", admit:"materials/class9/stu1_admit.pdf", report:"materials/class9/stu1_report.pdf" },
-  "OPS_CLASS9_STU2": { password:"PASS92", class:"Class 9", routine:"materials/class9/stu2_routine.pdf", admit:"materials/class9/stu2_admit.pdf", report:"materials/class9/stu2_report.pdf" },
-  "OPS_CLASS9_STU3": { password:"PASS93", class:"Class 9", routine:"materials/class9/stu3_routine.pdf", admit:"materials/class9/stu3_admit.pdf", report:"materials/class9/stu3_report.pdf" },
-  "OPS_CLASS9_STU4": { password:"PASS94", class:"Class 9", routine:"materials/class9/stu4_routine.pdf", admit:"materials/class9/stu4_admit.pdf", report:"materials/class9/stu4_report.pdf" },
-  "OPS_CLASS9_STU5": { password:"PASS95", class:"Class 9", routine:"materials/class9/stu5_routine.pdf", admit:"materials/class9/stu5_admit.pdf", report:"materials/class9/stu5_report.pdf" },
-  "OPS_CLASS9_STU6": { password:"PASS96", class:"Class 9", routine:"materials/class9/stu6_routine.pdf", admit:"materials/class9/stu6_admit.pdf", report:"materials/class9/stu6_report.pdf" },
-  "OPS_CLASS9_STU7": { password:"PASS97", class:"Class 9", routine:"materials/class9/stu7_routine.pdf", admit:"materials/class9/stu7_admit.pdf", report:"materials/class9/stu7_report.pdf" },
-
-  // CLASS 10 (8 students)
-  "OPS_CLASS10_STU1": { password:"PASS101", class:"Class 10", routine:"materials/class10/stu1_routine.pdf", admit:"materials/class10/stu1_admit.pdf", report:"materials/class10/stu1_report.pdf" },
-  "OPS_CLASS10_STU2": { password:"PASS102", class:"Class 10", routine:"materials/class10/stu2_routine.pdf", admit:"materials/class10/stu2_admit.pdf", report:"materials/class10/stu2_report.pdf" },
-  "OPS_CLASS10_STU3": { password:"PASS103", class:"Class 10", routine:"materials/class10/stu3_routine.pdf", admit:"materials/class10/stu3_admit.pdf", report:"materials/class10/stu3_report.pdf" },
-  "OPS_CLASS10_STU4": { password:"PASS104", class:"Class 10", routine:"materials/class10/stu4_routine.pdf", admit:"materials/class10/stu4_admit.pdf", report:"materials/class10/stu4_report.pdf" },
-  "OPS_CLASS10_STU5": { password:"PASS105", class:"Class 10", routine:"materials/class10/stu5_routine.pdf", admit:"materials/class10/stu5_admit.pdf", report:"materials/class10/stu5_report.pdf" },
-  "OPS_CLASS10_STU6": { password:"PASS106", class:"Class 10", routine:"materials/class10/stu6_routine.pdf", admit:"materials/class10/stu6_admit.pdf", report:"materials/class10/stu6_report.pdf" },
-  "OPS_CLASS10_STU7": { password:"PASS107", class:"Class 10", routine:"materials/class10/stu7_routine.pdf", admit:"materials/class10/stu7_admit.pdf", report:"materials/class10/stu7_report.pdf" },
-  "OPS_CLASS10_STU8": { password:"PASS108", class:"Class 10", routine:"materials/class10/stu8_routine.pdf", admit:"materials/class10/stu8_admit.pdf", report:"materials/class10/stu8_report.pdf" }
+  "OPS_CLASS1": { password:"OPS2025", class:"Class 1", name:"John Doe", roll:"01", parent:"Mr. ABC", photo:"images/placeholder.png", marks:[75,80,70,85,90], attendance:90, routine:"materials/class1_routine.pdf", admit:"materials/class1_admit.pdf" }
 };
 
 function login() {
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
 
-  if (students[username] && students[username].password === password) {
+  if(students[username] && students[username].password===password){
     const stu = students[username];
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("dashboard").style.display="block";
 
     document.querySelector(".class-name").textContent = stu.class;
     document.getElementById("studentName").textContent = stu.name;
@@ -238,29 +241,17 @@ function login() {
 
     document.querySelector(".student-photo img").src = stu.photo;
 
-    // Performance Chart
     const ctx = document.getElementById('performanceChart').getContext('2d');
     new Chart(ctx, {
-      type: 'bar',
+      type:'bar',
       data: {
-        labels: ['Math', 'English', 'Science', 'Social', 'Computer'],
-        datasets: [{
-          label: 'Marks',
-          data: stu.marks,
-          backgroundColor: 'rgba(54, 209, 220, 0.6)',
-          borderColor: 'rgba(54, 209, 220, 1)',
-          borderWidth: 1
-        }]
+        labels:['Math','English','Science','Social','Computer'],
+        datasets:[{label:'Marks', data:stu.marks, backgroundColor:'rgba(54, 209, 220, 0.6)', borderColor:'rgba(54, 209, 220, 1)', borderWidth:1}]
       },
-      options: {
-        scales: { y: { beginAtZero: true, max:100 } },
-        plugins: { legend: { display: false } }
-      }
+      options:{scales:{y:{beginAtZero:true,max:100}},plugins:{legend:{display:false}}}
     });
 
-    // Attendance
     document.getElementById('attendanceProgress').value = stu.attendance;
-
   } else {
     alert("Invalid username or password!");
   }
