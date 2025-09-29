@@ -213,6 +213,64 @@ section.visible, h2.section-heading.visible {
   opacity:1 !important;
   transform: translate(0,0) scale(1) !important;
 }
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  visibility:hidden;
+  opacity:0;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index:1000;
+}
+.popup-overlay.active {
+  visibility:visible;
+  opacity:1;
+}
+.popup-box {
+  background:#fff;
+  padding:30px 20px;
+  border-radius:12px;
+  text-align:center;
+  width:90%;
+  max-width:400px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  animation: zoomIn 0.4s ease;
+  position:relative;
+}
+.popup-box h2 {
+  font-family:'Playfair Display', serif;
+  margin-bottom:12px;
+  color:#333;
+}
+.popup-box p { margin-bottom:20px; font-size:15px; color:#444; }
+.apply-btn {
+  display:inline-block;
+  background:#764ba2;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+.apply-btn:hover { background:#5b42a1; }
+.close-btn {
+  position:absolute;
+  top:10px; right:16px;
+  font-size:26px;
+  cursor:pointer;
+  color:#666;
+}
+@keyframes zoomIn {
+  from { transform:scale(0.7); opacity:0; }
+  to { transform:scale(1); opacity:1; }
+}
 </style>
 </head>
 <body>
@@ -299,7 +357,12 @@ section.visible, h2.section-heading.visible {
     <h2 class="section-heading">Our Facilities</h2>
     <div class="card">
       <img src="images/facilities.jpg" alt="Facilities">
-      <p>Oxford Public School provides world-class facilities to ensure a safe, healthy, and inspiring learning environment. Modern classrooms, science labs, library, computer labs, art and music rooms, playgrounds, and sports facilities are all designed to foster holistic growth and creativity. Students experience a nurturing and engaging environment that encourages learning and personal development in every dimension.</p>
+      <p>Oxford Public School provides world-class facilities to ensure a safe, healthy, and inspiring learning environment.</p>
+      <div class="readmore-content">
+        <p>
+        Oxford Public School provides world-class facilities to ensure a safe, healthy, and inspiring learning environment. Modern classrooms, science labs, library, computer labs, art and music rooms, playgrounds, and sports facilities are all designed to foster holistic growth and creativity. Students experience a nurturing and engaging environment that encourages learning and personal development in every dimension.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -341,6 +404,16 @@ section.visible, h2.section-heading.visible {
   </section>
 </main>
 
+<!-- Apply Now Popup -->
+<div id="applyPopup" class="popup-overlay">
+  <div class="popup-box">
+    <span class="close-btn">&times;</span>
+    <h2>Admissions Open!</h2>
+    <p>Start your journey with Oxford Public School today.</p>
+    <a href="admission.html" class="apply-btn">Apply Now</a>
+  </div>
+</div>
+
 <footer>
   © 2025 Oxford Public School | All Rights Reserved <br>
   <span style="font-family:'Lobster', cursive; font-size:14px;">Designed by Mr. Ayush</span>
@@ -375,6 +448,35 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 sections.forEach(sec => { observer.observe(sec); });
+
+// Popup logic (only first time)
+window.addEventListener("load", ()=>{
+  try {
+    if(!localStorage.getItem("popupShown")){
+      setTimeout(()=>{
+        document.getElementById("applyPopup").classList.add("active");
+        localStorage.setItem("popupShown", "true");
+      }, 3000);
+    }
+  } catch(e) {
+    // localStorage might be blocked; fallback to showing once per session
+    setTimeout(()=>{ document.getElementById("applyPopup").classList.add("active"); }, 3000);
+  }
+});
+
+// Close popup
+const closeBtn = document.querySelector(".close-btn");
+if (closeBtn) {
+  closeBtn.addEventListener("click", ()=>{
+    document.getElementById("applyPopup").classList.remove("active");
+  });
+}
+// Close popup when clicking on overlay (outside box)
+document.getElementById("applyPopup").addEventListener("click", function(e){
+  if(e.target === this){
+    this.classList.remove("active");
+  }
+});
 </script>
 
 </body>
