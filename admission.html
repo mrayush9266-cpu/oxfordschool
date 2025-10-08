@@ -66,50 +66,51 @@
   section { border-radius:16px; margin-bottom:36px; padding:40px 20px; animation: fadeInUp 1s ease; }
 
   /* Section Colors */
-  .info { background: #fff7e6; text-align:center; }
-  .procedure { background: #e6f7ff; }
-  .dates { background: #e6ffe6; }
+  .info { background: #fff7e6; }
+  .eligibility { background: #e6f7ff; }
   .form-section { background: #fbe6ff; }
-
-  /* Images */
-  section img { max-width:100%; border-radius:12px; margin-bottom:12px; transition: transform 0.3s; }
-  section img:hover { transform: scale(1.03); }
 
   /* Paragraph */
   section p { line-height:1.6; margin-bottom:12px; }
 
   /* Buttons */
-  .btn { display:inline-block; padding:10px 16px; background:#0f47b8; color:#fff; border-radius:8px; text-decoration:none; margin-top:6px; transition:0.3s; cursor:pointer; }
+  .btn { display:inline-block; padding:12px 20px; background:#0f47b8; color:#fff; border-radius:8px; text-decoration:none; margin-top:12px; font-size:16px; transition:0.3s; }
   .btn:hover { background:#1e63e9; }
 
   /* Form */
-  form { display:grid; gap:16px; margin-top:12px; }
-  input, select, textarea, button { padding:12px; border-radius:8px; border:1px solid #ccc; font-size:16px; }
-  button { background:#0f47b8; color:#fff; border:none; font-weight:600; cursor:pointer; transition:0.3s; }
+  form { display:grid; gap:20px; margin-top:20px; }
+  input, select, textarea, button { padding:16px; border-radius:8px; border:1px solid #ccc; font-size:18px; width:100%; }
+  button { background:#0f47b8; color:#fff; border:none; font-weight:700; cursor:pointer; transition:0.3s; }
   button:hover { background:#1e63e9; }
+
+  /* Terms checkbox */
+  .terms { display:flex; align-items:center; gap:10px; font-size:16px; }
 
   /* Footer */
   footer { text-align:center; color:#5b6b8b; padding:26px; font-size:14px; }
   footer span { font-family:'Lobster', cursive; font-size:14px; display:block; margin-top:6px; }
 
+  /* Fade animation */
   @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
 
   /* Success Popup */
-  .success-popup {
-    position: fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center;
-    opacity:0; visibility:hidden; transition:0.3s; z-index:1000;
+  #successPopup {
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
   }
-  .success-popup.active { opacity:1; visibility:visible; }
-  .success-content { background:#fff; padding:30px 40px; border-radius:12px; text-align:center; animation: popIn 0.4s ease; }
-  @keyframes popIn { from { transform:scale(0.7); opacity:0; } to { transform:scale(1); opacity:1; } }
-  .success-content h3 { color:#0f47b8; font-size:22px; margin-bottom:10px; }
-  .success-content p { font-size:15px; margin-bottom:20px; }
-  .close-btn, .download-btn { background:#0f47b8; color:#fff; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; margin:4px; }
-  .close-btn:hover, .download-btn:hover { background:#1e63e9; }
-
-  /* Countdown */
-  .countdown { text-align:center; font-size:18px; margin-top:10px; font-weight:600; color:#0f47b8; }
+  #successPopup .popup-content {
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    max-width:500px;
+  }
+  #successPopup button { margin-top:16px; }
 </style>
 </head>
 <body>
@@ -129,7 +130,7 @@
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="admission.html" class="active">Scholarship 2026</a></li>
+    <li><a href="admission.html">Admission</a></li>
     <li><a href="gallery.html">Gallery</a></li>
     <li><a href="general_notice.html">Notice</a></li>
     <li><a href="study.html">Study Material</a></li>
@@ -141,44 +142,62 @@
 </nav>
 
 <main>
+  <!-- Scholarship Info -->
   <section class="info">
     <h2 class="section-heading">Scholarship Programme 2026</h2>
-    <img src="images/scholarship-banner.jpg" alt="Scholarship Banner">
-    <p>Oxford Public School proudly launches the <strong>Scholarship Programme 2026</strong> to reward excellence in academics. Students from all classes are eligible and can earn up to <strong>100% tuition fees, admission fees, and other compensations</strong>.</p>
-    <p class="countdown" id="countdown">Application deadline will be announced soon!</p>
+    <p><strong>Eligibility:</strong> All students with 85% minimum in entrance test.</p>
+    <p><strong>Rewards:</strong> Merit certificate, up to 100% tuition fee waiver, admission fee, and other compensations.</p>
+    <p>All dates will be announced shortly. Confirm your seat by submitting the form below.</p>
+    <a class="btn" href="#form">Apply Now</a>
   </section>
 
-  <section class="procedure">
-    <h2 class="section-heading">Eligibility & Rewards</h2>
-    <p><strong>Eligibility:</strong> All class students; must score minimum 85% in entrance test.</p>
-    <p><strong>Rewards:</strong> Merit certificate, tuition/admission fee waiver, and other compensations.</p>
-    <p>All important dates will be announced shortly on our website and notice board.</p>
-    <p><em>“Excellence is rewarded here!”</em></p>
+  <!-- Motivational & Eligibility -->
+  <section class="eligibility">
+    <h2 class="section-heading">Motivational Note & Details</h2>
+    <p>"Hard work and dedication can earn you a full scholarship. Apply today and secure your future!"</p>
   </section>
 
+  <!-- Scholarship Form -->
   <section class="form-section" id="form">
-    <h2 class="section-heading">Scholarship Application Form</h2>
+    <h2 class="section-heading">Scholarship Form 2026</h2>
     <form id="scholarshipForm" action="https://formspree.io/f/xpwlgyzy" method="POST">
       <input type="text" name="student_name" placeholder="Student Name" required>
-      <input type="text" name="class" placeholder="Class Applying For" required>
-      <input type="date" name="dob" placeholder="Date of Birth" required>
+      <select name="class" required>
+        <option value="">Select Class</option>
+        <option value="Nursery">Nursery</option>
+        <option value="KG">KG</option>
+        <option value="Class 1">Class 1</option>
+        <option value="Class 2">Class 2</option>
+        <option value="Class 3">Class 3</option>
+        <option value="Class 4">Class 4</option>
+        <option value="Class 5">Class 5</option>
+        <option value="Class 6">Class 6</option>
+        <option value="Class 7">Class 7</option>
+        <option value="Class 8">Class 8</option>
+        <option value="Class 9">Class 9</option>
+        <option value="Class 10">Class 10</option>
+      </select>
+      <input type="date" name="dob" required>
       <input type="number" name="contact" placeholder="Contact Number" required>
       <input type="email" name="email" placeholder="Email Address" required>
-      <textarea name="address" placeholder="Full Address" rows="3" required></textarea>
-      <textarea name="reason" placeholder="Why do you deserve this scholarship?" rows="3"></textarea>
-      <label><input type="checkbox" name="terms" required> I agree to the scholarship terms and conditions</label>
-      <button type="submit">Submit Application</button>
+      <textarea name="address" placeholder="Full Address" rows="4" required></textarea>
+      <textarea name="reason" placeholder="Why should you get this scholarship?" rows="4" required></textarea>
+      <div class="terms">
+        <input type="checkbox" required>
+        <label>I confirm that the information provided is correct.</label>
+      </div>
+      <button type="submit">Submit Scholarship Form</button>
     </form>
   </section>
 </main>
 
 <!-- Success Popup -->
-<div class="success-popup" id="successPopup">
-  <div class="success-content">
-    <h3>🎉 Form Submitted Successfully!</h3>
-    <p>We will review your application and contact you shortly for further updates.</p>
-    <button class="download-btn" id="downloadPDFBtn">Download PDF Again</button>
-    <button class="close-btn" onclick="closePopup()">OK</button>
+<div id="successPopup">
+  <div class="popup-content">
+    <h3>✅ Submission Successful!</h3>
+    <p>We will review your application and contact you shortly.</p>
+    <button id="downloadPDFBtn">Download PDF Confirmation</button>
+    <button onclick="document.getElementById('successPopup').style.display='none';">Close</button>
   </div>
 </div>
 
@@ -195,28 +214,33 @@ const menu = document.getElementById('menu');
 menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
 const form = document.getElementById('scholarshipForm');
-const popup = document.getElementById('successPopup');
 let lastPDF = null;
 
-function openPopup() { popup.classList.add('active'); }
-function closePopup() { popup.classList.remove('active'); }
-
-// PDF generation function
 function generatePDF(formData){
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(20);
+
+  // Border
+  doc.setLineWidth(1.5);
+  doc.rect(10,10,190,277);
+
+  // Logo
+  doc.addImage('images/logo.png','PNG',85,15,40,20);
+
+  // Heading
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(18);
   doc.setTextColor(54,100,200);
-  doc.text("Oxford Public School",105,20,null,null,"center");
-  doc.setFont("helvetica","normal");
-  doc.setFontSize(12);
-  doc.text("Scholarship Programme 2026 - Confirmation",105,30,null,null,"center");
-  doc.text("Rania Aurobindo Nagar, Kolkata 700154",105,36,null,null,"center");
-  let startY = 55;
-  const lineHeight = 10;
+  doc.text("Oxford Public School",105,45,null,null,"center");
   doc.setFontSize(14);
   doc.setTextColor(0,0,0);
+  doc.text("Scholarship Confirmation 2026",105,55,null,null,"center");
+
+  // Student details
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(12);
+  let startY = 70;
+  const lineHeight = 10;
   doc.text(`Student Name: ${formData.get('student_name')}`,20,startY);
   doc.text(`Class: ${formData.get('class')}`,20,startY+lineHeight);
   doc.text(`Date of Birth: ${formData.get('dob')}`,20,startY+2*lineHeight);
@@ -224,9 +248,12 @@ function generatePDF(formData){
   doc.text(`Email: ${formData.get('email')}`,20,startY+4*lineHeight);
   doc.text(`Address: ${formData.get('address')}`,20,startY+5*lineHeight,{maxWidth:170});
   doc.text(`Reason: ${formData.get('reason')}`,20,startY+6*lineHeight,{maxWidth:170});
+
+  // Footer note
   doc.setFontSize(10);
   doc.setTextColor(100,100,100);
-  doc.text("This is a system-generated scholarship confirmation.",105,280,null,null,"center");
+  doc.text("This is a system-generated official scholarship confirmation.",105,280,null,null,"center");
+
   return doc;
 }
 
@@ -242,7 +269,7 @@ form.addEventListener('submit', async function(e){
     lastPDF = generatePDF(formData);
     lastPDF.save('ScholarshipConfirmation.pdf');
     form.reset();
-    openPopup();
+    document.getElementById('successPopup').style.display='flex';
   } else { alert("❌ Something went wrong. Please try again."); }
 });
 
