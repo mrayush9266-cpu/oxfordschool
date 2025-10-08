@@ -450,19 +450,11 @@ const observer = new IntersectionObserver(entries => {
 
 sections.forEach(sec => { observer.observe(sec); });
 
-// Popup logic (only first time)
+// Popup logic (show every time)
 window.addEventListener("load", ()=>{
-  try {
-    if(!localStorage.getItem("popupShown")){
-      setTimeout(()=>{
-        document.getElementById("applyPopup").classList.add("active");
-        localStorage.setItem("popupShown", "true");
-      }, 3000);
-    }
-  } catch(e) {
-    // localStorage might be blocked; fallback to showing once per session
-    setTimeout(()=>{ document.getElementById("applyPopup").classList.add("active"); }, 3000);
-  }
+  setTimeout(()=>{
+    document.getElementById("applyPopup").classList.add("active");
+  }, 3000);
 });
 
 // Close popup
