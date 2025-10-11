@@ -112,10 +112,44 @@
     75%  { border-color: #bae1ff; border-style: groove; }
     100% { border-color: #ffb3ba; border-style: dashed; }
   }
-  .fade { animation: fadeEffect 2s; }
-  @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
 
+  /* Fade animation */
+  .fade { animation: fadeEffect 0.6s; }
+  @keyframes fadeEffect { from {opacity: 0.4} to {opacity: 1} }
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Slideshow buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 12px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 50%;
+    user-select: none;
+    background: rgba(0,0,0,0.4);
+    transform: translateY(-50%);
+    transition: background 0.3s;
+    z-index: 5;
+  }
+  .prev:hover, .next:hover { background: rgba(0,0,0,0.7); }
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  /* Dots */
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .dot.active { background-color: #717171; }
 
   /* Footer */
   footer {
@@ -150,7 +184,7 @@
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html" class="active">Blog</a></li>
     <li><a href="staff.html">Staff</a></li>
-   <li><a href="student login.html">Student Login</a></li>
+    <li><a href="student-login.html">Student Login</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
@@ -187,6 +221,18 @@
     <div class="slide fade">
       <img src="images/blog4.jpg" alt="Student Painting">
     </div>
+
+    <!-- Prev/Next buttons -->
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+
+  <!-- Dots for navigation -->
+  <div style="text-align:center; margin-top:10px;">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
 </section>
 
@@ -196,27 +242,36 @@
 </footer>
 
 <script>
+  // Mobile menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menu');
   menuToggle.addEventListener('click', ()=>{ menu.classList.toggle('show'); });
 
-  let slideIndex = 0;
-  showSlides();
-  function showSlides() {
+  // Manual slideshow
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  document.querySelector(".prev").addEventListener("click", ()=>{ plusSlides(-1); });
+  document.querySelector(".next").addEventListener("click", ()=>{ plusSlides(1); });
+
+  const dots = document.getElementsByClassName("dot");
+  for(let i=0; i<dots.length; i++){
+    dots[i].addEventListener("click", function(){ currentSlide(i+1); });
+  }
+
+  function plusSlides(n) { showSlides(slideIndex += n); }
+  function currentSlide(n) { showSlides(slideIndex = n); }
+
+  function showSlides(n) {
     let slides = document.getElementsByClassName("slide");
-    for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1;}
+    if(n > slides.length) { slideIndex = 1; }
+    if(n < 1) { slideIndex = slides.length; }
+    for(let i=0; i<slides.length; i++){ slides[i].style.display = "none"; }
+    for(let i=0; i<dots.length; i++){ dots[i].className = dots[i].className.replace(" active",""); }
     slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 4000);
+    dots[slideIndex-1].className += " active";
   }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
