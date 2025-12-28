@@ -3,199 +3,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Gallery • Oxford Public School</title>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@600&family=Poppins:wght@600&family=Merriweather:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+<meta name="description" content="Oxford Public School Kolkata gallery showcasing events, celebrations, tours, exhibitions and student activities.">
+<meta name="keywords" content="Oxford Public School Kolkata, School Gallery, Teachers Day, Science Exhibition, School Events">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Segoe UI', sans-serif; background: #f7f8fc; color: #333; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f7f8fc;
+  color:#333;
+}
 
-  /* Header */
-  header {
-    background: linear-gradient(135deg,#5b86e5,#36d1dc);
-    color:#fff;
-    padding: 24px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  header img { height:60px; }
-  header .title h1 { font-family:'Pacifico', cursive; font-size:28px; font-weight:700; text-decoration:underline; }
-  header .title span { font-size:14px; font-weight:500; display:block; margin-top:2px; }
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#5b86e5,#36d1dc);
+  color:#fff;
+  padding:22px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+header img{height:60px}
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  text-decoration:underline;
+}
+header span{font-size:14px}
 
-  /* Navigation */
-  nav {
-    background: linear-gradient(135deg,#36d1dc,#5b86e5);
-    display:flex;
-    justify-content:center;
-    position:sticky;
-    top:0;
-    z-index:10;
-  }
-  nav ul { list-style:none; display:flex; flex-wrap:wrap; margin:0; padding:0; }
-  nav ul li a {
-    color:#fff;
-    text-decoration:none;
-    padding:12px 18px;
-    font-weight:600;
-    transition:0.3s;
-    display:block;
-  }
-  nav ul li a:hover, nav ul li a.active {
-    background: rgba(255,255,255,0.2);
-    border-radius:6px;
-  }
-  .menu-toggle { display:none; font-size:28px; cursor:pointer; padding:10px; color:#fff; }
-  @media(max-width:768px){
-    .menu-toggle { display:block; }
-    nav ul { display:none; flex-direction:column; width:100%; background: linear-gradient(135deg,#36d1dc,#5b86e5); }
-    nav ul.show { display:flex; }
-  }
+/* NAV */
+nav{
+  background:linear-gradient(135deg,#36d1dc,#5b86e5);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:12px 18px;
+  font-weight:600;
+  display:block;
+}
+nav a:hover,nav a.active{
+  background:rgba(255,255,255,0.2);
+  border-radius:6px;
+}
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:#fff;
+}
+@media(max-width:768px){
+  .menu-toggle{display:block}
+  nav ul{display:none;flex-direction:column}
+  nav ul.show{display:flex}
+}
 
-  main { max-width:1100px; margin:26px auto; padding:0 16px; }
+/* MAIN */
+main{
+  max-width:1100px;
+  margin:28px auto;
+  padding:0 16px;
+}
 
-  /* Gallery grid */
-  .grid { 
-    display:grid; 
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); 
-    gap:20px; 
-  }
+/* SECTION */
+section{
+  padding:24px;
+  margin-bottom:30px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  opacity:0;
+  transform:translateY(30px);
+  transition:0.8s ease;
+}
+section.show{opacity:1;transform:none}
 
-  /* Card Base */
-  .card { 
-    background:#fff; 
-    border-radius:12px; 
-    overflow:hidden; 
-    box-shadow:0 4px 12px rgba(0,0,0,0.1); 
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-  }
-  .card img { 
-    width:100%; height:200px;
-    object-fit:cover;
-    display:block; 
-    border-radius:8px; 
-    filter: brightness(85%);
-    transition: transform 0.4s ease, filter 0.4s ease; 
-  }
-  .card:hover { transform: translateY(-10px) scale(1.05); box-shadow:0 16px 30px rgba(0,0,0,0.35); }
-  .card:hover img { filter: brightness(100%); transform: scale(1.05); }
+/* BACKGROUNDS */
+.teachers{background:linear-gradient(145deg,#fef9f9,#f5f0ff)}
+.science{background:linear-gradient(145deg,#fdfbfb,#ebedee)}
+.tour{background:linear-gradient(145deg,#fefcfb,#f3f7f9)}
+.independence{background:linear-gradient(145deg,#fdfdfb,#f5fafb)}
+.puja{background:linear-gradient(145deg,#fcfdfc,#f3f8fc)}
+.food{background:linear-gradient(145deg,#fffdfc,#f9f5f7)}
+.yoga{background:linear-gradient(145deg,#fdfcfe,#f4f6fa)}
 
-  /* Section Container */
-  section {
-    padding: 24px;
-    border-radius: 14px;
-    margin-bottom: 28px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-  }
-  section.show { opacity: 1; transform: translateY(0); }
+/* HEADINGS */
+h2{
+  text-align:center;
+  margin-bottom:18px;
+  font-size:32px;
+  text-decoration:underline;
+  opacity:0;
+}
+.teachers h2{color:#8a2be2;animation:zoomFade 1.4s forwards}
+.science h2{color:#0f47b8;animation:slideLeft 1.4s forwards}
+.tour h2{color:#c0392b;animation:slideRight 1.4s forwards}
+.independence h2{color:#16a085;animation:fadeUp 1.4s forwards}
+.puja h2{color:#d35400;animation:fadeDown 1.4s forwards}
+.food h2{color:#8e44ad;animation:slideLeft 1.4s forwards}
+.yoga h2{color:#2c3e50;animation:slideRight 1.4s forwards}
 
-  /* Different premium faded gradients */
-  section:nth-of-type(1) { background: linear-gradient(145deg, #fef9f9, #f5f0ff); } 
-  section:nth-of-type(2) { background: linear-gradient(145deg, #fdfbfb, #ebedee); } 
-  section:nth-of-type(3) { background: linear-gradient(145deg, #fefcfb, #f3f7f9); } 
-  section:nth-of-type(4) { background: linear-gradient(145deg, #fdfdfb, #f5fafb); } 
-  section:nth-of-type(5) { background: linear-gradient(145deg, #fcfdfc, #f3f8fc); } 
-  section:nth-of-type(6) { background: linear-gradient(145deg, #fffdfc, #f9f5f7); } 
-  section:nth-of-type(7) { background: linear-gradient(145deg, #fdfcfe, #f4f6fa); } 
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
 
-  /* Heading fonts + animations */
-  h2 {
-    text-align:center;
-    margin:30px 0 16px;
-    font-size:32px;
-    text-decoration:underline;
-    opacity:0;
-  }
-  /* Teachers' Day */
-  section:nth-of-type(1) h2 {
-    font-family: 'Playfair Display', serif;
-    color: #8a2be2;
-    animation: zoomFade 1.5s forwards;
-  }
-  /* Science Exhibition */
-  section:nth-of-type(2) h2 {
-    font-family: 'Poppins', sans-serif;
-    color:#0f47b8;
-    animation: slideLeft 1.5s forwards;
-  }
-  /* Tour */
-  section:nth-of-type(3) h2 {
-    font-family: 'Merriweather', serif;
-    color:#c0392b;
-    animation: slideRight 1.5s forwards;
-  }
-  /* Independence */
-  section:nth-of-type(4) h2 {
-    font-family: 'Raleway', sans-serif;
-    color:#16a085;
-    animation: fadeUp 1.5s forwards;
-  }
-  /* Saraswati Puja */
-  section:nth-of-type(5) h2 {
-    font-family: 'Playfair Display', serif;
-    color:#d35400;
-    animation: fadeDown 1.5s forwards;
-  }
-  /* Food Carnival */
-  section:nth-of-type(6) h2 {
-    font-family: 'Poppins', sans-serif;
-    color:#8e44ad;
-    animation: slideLeft 1.5s forwards;
-  }
-  /* Yoga Day */
-  section:nth-of-type(7) h2 {
-    font-family: 'Merriweather', serif;
-    color:#2c3e50;
-    animation: slideRight 1.5s forwards;
-  }
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  transition:.4s;
+  will-change:transform;
+}
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  aspect-ratio:4/3;
+  filter:brightness(88%);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px) scale(1.04);
+  box-shadow:0 14px 30px rgba(0,0,0,.3);
+}
+.card:hover img{filter:brightness(100%)}
 
-  /* Keyframes */
-  @keyframes zoomFade {
-    0% { opacity:0; transform: scale(0.85); }
-    100% { opacity:1; transform: scale(1); }
-  }
-  @keyframes slideLeft {
-    0% { opacity:0; transform: translateX(-50px); }
-    100% { opacity:1; transform: translateX(0); }
-  }
-  @keyframes slideRight {
-    0% { opacity:0; transform: translateX(50px); }
-    100% { opacity:1; transform: translateX(0); }
-  }
-  @keyframes fadeUp {
-    0% { opacity:0; transform: translateY(40px); }
-    100% { opacity:1; transform: translateY(0); }
-  }
-  @keyframes fadeDown {
-    0% { opacity:0; transform: translateY(-40px); }
-    100% { opacity:1; transform: translateY(0); }
-  }
+/* MOBILE HOVER FIX */
+@media (hover:none){
+  .card:hover{transform:none;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+}
 
-  footer { background:#0f47b8; color:#fff; text-align:center; padding:20px; margin-top:36px; font-size:14px; }
+/* FOOTER */
+footer{
+  background:#0f47b8;
+  color:#fff;
+  text-align:center;
+  padding:20px;
+  margin-top:36px;
+  font-size:14px;
+}
+
+/* ANIMATIONS */
+@keyframes zoomFade{from{opacity:0;transform:scale(.85)}to{opacity:1}}
+@keyframes slideLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(50px)}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-40px)}to{opacity:1}}
 </style>
 </head>
-<body>
 
-<!-- Header -->
+<body oncontextmenu="return false;">
+
 <header>
-  <img src="images/logo.png" alt="Oxford Logo">
-  <div class="title">
+  <img src="images/logo.png" alt="Oxford Public School Logo">
+  <div>
     <h1>Oxford Public School</h1>
     <span>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
-  <div class="menu-toggle">☰</div>
+  <div class="menu-toggle" aria-label="Toggle navigation">☰</div>
 </header>
 
-<!-- Navigation -->
 <nav>
   <ul id="menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="admission.html">Scholarship Form</a></li>
-    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a class="active" href="gallery.html">Gallery</a></li>
     <li><a href="general_notice.html">General Notice</a></li>
     <li><a href="study.html">Study Material</a></li>
     <li><a href="blogg.html">Blog</a></li>
@@ -205,97 +198,95 @@
   </ul>
 </nav>
 
-<!-- Main Content -->
 <main>
-  <section>
-    <h2>Teachers’ Day 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/teacher1.jpg" alt="Teachers Day 1"></div>
-      <div class="card"><img src="images/teacher2.jpg" alt="Teachers Day 2"></div>
-      <div class="card"><img src="images/teacher3.jpg" alt="Teachers Day 3"></div>
-    </div>
-  </section>
 
-  <section>
-    <h2>Science Exhibition 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/science1.jpg" alt="Science Exhibition 1"></div>
-      <div class="card"><img src="images/science2.jpg" alt="Science Exhibition 2"></div>
-      <div class="card"><img src="images/science3.jpg" alt="Science Exhibition 3"></div>
-      <div class="card"><img src="images/science4.jpg" alt="Science Exhibition 4"></div>
-      <div class="card"><img src="images/science5.jpg" alt="Science Exhibition 5"></div>
-      <div class="card"><img src="images/science6.jpg" alt="Science Exhibition 6"></div>
-    </div>
-  </section>
+<section class="teachers">
+<h2>Teachers’ Day 2025</h2>
+<div class="grid">
+<img class="card" src="images/teachers-day-2025-1.jpg" loading="lazy">
+<img class="card" src="images/teachers-day-2025-2.jpg" loading="lazy">
+<img class="card" src="images/teachers-day-2025-3.jpg" loading="lazy">
+</div>
+</section>
 
-  <section>
-    <h2>Annual Tour 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/tour1.jpg" alt="Annual Tour 1"></div>
-      <div class="card"><img src="images/tour2.jpg" alt="Annual Tour 2"></div>
-      <div class="card"><img src="images/tour3.jpg" alt="Annual Tour 3"></div>
-    </div>
-  </section>
+<section class="science">
+<h2>Science Exhibition 2025</h2>
+<div class="grid">
+<img class="card" src="images/science-exhibition-2025-1.jpg" loading="lazy">
+<img class="card" src="images/science-exhibition-2025-2.jpg" loading="lazy">
+<img class="card" src="images/science-exhibition-2025-3.jpg" loading="lazy">
+</div>
+</section>
 
-  <section>
-    <h2>Independence Day 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/independence1.jpg" alt="Independence Day 1"></div>
-      <div class="card"><img src="images/independence2.jpg" alt="Independence Day 2"></div>
-      <div class="card"><img src="images/independence3.jpg" alt="Independence Day 3"></div>
-    </div>
-  </section>
+<section class="tour">
+<h2>Annual Tour 2025</h2>
+<div class="grid">
+<img class="card" src="images/annual-tour-2025-1.jpg" loading="lazy">
+<img class="card" src="images/annual-tour-2025-2.jpg" loading="lazy">
+<img class="card" src="images/annual-tour-2025-3.jpg" loading="lazy">
+</div>
+</section>
 
-  <section>
-    <h2>Saraswati Puja 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/puja1.jpg" alt="Saraswati Puja 1"></div>
-      <div class="card"><img src="images/puja2.jpg" alt="Saraswati Puja 2"></div>
-      <div class="card"><img src="images/puja3.jpg" alt="Saraswati Puja 3"></div>
-    </div>
-  </section>
+<section class="independence">
+<h2>Independence Day 2025</h2>
+<div class="grid">
+<img class="card" src="images/independence-day-2025-1.jpg" loading="lazy">
+<img class="card" src="images/independence-day-2025-2.jpg" loading="lazy">
+<img class="card" src="images/independence-day-2025-3.jpg" loading="lazy">
+</div>
+</section>
 
-  <section>
-    <h2>Food Carnival 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/food1.jpg" alt="Food Carnival 1"></div>
-      <div class="card"><img src="images/food2.jpg" alt="Food Carnival 2"></div>
-      <div class="card"><img src="images/food3.jpg" alt="Food Carnival 3"></div>
-    </div>
-  </section>
+<section class="puja">
+<h2>Saraswati Puja 2025</h2>
+<div class="grid">
+<img class="card" src="images/saraswati-puja-2025-1.jpg" loading="lazy">
+<img class="card" src="images/saraswati-puja-2025-2.jpg" loading="lazy">
+<img class="card" src="images/saraswati-puja-2025-3.jpg" loading="lazy">
+</div>
+</section>
 
-  <section>
-    <h2>Yoga Day 2025</h2>
-    <div class="grid">
-      <div class="card"><img src="images/yoga1.jpg" alt="Yoga Day 1"></div>
-      <div class="card"><img src="images/yoga2.jpg" alt="Yoga Day 2"></div>
-      <div class="card"><img src="images/yoga3.jpg" alt="Yoga Day 3"></div>
-    </div>
-  </section>
+<section class="food">
+<h2>Food Carnival 2025</h2>
+<div class="grid">
+<img class="card" src="images/food-carnival-2025-1.jpg" loading="lazy">
+<img class="card" src="images/food-carnival-2025-2.jpg" loading="lazy">
+<img class="card" src="images/food-carnival-2025-3.jpg" loading="lazy">
+</div>
+</section>
+
+<section class="yoga">
+<h2>Yoga Day 2025</h2>
+<div class="grid">
+<img class="card" src="images/yoga-day-2025-1.jpg" loading="lazy">
+<img class="card" src="images/yoga-day-2025-2.jpg" loading="lazy">
+<img class="card" src="images/yoga-day-2025-3.jpg" loading="lazy">
+</div>
+</section>
+
 </main>
 
 <footer>
-  © 2025 Oxford Public School | All Rights Reserved
+© 2025 Oxford Public School | All Rights Reserved
 </footer>
 
 <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+const toggle=document.querySelector('.menu-toggle');
+const menu=document.getElementById('menu');
+toggle.onclick=()=>menu.classList.toggle('show');
 
-  // Section animation
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-        const heading = entry.target.querySelector('h2');
-        if(heading){ heading.style.opacity = "1"; } // trigger animation
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(sec => observer.observe(sec));
+if('IntersectionObserver'in window){
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add('show');
+e.target.querySelector('h2').style.opacity=1;
+obs.unobserve(e.target);
+}});
+},{threshold:.1});
+document.querySelectorAll('section').forEach(s=>obs.observe(s));
+}else{
+document.querySelectorAll('section').forEach(s=>s.classList.add('show'));
+}
 </script>
 
 </body>
