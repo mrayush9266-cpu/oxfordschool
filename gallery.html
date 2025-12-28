@@ -5,13 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gallery • Oxford Public School</title>
 
+<meta name="description" content="Oxford Public School Gallery – Academic, Cultural & Sports Events">
+<meta name="keywords" content="Oxford Public School Gallery, Sports Day, School Events Kolkata">
+
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@600&family=Poppins:wght@600&family=Merriweather:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',sans-serif;background:#f7f8fc;color:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:#f7f8fc;
+  color:#333;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(120deg,#f7f8fc,#eef3ff,#f7f8fc);
+  z-index:-1;
+  animation:bg 14s ease infinite;
+}
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
-/* ===== HEADER (UNCHANGED) ===== */
+/* HEADER */
 header{
   background:linear-gradient(135deg,#5b86e5,#36d1dc);
   color:#fff;
@@ -22,90 +42,105 @@ header{
   flex-wrap:wrap
 }
 header img{height:60px}
-header .title h1{
+header h1{
   font-family:'Pacifico',cursive;
   font-size:28px;
   text-decoration:underline
 }
-header .title span{font-size:14px;display:block}
+header span{font-size:14px;display:block}
 
-/* ===== NAVIGATION (UNCHANGED) ===== */
+/* NAV */
 nav{
   background:linear-gradient(135deg,#36d1dc,#5b86e5);
-  display:flex;
-  justify-content:center;
   position:sticky;
   top:0;
-  z-index:10
+  z-index:10;
 }
-nav ul{list-style:none;display:flex;flex-wrap:wrap}
-nav ul li a{
+nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap}
+nav a{
   color:#fff;
-  text-decoration:none;
   padding:12px 18px;
-  font-weight:600;
   display:block;
-  transition:.3s
+  text-decoration:none;
+  font-weight:600
 }
-nav ul li a:hover,nav ul li a.active{
+nav a:hover,nav a.active{
   background:rgba(255,255,255,.2);
   border-radius:6px
 }
-.menu-toggle{display:none;font-size:28px;cursor:pointer;padding:10px;color:#fff}
+.menu-toggle{display:none;font-size:28px;color:#fff;padding:10px;cursor:pointer}
 @media(max-width:768px){
   .menu-toggle{display:block}
-  nav ul{display:none;flex-direction:column;width:100%}
+  nav ul{display:none;flex-direction:column}
   nav ul.show{display:flex}
 }
 
-/* ===== MAIN ===== */
+/* PROGRESS BAR */
+#progress{
+  position:fixed;
+  top:0;left:0;
+  height:4px;
+  width:0;
+  background:linear-gradient(to right,#36d1dc,#5b86e5);
+  z-index:9999
+}
+
 main{max-width:1200px;margin:30px auto;padding:0 16px}
 
-/* ===== SECTION ===== */
+/* SECTION */
 section{
+  margin-bottom:40px;
   padding:28px;
-  border-radius:16px;
-  margin-bottom:34px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  border-radius:18px;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.75);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
   opacity:0;
   transform:translateY(30px);
-  transition:.8s ease
+  transition:.8s
 }
 section.show{opacity:1;transform:none}
 
-section:nth-of-type(odd){
-  background:linear-gradient(145deg,#ffffff,#f1f6ff)
-}
-section:nth-of-type(even){
-  background:linear-gradient(145deg,#fffaf5,#f3f7f9)
-}
-
-/* ===== HEADING ===== */
 h2{
   text-align:center;
   font-size:34px;
-  margin-bottom:20px;
   text-decoration:underline;
-  opacity:0
 }
-section.show h2{opacity:1}
+.section-intro{
+  text-align:center;
+  max-width:700px;
+  margin:14px auto 26px;
+  font-size:15px;
+  color:#555
+}
 
-/* ===== GRID ===== */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:22px
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .card{
   position:relative;
   overflow:hidden;
-  border-radius:14px;
+  border-radius:16px;
   cursor:pointer;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  box-shadow:0 12px 25px rgba(0,0,0,.18);
   transition:.4s
 }
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:18px;
+  background:linear-gradient(45deg,#36d1dc,#5b86e5,#8e44ad);
+  opacity:0;
+  z-index:-1;
+  transition:.4s
+}
+.card:hover::before{opacity:1}
 .card img{
   width:100%;
   height:220px;
@@ -113,26 +148,21 @@ section.show h2{opacity:1}
   transition:.6s
 }
 .card:hover img{
-  transform:scale(1.15);
+  transform:scale(1.18);
   filter:brightness(70%)
 }
-.card::after{
-  content:"View Image";
+.tag{
   position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  bottom:14px;
+  left:14px;
+  background:rgba(0,0,0,.65);
   color:#fff;
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:1px;
-  opacity:0;
-  transition:.4s
+  padding:6px 14px;
+  font-size:13px;
+  border-radius:20px
 }
-.card:hover::after{opacity:1}
 
-/* ===== LIGHTBOX ===== */
+/* LIGHTBOX */
 .lightbox{
   position:fixed;
   inset:0;
@@ -145,8 +175,7 @@ section.show h2{opacity:1}
 .lightbox img{
   max-width:90%;
   max-height:90%;
-  border-radius:12px;
-  box-shadow:0 0 40px rgba(255,255,255,.3)
+  border-radius:14px
 }
 .lightbox span{
   position:absolute;
@@ -157,13 +186,27 @@ section.show h2{opacity:1}
   cursor:pointer
 }
 
-/* ===== FOOTER (UNCHANGED) ===== */
+/* BACK TO TOP */
+#topBtn{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:#36d1dc;
+  color:#fff;
+  border:none;
+  padding:14px 16px;
+  font-size:20px;
+  border-radius:50%;
+  display:none;
+  cursor:pointer
+}
+
+/* FOOTER */
 footer{
   background:#0f47b8;
   color:#fff;
   text-align:center;
   padding:20px;
-  margin-top:40px;
   font-size:14px
 }
 </style>
@@ -171,9 +214,11 @@ footer{
 
 <body>
 
+<div id="progress"></div>
+
 <header>
   <img src="images/logo.png">
-  <div class="title">
+  <div>
     <h1>Oxford Public School</h1>
     <span>Rania Aurobindo Nagar, Kolkata 700154</span>
   </div>
@@ -181,77 +226,52 @@ footer{
 </header>
 
 <nav>
-  <ul id="menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="admission.html">Scholarship Form</a></li>
-    <li><a class="active">Gallery</a></li>
-    <li><a href="general_notice.html">General Notice</a></li>
-    <li><a href="study.html">Study Material</a></li>
-    <li><a href="blogg.html">Blog</a></li>
-    <li><a href="staff.html">Staff</a></li>
-    <li><a href="student login.html">Student Login</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+<ul id="menu">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="admission.html">Scholarship Form</a></li>
+<li><a class="active">Gallery</a></li>
+<li><a href="general_notice.html">General Notice</a></li>
+<li><a href="study.html">Study Material</a></li>
+<li><a href="blogg.html">Blog</a></li>
+<li><a href="staff.html">Staff</a></li>
+<li><a href="student login.html">Student Login</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
 </nav>
 
 <main>
 
 <section>
 <h2>Teachers’ Day 2025</h2>
+<div class="section-intro">Honouring the mentors who shape our future.</div>
 <div class="grid">
-<div class="card"><img src="images/teacher1.jpg"></div>
-<div class="card"><img src="images/teacher2.jpg"></div>
-<div class="card"><img src="images/teacher3.jpg"></div>
+<div class="card"><img src="images/teacher1.jpg" loading="lazy"><div class="tag">Teachers’ Day</div></div>
+<div class="card"><img src="images/teacher2.jpg" loading="lazy"><div class="tag">Teachers’ Day</div></div>
+<div class="card"><img src="images/teacher3.jpg" loading="lazy"><div class="tag">Teachers’ Day</div></div>
 </div>
 </section>
 
 <section>
-<h2>Science Exhibition 2025</h2>
+<h2>Annual Sports Day 2025</h2>
+<div class="section-intro">Celebrating strength, discipline and sportsmanship.</div>
 <div class="grid">
-<div class="card"><img src="images/science1.jpg"></div>
-<div class="card"><img src="images/science2.jpg"></div>
-<div class="card"><img src="images/science3.jpg"></div>
-</div>
-</section>
-
-<section>
-<h2>Annual Tour 2025</h2>
-<div class="grid">
-<div class="card"><img src="images/tour1.jpg"></div>
-<div class="card"><img src="images/tour2.jpg"></div>
-<div class="card"><img src="images/tour3.jpg"></div>
-</div>
-</section>
-
-<section>
-<h2>🎉 Annual Sports Day 2025 🏆</h2>
-<div class="grid">
-<div class="card"><img src="images/sports1.jpg"></div>
-<div class="card"><img src="images/sports2.jpg"></div>
-<div class="card"><img src="images/sports3.jpg"></div>
-<div class="card"><img src="images/sports4.jpg"></div>
-</div>
-</section>
-
-<section>
-<h2>Independence Day 2025</h2>
-<div class="grid">
-<div class="card"><img src="images/independence1.jpg"></div>
-<div class="card"><img src="images/independence2.jpg"></div>
-<div class="card"><img src="images/independence3.jpg"></div>
+<div class="card"><img src="images/sports1.jpg" loading="lazy"><div class="tag">Sports Day</div></div>
+<div class="card"><img src="images/sports2.jpg" loading="lazy"><div class="tag">Sports Day</div></div>
+<div class="card"><img src="images/sports3.jpg" loading="lazy"><div class="tag">Sports Day</div></div>
+<div class="card"><img src="images/sports4.jpg" loading="lazy"><div class="tag">Sports Day</div></div>
 </div>
 </section>
 
 </main>
 
-<footer>
-© 2025 Oxford Public School | All Rights Reserved
-</footer>
+<footer>© 2025 Oxford Public School | All Rights Reserved</footer>
+
+<button id="topBtn">↑</button>
 
 <div class="lightbox" id="lightbox">
-<span onclick="closeLightbox()">×</span>
-<img id="lightboxImg">
+<span onclick="closeLB()">×</span>
+<img id="lbImg">
 </div>
 
 <script>
@@ -260,29 +280,25 @@ const menu=document.getElementById('menu');
 menuToggle.onclick=()=>menu.classList.toggle('show');
 
 const cards=document.querySelectorAll('.card img');
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightboxImg');
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lbImg');
+cards.forEach(i=>i.onclick=()=>{lb.style.display="flex";lbImg.src=i.src});
+function closeLB(){lb.style.display="none"}
 
-cards.forEach(img=>{
-  img.onclick=()=>{
-    lightbox.style.display='flex';
-    lightboxImg.src=img.src;
-  }
+window.addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  document.getElementById("progress").style.width=
+  (h.scrollTop/(h.scrollHeight-h.clientHeight))*100+"%";
+  document.getElementById("topBtn").style.display=
+  window.scrollY>400?"block":"none";
 });
-function closeLightbox(){
-  lightbox.style.display='none';
-}
+document.getElementById("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 
-const sections=document.querySelectorAll('section');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-      observer.unobserve(e.target);
-    }
-  });
+const sections=document.querySelectorAll("section");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("show");obs.unobserve(x.target)}})
 },{threshold:.1});
-sections.forEach(s=>observer.observe(s));
+sections.forEach(s=>obs.observe(s));
 </script>
 
 </body>
